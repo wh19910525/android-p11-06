@@ -18,11 +18,14 @@ public class Protice_04_02Activity extends Activity {
         setContentView(R.layout.main);
         
         textview =(TextView)this.findViewById(R.id.m_textview);//
+        /*
         textview.setTextColor(Color.RED);
         textview.setTextSize(20);
         textview.setBackgroundColor(Color.BLUE);
         String str = "TextView Ê¾Àý£¬»¶Ó­Ê¹ÓÃ";
         textview.setText(str);
+        */
+        
         
     }
     

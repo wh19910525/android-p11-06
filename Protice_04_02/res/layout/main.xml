@@ -8,6 +8,10 @@
         android:id="@+id/m_textview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+		android:text="xml"
+		android:textColor="#FF0000"
+		android:textSize="20dip"
+		android:background="#000000"
+	/>
 
 </LinearLayout>
