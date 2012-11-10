@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">请答题!</string>
+    <string name="app_name">Protice_04_06</string>
+    <string name="rb1">wh</string>
+	<string name="rb2">zgj</string>
+	<string name="rb3">zj</string>
+	<string name="rb4">cjl</string>
+	
+</resources>
