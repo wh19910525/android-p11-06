@@ -18,6 +18,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <receiver android:name=".SMSReceiver" android:enabled="true">
+            
+            
+            
+        </receiver>
+        
+        <intent-filter><action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            
+        </intent-filter>
+        
     </application>
+    
+    <uses-permission  android:name="android.permission.RECEIVE_SMS"/>
 
 </manifest>

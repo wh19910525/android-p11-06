@@ -18,8 +18,9 @@ public class Project_04_04Activity extends Activity {
         setContentView(R.layout.main);
         
        // m_textview = new TextView(this);
-        m_textview = (TextView)this.findViewById(R.id.tv);
-        String string = "Toast示例：当收到短信时，我们会提示欢迎使用！";
+        //m_textview = (TextView)this.findViewById(R.id.tv);
+        m_textview = (TextView)findViewById(R.id.tv);
+        String string = "Toast示例132：当收到短信时，我们会提示欢迎使用！";
         m_textview.setText(string);
         m_textview.setTextSize(35);
         Button button = (Button)findViewById(R.id.bv);
