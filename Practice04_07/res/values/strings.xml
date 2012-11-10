@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Practice04_07Activity!</string>
+    <string name="app_name">Practice04_07</string>
+	<string name="cb1">wh</string>
+	<string name="cb2">zgj</string>
+	<string name="cb3">zj</string>
+	<string name="cb4">zl</string>
+	<string name="bt">确定</string>
+	
+</resources>
