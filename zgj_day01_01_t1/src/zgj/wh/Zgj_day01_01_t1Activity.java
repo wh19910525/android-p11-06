@@ -1,7 +1,5 @@
 package zgj.wh;
 
-
-
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -16,8 +14,6 @@ import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-
-
 public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener{
 	private static final int BUTTON_LOGIN = 1;
 	private static final int BUTTON_CANCEL = 2;
@@ -27,9 +23,9 @@ public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener
 	private Button btnLogin, btnCancel;
 	private LinearLayout root, row1, row2, row3;
 
-	private ButtonClickListener listener;//有什么用
+	private ButtonClickListener listener;//这是一个 内部类
 
-	public void onClick(View v) {
+	public void onClick(View v) {//这是 OnClickListener 接口里的一个 方法；
 		// TODO Auto-generated method stub
 		switch (v.getId()){
 		case BUTTON_LOGIN:
@@ -40,8 +36,7 @@ public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener
 			Toast.makeText(this, "您单击了取消按钮", 3000).show();
 			break;
 		}
-	}
-	
+	}	
 	
     /** Called when the activity is first created. */
     @Override
@@ -85,15 +80,17 @@ public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener
 		btnLogin = new Button(this);
 		btnLogin.setText("登录");
 		btnLogin.setId(BUTTON_LOGIN);
-		btnLogin.setOnClickListener(this);//
+		btnLogin.setOnClickListener(listener);//方法一：这里使用 内部类 ButtonClickListener 实现监听;
+//		btnLogin.setOnClickListener(this);//方法二：这里使用 OnClickListener 接口  实现监听；使用一个接口 必须 直接在 本类里 实现这个接口的所有方法，否则 这个类 不能使用；
 
 		btnCancel = new Button(this);
 		//btnCancel.setLayoutParams(params);
 		btnCancel.setText("取消");
 		btnCancel.setId(BUTTON_CANCEL);
 		// btnCancel.setOnClickListener(this);
-		btnCancel.setOnClickListener(new View.OnClickListener() {//匿名类
-
+		//btnCancel.setOnClickListener(new View.OnClickListener() {//方法三：这里使用 匿名类 实现监听
+		//btnCancel.setOnClickListener(new Button.OnClickListener() {
+		btnCancel.setOnClickListener(new EditText.OnClickListener() {		
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				etName.setText("");
@@ -114,7 +111,6 @@ public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener
 		
 		// 将视图树添加到Activity的内容显示区
 		setContentView(root);
-
     }
  
 	private boolean isEmpty(EditText et) {
@@ -126,7 +122,6 @@ public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener
 
 	class ButtonClickListener implements OnClickListener //如何才能调用这个监听器
 	{
-
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			// String text = ((Button)v).getText().toString();
@@ -165,7 +160,5 @@ public class Zgj_day01_01_t1Activity extends Activity implements OnClickListener
 				break;
 			}
 		}
-
-	}
-    
+	}    
 }
