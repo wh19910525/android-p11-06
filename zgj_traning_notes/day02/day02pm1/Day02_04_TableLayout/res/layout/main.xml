@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1">
+    
+	<TableRow >
+	    <TextView  android:text="用户名"/>
+	    <EditText android:id="@+id/etUserName" 
+	        android:hint="请输入用户名"/>
+	</TableRow>
+	
+	<TableRow >
+	    <TextView  android:text="密    码"/>
+	    <EditText android:id="@+id/etUserPass" 
+	        android:hint="请输入密码"
+	        android:inputType="textPassword"/>
+	</TableRow>
+	
+	<TableLayout 
+	    android:stretchColumns="0,1">
+    <TableRow >
+        <Button 
+            android:id="@+id/btnLogin"
+            android:text="登录"
+            android:onClick="doClick"
+            />
+        <Button 
+            android:id="@+id/btnCancel"
+            android:text="取消"
+            android:onClick="doClick"
+            />
+    </TableRow>
+    </TableLayout>
+    
+	<LinearLayout 
+	    android:orientation="horizontal"
+	    >
+	    <Button 
+	        android:id="@+id/btn1"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1.0"
+	        android:text="按钮1"
+	        android:onClick="doClick"
+	        />
+	    <Button 
+	        android:id="@+id/btn2"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1.0"
+	        android:text="按钮2"
+	        android:onClick="doClick"
+	        />
+	</LinearLayout>
+
+</TableLayout>
