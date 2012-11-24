@@ -1,22 +1,21 @@
 package wh.zgj;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.Layout;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.LinearLayout.LayoutParams;
 
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
+
 
 
 public class Zgj_day01_t1Activity extends Activity {
@@ -35,7 +34,7 @@ public class Zgj_day01_t1Activity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+//        setContentView(R.layout.main);
         
 		LayoutParams params = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);//为什么没有3个参数
 //        LayoutParams params = new LayoutParams(100, LayoutParams.WRAP_CONTENT);
@@ -79,10 +78,16 @@ public class Zgj_day01_t1Activity extends Activity {
         btCancel.setId(BUTTON_CANCEL);
         btCancel.setOnClickListener(listener);
         
+        row3 = new LinearLayout(this);
+        row3.addView(btLogin, params);
+        row3.addView(btCancel, params);
         
         root = new LinearLayout(this);
+        
         root.setOrientation(LinearLayout.VERTICAL);
         root.addView(row1);
+        root.addView(row2);
+        root.addView(row3);
         
         setContentView(root);
         
