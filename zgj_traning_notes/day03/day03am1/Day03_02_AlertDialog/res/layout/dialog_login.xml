@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="用户名" />
+
+        <EditText android:id="@+id/etName" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="密    码" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:inputType="textPassword" />
+    </TableRow>
+
+    <TableLayout android:stretchColumns="0,1" >
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:onClick="login"
+                android:text="登录" />
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:onClick="login"
+                android:text="取消" />
+        </TableRow>
+    </TableLayout>
+
+</TableLayout>

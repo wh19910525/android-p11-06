@@ -1,0 +1,90 @@
+LayoutInflater
+  实例化： static LayoutInflater from(Context context)
+  主要方法：
+   View inflate(int layoutRes,ViewGroup root)
+
+Activity
+ setContentView(View view)
+ setContentView(int layoutRes)
+ View findViewById(int id)
+
+ Activity中包含的视图树的层级视图
+  1)Activity中包含一个PhoneWindow对象
+  2)PhoneWindow是Window类的子类
+    其中包含一个DecorView
+  3)DecorView是FrameLayout的子类
+    DecorView中包含一个垂直的线性布局
+    该线性布局中的上面是一个FrameLayout，
+      其中包含一个TextView用于显示程序标题
+    下面包含一个FrameLayout，作为内容视图区域
+View
+ View findViewById(int id)
+
+LinearLayout
+ android:layout_weight
+FrameLayout
+ android:layout_gravity
+TableLayout
+ 1、表格布局中如果未使用行时，则子View直接占满一行
+ 2、使用TableRow标签设置表格行
+ 3、行内的单元格默认宽高都是 包裹内容
+ 4、表格布局中的View可以不设置布局宽和高
+ 5、使用属性android:stretchColumns设置拉伸列
+RelativeLayout
+ 1、如果未使用对齐和定位属性的子View，默认在左上角开始绘制
+ 2、定位属性
+  android:layout_above
+  android:layout_below
+  android:layout_toLeftOf
+  android:layout_toRightOf
+ 3、对齐属性
+  android:layout_alignBaseLine
+  android:layout_alignTop
+  android:layout_alignBottom
+  android:layout_alignLeft
+  android:layout_alignRight
+  android:layout_alignParentTop
+  android:layout_alignParentBottom
+  android:layout_alignParentLeft
+  android:layout_alignParentRight
+AbsoluteLayout
+ andorid:layout_x
+ android:layout_y
+
+
+RadioGroup
+ 1)是LinearLayout的子类
+ 2)主要方法：
+  int getCheckedButtonId()
+  void check(int buttonId)
+  void setOnCheckedChangeListener(OnCheckedChangeListener l)
+CheckBox
+ 主要方法：
+  boolean isChecked()
+  void setChecked(boolean checked)
+  void setOnCheckedChangeListener(OnCheckedChangeListener l)
+
+Context
+ 1、是一个抽象类
+ 2、主要提供对资源的访问能力
+ 3、还提供了应用级的操作
+    startActivity(Intent intent)
+    startService(Intent intent)
+    sendBroadcast(Intent intent)
+    getSystemService(String service)
+    ...
+ 4、Context的类层级结构
+  Context
+   ContextIml
+   ContextWrapper
+       mBaseContext : ContextIml
+    Application
+    Service
+    ContextThemeWrapper
+     Activity
+ 5、Android程序中的Context对象有几种?
+  Application
+  Service
+  Activity
+ 6、Android程序中一共有多少个Context对象
+  Service实例数+Activity实例数+1

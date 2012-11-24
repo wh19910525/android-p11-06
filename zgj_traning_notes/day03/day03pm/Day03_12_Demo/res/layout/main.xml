@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="用户名" />
+
+        <EditText android:id="@+id/etUserName" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="密码" />
+
+        <EditText
+            android:id="@+id/etUserPass"
+            android:inputType="textPassword" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="确认密码" />
+
+        <EditText
+            android:id="@+id/etPassAgain"
+            android:inputType="textPassword" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="真实姓名" />
+
+        <EditText android:id="@+id/etRealName" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="性别" />
+
+        <RadioGroup
+            android:id="@+id/rgSex"
+            android:checkedButton="@+id/rdoMale"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@id/rdoMale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:text="男" />
+
+            <RadioButton
+                android:id="@+id/rdoFemale"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:text="女" />
+        </RadioGroup>
+    </TableRow>
+
+    <TextView android:text="爱好" />
+
+    <TableLayout android:stretchColumns="0,1" >
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/chkEat"
+                android:checked="true"
+                android:text="吃" />
+
+            <CheckBox
+                android:id="@+id/chkSleep"
+                android:checked="true"
+                android:text="睡觉" />
+        </TableRow>
+
+        <TableRow>
+
+            <CheckBox
+                android:id="@+id/chkRead"
+                android:checked="true"
+                android:text="读书" />
+
+            <CheckBox
+                android:id="@+id/chkPlay"
+                android:checked="true"
+                android:text="玩" />
+        </TableRow>
+
+        <TableRow>
+
+            <Button
+                android:id="@+id/btnReg"
+                android:onClick="doClick"
+                android:text="注册" />
+
+            <Button
+                android:id="@+id/btnReset"
+                android:onClick="doClick"
+                android:text="重置" />
+        </TableRow>
+    </TableLayout>
+
+</TableLayout>

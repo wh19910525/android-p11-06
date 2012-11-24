@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day03_02_AlertDialogActivity!</string>
+    <string name="app_name">Day03_02_AlertDialog</string>
+
+</resources>
