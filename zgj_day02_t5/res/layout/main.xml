@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#A0FFFFFF"
+        android:textColor="#FF000000"
+        android:text="董军" />
+
+    <Button 
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/bttest"
+        android:layout_gravity="right|bottom"
+        android:gravity="left|top"
+        android:text="金友兵" />
+    
+    <Button 
+        android:text="黎新源"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+</FrameLayout>

@@ -32,7 +32,7 @@ public class Day02_08_RadioButtnActivity extends Activity {
 
 	public void doClick(View v) {
 		// 输出被选中的单选按钮的值
-		 int id = rgSex.getCheckedRadioButtonId();
+		 int id = rgSex.getCheckedRadioButtonId();//获取 当前 被选中按钮 的值
 		 switch (id) {
 		 case R.id.rdoMale:
 		 Toast.makeText(this, "男w", 3000).show();
