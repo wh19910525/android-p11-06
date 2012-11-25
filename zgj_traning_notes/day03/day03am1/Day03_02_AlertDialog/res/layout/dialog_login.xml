@@ -6,21 +6,23 @@
 
     <TableRow>
 
-        <TextView android:text="用户名" />
-
-        <EditText android:id="@+id/etName" />
+        <TextView 
+            android:text="用户名" />
+        <EditText 
+            android:id="@+id/etName" />
     </TableRow>
 
     <TableRow>
 
-        <TextView android:text="密    码" />
-
+        <TextView 
+            android:text="密    码" />
         <EditText
             android:id="@+id/etPassword"
             android:inputType="textPassword" />
     </TableRow>
 
-    <TableLayout android:stretchColumns="0,1" >
+    <TableLayout 
+        android:stretchColumns="0,1" >
 
         <TableRow>
 

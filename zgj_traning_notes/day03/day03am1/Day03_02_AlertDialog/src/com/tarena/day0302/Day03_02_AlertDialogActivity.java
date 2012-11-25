@@ -14,8 +14,8 @@ public class Day03_02_AlertDialogActivity extends Activity {
 	private EditText etName, etPassword;
 
 	private void setupView() {
-		View root = LayoutInflater.from(this).inflate(R.layout.dialog_login,
-				null);
+		// 从xml文件扩充一个View对象, 加载布局
+		View root = LayoutInflater.from(this).inflate(R.layout.dialog_login,null);
 		etName = (EditText) root.findViewById(R.id.etName);
 		etPassword = (EditText) root.findViewById(R.id.etPassword);
 
