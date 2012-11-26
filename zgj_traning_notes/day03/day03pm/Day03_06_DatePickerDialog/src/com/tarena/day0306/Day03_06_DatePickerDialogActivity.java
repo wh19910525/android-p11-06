@@ -11,6 +11,7 @@ import android.widget.DatePicker;
 import android.widget.Toast;
 
 public class Day03_06_DatePickerDialogActivity extends Activity {
+	
 	private DatePickerDialog dialog;
 
 	private void setupView() {
@@ -27,7 +28,7 @@ public class Day03_06_DatePickerDialogActivity extends Activity {
 		};
 		Calendar c = Calendar.getInstance();
 		dialog = new DatePickerDialog(this, callBack, c.get(Calendar.YEAR),
-				c.get(Calendar.MONTH), c.get(Calendar.DATE));
+				c.get(Calendar.MONTH), c.get(Calendar.DATE));//创建 设置 日期 对话框，当日期有变化，就会 回调callBack类；
 	}
 
 	public void doClick(View v) {

@@ -7,6 +7,8 @@ import android.widget.TimePicker.OnTimeChangedListener;
 import android.widget.Toast;
 
 public class Day03_07_TimePickerActivity extends Activity {
+	
+	String wanghai = 123;
 	private TimePicker tp;
 
 	private void setupView() {
@@ -18,7 +20,7 @@ public class Day03_07_TimePickerActivity extends Activity {
 	}
 
 	private void addListener() {
-		tp.setOnTimeChangedListener(new OnTimeChangedListener() {
+		tp.setOnTimeChangedListener(new OnTimeChangedListener() {//用 匿名类 设置 监听器
 
 			public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
 				// TODO Auto-generated method stub
