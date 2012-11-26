@@ -9,6 +9,7 @@ import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.Toast;
 
 public class Day03_05_DatePickerActivity extends Activity {
+	
 	private DatePicker dp;
 
 	private void setupView() {
@@ -18,8 +19,8 @@ public class Day03_05_DatePickerActivity extends Activity {
 			public void onDateChanged(DatePicker view, int year,
 					int monthOfYear, int dayOfMonth) {
 				// TODO Auto-generated method stub
-				Calendar c = Calendar.getInstance();
-				c.set(year, monthOfYear, dayOfMonth);
+				Calendar c = Calendar.getInstance();//创建 一个 日历 对象
+				c.set(year, monthOfYear, dayOfMonth);//设置 日历 对象 为 当前 时间
 				Toast.makeText(Day03_05_DatePickerActivity.this,
 						c.getTime().toLocaleString(), 3000).show();
 			}

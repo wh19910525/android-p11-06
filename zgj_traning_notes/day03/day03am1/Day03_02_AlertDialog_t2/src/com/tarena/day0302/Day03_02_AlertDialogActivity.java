@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Day03_02_AlertDialogActivity extends Activity {
+	
 	private EditText etName, etPassword;
 	private AlertDialog dialog;
 
@@ -30,7 +31,7 @@ public class Day03_02_AlertDialogActivity extends Activity {
 		// finish();
 	}
 
-	private int count;
+	private int count;//
 
 	public void login(View v) {
 		switch (v.getId()) {
@@ -39,9 +40,9 @@ public class Day03_02_AlertDialogActivity extends Activity {
 			String name = etName.getText().toString();
 			String password = etPassword.getText().toString();
 			// 登录验证
-			if ("admin".equals(name) && "123456".equals(password)) {
+			if ("123".equals(name) && "123".equals(password)) {
 				// 登录成功
-				dialog.dismiss();
+				dialog.dismiss();//
 			} else {
 				if (++count < 3) {
 					Toast.makeText(this, "您的输入有误，请重试", 3000).show();

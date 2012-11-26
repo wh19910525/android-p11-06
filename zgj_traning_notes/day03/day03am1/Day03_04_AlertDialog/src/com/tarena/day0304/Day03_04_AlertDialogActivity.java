@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class Day03_04_AlertDialogActivity extends Activity {
+	
 	private String[] items = { "item1", "item2", "item3" };
 	private boolean[] choices = { true, false, false };
 	private AlertDialog dialog;
@@ -25,19 +26,20 @@ public class Day03_04_AlertDialogActivity extends Activity {
 							public void onClick(DialogInterface dialog,
 									int which, boolean isChecked) {
 								// TODO Auto-generated method stub
-								choices[which] = isChecked;
+								choices[which] = isChecked;//选中 选择 项；
 							}
 						}).setPositiveButton("确定", new OnClickListener() {
 
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
-						StringBuilder sb = new StringBuilder("您选择了:\n");
+						StringBuilder sb = new StringBuilder("您选择了:\n");//
+						
 						for (int i = 0; i < choices.length; i++) {
 							if (choices[i]) {
-								sb.append(items[i]).append(',');
+								sb.append(items[i]).append(',');//
 							}
 						}
-						sb.deleteCharAt(sb.length() - 1);
+						sb.deleteCharAt(sb.length() - 1);//
 
 						Toast.makeText(Day03_04_AlertDialogActivity.this,
 								sb.toString(), 3000).show();

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Toast;
 
 public class Day03_01_AlertDialogActivity extends Activity {
+	
 	private AlertDialog dialog;//
 
 	public void doClick(View v) {

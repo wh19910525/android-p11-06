@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.Toast;
 
 public class Day03_03_AlertDialogActivity extends Activity {
-	private String[] items = { "item1", "item2", "item3" };
+	
+	private String[] items = { "item1", "item2", "item3" };//
 	private AlertDialog dialog;
 
 	private void setupView() {
 		dialog = new Builder(this).setTitle("对话框")
 				.setIcon(android.R.drawable.ic_dialog_info)
-				.setSingleChoiceItems(items, 1, new OnClickListener() {
+				.setSingleChoiceItems(items, 0, new OnClickListener() {//第二个参数 指 默认 选择 那一条；
 
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
