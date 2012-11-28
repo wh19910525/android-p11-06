@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class Day03_07_TimePickerActivity extends Activity {
 	
-	String wanghai = 123;
+
 	private TimePicker tp;
 
 	private void setupView() {

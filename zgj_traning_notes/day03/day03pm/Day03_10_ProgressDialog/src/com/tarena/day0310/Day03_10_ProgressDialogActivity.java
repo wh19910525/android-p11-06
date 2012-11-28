@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class Day03_10_ProgressDialogActivity extends Activity {
+	
 	private ProgressDialog dialog;
 	private Thread workThread;
 
@@ -17,20 +19,41 @@ public class Day03_10_ProgressDialogActivity extends Activity {
 //		dialog.setCancelable(false);
 //		dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 //		dialog.setIndeterminate(true);
-		
-		
+			
 		dialog.setTitle("下载提示");
 		dialog.setIcon(android.R.drawable.ic_dialog_info);
 		dialog.setMessage("正在下载...");
-		dialog.setCancelable(true);
-		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-		dialog.setIndeterminate(false);
+		dialog.setCancelable(false);//设置为false，按返回键不能退出。默认为true
+		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);//设置 进度条  的样式
+		dialog.setIndeterminate(false);//false 为 显示 具体的  进度，对比 例子09，默认为false
 		dialog.setMax(100);
 	}
 
 	public void doClick(View v) {
-		dialog.show();
-		workThread.start();
+		
+		if (!workThread.isAlive()){
+			Toast.makeText(this, "进程  ok！", 3000).show();
+			dialog.show();
+			//sleep(500);//为什么 这里 不能 睡眠；
+			/*
+			try {
+				sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			*/ //为什么这里 不能 用 try
+			Toast.makeText(this, "进程  ok！", 3000).show();
+			workThread.start();//执行 进程 函数 run
+		}
+		else
+			Toast.makeText(this, "进程 已经 死了！", 3000).show();
+			
+	}
+
+	private void sleep(int i) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/** Called when the activity is first created. */
@@ -39,6 +62,7 @@ public class Day03_10_ProgressDialogActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		setupView();
+		
 		workThread = new Thread() {
 			@Override
 			public void run() {
@@ -52,14 +76,13 @@ public class Day03_10_ProgressDialogActivity extends Activity {
 				
 				for(int i=0;i<=100;i+=10){
 					try {
-						sleep(1000);
+						sleep(500);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					dialog.setProgress(i);
-				}
-				
+					dialog.setProgress(i);//
+				}				
 				dialog.dismiss();
 			}
 		};

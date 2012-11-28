@@ -12,8 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Day03_11_DialogActivity extends Activity {
+	
 	private static final int DIALOG_1 = 1;
 	private static final int DIALOG_2 = 2;
+	
 	private EditText etInput;
 
 	/** Called when the activity is first created. */
@@ -38,7 +40,7 @@ public class Day03_11_DialogActivity extends Activity {
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		// TODO Auto-generated method stub
-		Log.i("info", "onCreateDialog---id=" + id);
+		Log.i("info", "onCreateDialog---id=" + id);//没有 打印 出来 log 信息
 		Dialog dialog = null;
 		switch (id) {
 		case DIALOG_1:
@@ -51,7 +53,7 @@ public class Day03_11_DialogActivity extends Activity {
 		case DIALOG_2:
 			etInput = new EditText(this);
 			dialog = new Builder(this).setTitle("对话框2")
-					.setIcon(R.drawable.ic_launcher).setView(etInput)
+					.setIcon(R.drawable.ic_launcher).setView(etInput)//设置 输入框
 					.setCancelable(false)
 					.setPositiveButton("确定", new OnClickListener() {
 

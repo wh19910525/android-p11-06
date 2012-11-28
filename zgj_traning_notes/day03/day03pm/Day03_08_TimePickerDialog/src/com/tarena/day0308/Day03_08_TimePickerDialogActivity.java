@@ -20,7 +20,7 @@ public class Day03_08_TimePickerDialogActivity extends Activity {
 						format(hourOfDay) + ":" + format(minute), 3000).show();
 			}
 		};
-		dialog = new TimePickerDialog(this, callBack, 14, 20, true);
+		dialog = new TimePickerDialog(this, callBack, 14, 20, true);//对比  例子06,最后一个参数 貌似 不起 作用；
 	}
 
 	private String format(int numb) {

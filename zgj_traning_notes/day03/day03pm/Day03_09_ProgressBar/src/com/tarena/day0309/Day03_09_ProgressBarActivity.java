@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 public class Day03_09_ProgressBarActivity extends Activity {
+	
 	private ProgressBar pb;
 	private Thread workThread;
 
@@ -15,7 +16,7 @@ public class Day03_09_ProgressBarActivity extends Activity {
 
 	public void doClick(View v) {
 		if (!workThread.isAlive())
-			workThread.start();
+			workThread.start();//执行 进程 函数 run
 	}
 
 	/** Called when the activity is first created. */
@@ -26,10 +27,10 @@ public class Day03_09_ProgressBarActivity extends Activity {
 		setupView();
 		workThread = new Thread() {
 			@Override
-			public void run() {
+			public void run() {//
 				// TODO Auto-generated method stub
 				for (int i = 0; i <= 100; i += 10) {
-					pb.setProgress(i);
+					pb.setProgress(i);//
 					try {
 						sleep(1000);
 					} catch (InterruptedException e) {

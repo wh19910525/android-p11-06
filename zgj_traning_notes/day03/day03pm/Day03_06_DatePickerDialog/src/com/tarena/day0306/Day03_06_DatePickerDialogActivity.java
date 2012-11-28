@@ -26,9 +26,9 @@ public class Day03_06_DatePickerDialogActivity extends Activity {
 						3000).show();
 			}
 		};
-		Calendar c = Calendar.getInstance();
+		Calendar c = Calendar.getInstance();//创建 一个 日历 对象,并且 初始化为 当前 系统 时间；
 		dialog = new DatePickerDialog(this, callBack, c.get(Calendar.YEAR),
-				c.get(Calendar.MONTH), c.get(Calendar.DATE));//创建 设置 日期 对话框，当日期有变化，就会 回调callBack类；
+				c.get(Calendar.MONTH), c.get(Calendar.DATE));//创建 设置 日期 对话框，并且 初始化为当前日历时间，当 点击 对话框里的set按钮时，就会 回调callBack类，并且把 对话框里的时间 设置为 当前系统时间；
 	}
 
 	public void doClick(View v) {
