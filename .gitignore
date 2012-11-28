@@ -3,3 +3,5 @@
 *.dex
 bin/
 .metadata/
+~$*
+*.tmp

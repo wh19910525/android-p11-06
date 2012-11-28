@@ -17,9 +17,11 @@ import android.widget.Toast;
 public class Day03_12_DemoActivity extends Activity {
 	private static final int DIALOG_REG_MESSAGE = 1;
 	private static final int DIALOG_ABOUT = 2;
+	
 	private static final int PASSWORD_OK = 1;
 	private static final int PASSWORD_LENGTH_ERROR = 2;
 	private static final int PASSWORD_ERROR = 3;
+	
 	private static final int MENU_OPTS_ABOUT = 1;
 	private static final int MENU_OPTS_EXIT = 2;
 
@@ -28,6 +30,7 @@ public class Day03_12_DemoActivity extends Activity {
 	private CheckBox chkEat, chkRead, chkPlay, chkSleep;
 	private String msg;
 
+	//已读
 	private void setupView() {
 		etUserName = (EditText) findViewById(R.id.etUserName);
 		etUserPass = (EditText) findViewById(R.id.etUserPass);
@@ -42,6 +45,7 @@ public class Day03_12_DemoActivity extends Activity {
 		chkSleep = (CheckBox) findViewById(R.id.chkSleep);
 	}
 
+//已读
 	private boolean isEmpty(EditText et) {
 		if (et.getText() == null || "".equals(et.getText().toString())) {
 			return true;
@@ -49,6 +53,7 @@ public class Day03_12_DemoActivity extends Activity {
 		return false;
 	}
 
+//已读
 	private int checkPass(String pass, String passAgain) {
 		if (pass.length() < 6)
 			return PASSWORD_LENGTH_ERROR;
@@ -60,6 +65,7 @@ public class Day03_12_DemoActivity extends Activity {
 		return PASSWORD_OK;
 	}
 
+//已读
 	public void doClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnReg:// 注册
@@ -142,6 +148,7 @@ public class Day03_12_DemoActivity extends Activity {
 		}
 	}
 
+//已读
 	@Override
 	protected Dialog onCreateDialog(int id) {
 		// TODO Auto-generated method stub
@@ -163,6 +170,7 @@ public class Day03_12_DemoActivity extends Activity {
 		return dialog;
 	}
 
+//已读
 	@Override
 	protected void onPrepareDialog(int id, Dialog dialog) {
 		// TODO Auto-generated method stub
@@ -173,6 +181,7 @@ public class Day03_12_DemoActivity extends Activity {
 		super.onPrepareDialog(id, dialog);
 	}
 
+	//已读
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -184,10 +193,10 @@ public class Day03_12_DemoActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		MenuItem item = menu.add(1, MENU_OPTS_ABOUT, 1, "关于");
+		MenuItem item = menu.add(1, MENU_OPTS_ABOUT, 2, "关于");
 		item.setIcon(android.R.drawable.ic_menu_info_details);
 
-		menu.add(1, MENU_OPTS_EXIT, 2, "退出").setIcon(
+		menu.add(1, MENU_OPTS_EXIT, 1, "退出").setIcon(
 				android.R.drawable.ic_menu_close_clear_cancel);
 		return super.onCreateOptionsMenu(menu);
 	}

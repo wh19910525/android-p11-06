@@ -34,16 +34,7 @@ public class Day03_10_ProgressDialogActivity extends Activity {
 		if (!workThread.isAlive()){
 			Toast.makeText(this, "进程  ok！", 3000).show();
 			dialog.show();
-			//sleep(500);//为什么 这里 不能 睡眠；
-			/*
-			try {
-				sleep(5000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			*/ //为什么这里 不能 用 try
-			Toast.makeText(this, "进程  ok！", 3000).show();
+
 			workThread.start();//执行 进程 函数 run
 		}
 		else

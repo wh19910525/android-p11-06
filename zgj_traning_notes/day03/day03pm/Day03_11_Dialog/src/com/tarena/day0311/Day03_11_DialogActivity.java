@@ -79,7 +79,7 @@ public class Day03_11_DialogActivity extends Activity {
 		// Log.d(tag, msg)
 		// Log.e(tag, msg)
 		if (id == DIALOG_2)
-			etInput.setText("");
+			etInput.setText("wanghai");
 		super.onPrepareDialog(id, dialog);
 	}
 

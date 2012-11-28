@@ -25,6 +25,7 @@ public class Day03_09_ProgressBarActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		setupView();
+		
 		workThread = new Thread() {
 			@Override
 			public void run() {//
