@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="编号" />
+
+        <EditText
+            android:id="@+id/etId"
+            android:editable="false" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="歌名" />
+
+        <EditText android:id="@+id/etName" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="专辑" />
+
+        <EditText android:id="@+id/etAlbum" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="歌手" />
+
+        <EditText android:id="@+id/etSinger" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="作者" />
+
+        <EditText android:id="@+id/etComposer" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="时长" />
+
+        <EditText android:id="@+id/etDuration" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="路径" />
+
+        <EditText android:id="@+id/etPath" />
+    </TableRow>
+
+    <Button
+        android:id="@+id/btnOp"
+        android:onClick="doClick" />
+
+</TableLayout>
