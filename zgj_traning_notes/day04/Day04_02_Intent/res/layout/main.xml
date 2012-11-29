@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/btnSendSms"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="发短信" 
+        android:onClick="doClick"/>
+    <Button
+        android:id="@+id/btnDial"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="拨号" 
+        android:onClick="doClick"/>
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="打电话" 
+        android:onClick="doClick"/>
+
+    <Button
+        android:id="@+id/btnBrowser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:onClick="doClick"
+        android:text="上网" />
+
+</LinearLayout>

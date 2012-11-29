@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day04_02_IntentActivity!</string>
+    <string name="app_name">Day04_02_Intent</string>
+
+</resources>
