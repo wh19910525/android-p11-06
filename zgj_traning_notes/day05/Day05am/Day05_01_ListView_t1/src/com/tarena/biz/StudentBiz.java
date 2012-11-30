@@ -6,13 +6,13 @@ import java.util.Random;
 import com.tarena.entity.Student;
 
 public class StudentBiz {
-	private Random rand;
+	private Random rand;//
 
 	public StudentBiz() {
-		rand = new Random(System.currentTimeMillis());
+		rand = new Random(System.currentTimeMillis());//
 	}
 
-	public ArrayList<Student> getStudents() {
+	public ArrayList<Student> getStudents() {//
 		ArrayList<Student> students = new ArrayList<Student>();
 		for (int i = 1; i <= 20; i++) {
 			Student stu = new Student();
@@ -22,7 +22,7 @@ public class StudentBiz {
 				stu.setSex("ÄĞ");
 			else
 				stu.setSex("Å®");
-			stu.setAge(18 + rand.nextInt(13));
+			stu.setAge(18 + rand.nextInt(13));//
 
 			students.add(stu);
 		}

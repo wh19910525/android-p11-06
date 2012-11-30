@@ -17,7 +17,7 @@ public class MusicBiz {
 		music.setComposer("汪峰");
 		music.setDuration(809800);
 		music.setMusicPath("/mnt/sdcard/musics/yingbi.mp3");
-		musics.add(music);
+		musics.add(music);//
 
 		music.setId(1);
 		music.setName("歌唱祖国");
@@ -57,9 +57,9 @@ public class MusicBiz {
 	
 	
 	public void modifyMusic(Music music){
-		for(int i=0;i<musics.size();i++){
+		for(int i=0; i<musics.size(); i++){
 			if(musics.get(i).equals(music)){
-				musics.set(i, music);
+				musics.set(i, music);//id都是1，如何替换
 			}
 		}
 	}
@@ -70,6 +70,6 @@ public class MusicBiz {
 	}
 	
 	public void removeMusic(Music music){
-		musics.remove(music);
+		musics.remove(music);//如何 使用
 	}
 }

@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Music implements Serializable{
+	
 	private int id;
 	private String name;
 	private String album;
@@ -12,42 +13,49 @@ public class Music implements Serializable{
 	private String composer;
 	private long duration;
 	private String musicPath;
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public String getAlbum() {
 		return album;
 	}
 	public void setAlbum(String album) {
 		this.album = album;
 	}
+	
 	public String getSinger() {
 		return singer;
 	}
 	public void setSinger(String singer) {
 		this.singer = singer;
 	}
+	
 	public String getComposer() {
 		return composer;
 	}
 	public void setComposer(String composer) {
 		this.composer = composer;
 	}
+	
 	public long getDuration() {
 		return duration;
 	}
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}
+	
 	public String getMusicPath() {
 		return musicPath;
 	}
@@ -70,7 +78,7 @@ public class Music implements Serializable{
 		return super.toString();
 	}
 	
-	public String format(long duration){
+	public String format(long duration){//?
 		SimpleDateFormat formatter = new SimpleDateFormat("mm:ss");
 		return formatter.format(new Date(duration));
 	}

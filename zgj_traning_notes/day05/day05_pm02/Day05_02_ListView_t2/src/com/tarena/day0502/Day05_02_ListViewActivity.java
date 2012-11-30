@@ -20,6 +20,7 @@ import com.tarena.entity.Music;
 import com.tarena.utils.GlobalUtils;
 
 public class Day05_02_ListViewActivity extends Activity {
+	
 	private static final int MENU_OPTS_ADD = 1;
 	private static final int MENU_OPTS_EXIT = 2;
 	private static final int MENU_CONTEXT_DETAILS = 3;
@@ -27,13 +28,18 @@ public class Day05_02_ListViewActivity extends Activity {
 	private static final int MENU_CONTEXT_DELETE = 5;
 
 	private MusicBiz biz;
-	private MusicAdapter adapter;
+	private MusicAdapter adapter;//
 	private ListView lvMusics;
 	private AlertDialog dialog;
 
 	private void setupView() {
+		//获取ListView的引用
 		lvMusics = (ListView) findViewById(R.id.lvMusics);
+		
+		//实例化adapter，并且在 MusicAdapter 的构造函数里 获取 数据集
 		adapter = new MusicAdapter(this, biz.getMusics());
+		
+		//设置listView的adapter
 		lvMusics.setAdapter(adapter);
 
 		dialog = new Builder(this).setTitle("详情")

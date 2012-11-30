@@ -83,7 +83,7 @@ public class Music implements Serializable {
 		sb.append("作者：").append(composer).append('\n');
 		sb.append("时长：").append(TimeFormatter.format(duration)).append('\n');
 		sb.append("路径：").append(musicPath).append('\n');
-		return sb.toString();
+		return sb.toString();//
 	}
 
 	@Override

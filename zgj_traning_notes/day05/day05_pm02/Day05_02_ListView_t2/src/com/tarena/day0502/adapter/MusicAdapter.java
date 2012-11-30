@@ -13,7 +13,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class MusicAdapter extends BaseAdapter {
+public class MusicAdapter extends BaseAdapter {//对比 Day05_01_ListView_t2 项目
+	
 	private ArrayList<Music> musics;
 	private LayoutInflater inflater;
 
@@ -38,13 +39,13 @@ public class MusicAdapter extends BaseAdapter {
 	@Override
 	public Object getItem(int position) {
 		// TODO Auto-generated method stub
-		return musics.get(position);
+		return musics.get(position);//
 	}
 
 	@Override
 	public long getItemId(int position) {
 		// TODO Auto-generated method stub
-		return musics.get(position).getId();
+		return musics.get(position).getId();//
 	}
 
 	@Override
@@ -53,17 +54,16 @@ public class MusicAdapter extends BaseAdapter {
 		// 加载或复用item界面
 		ViewHolder holder = null;
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.item, null);
+			convertView = inflater.inflate(R.layout.item, null);//加载item界面
+			
 			holder = new ViewHolder();
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
-			holder.tvSinger = (TextView) convertView
-					.findViewById(R.id.tvSinger);
+			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
-			holder.tvDuration = (TextView) convertView
-					.findViewById(R.id.tvDuration);
-			convertView.setTag(holder);
+			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
+			convertView.setTag(holder);//有什么用
 		} else {
-			holder = (ViewHolder) convertView.getTag();
+			holder = (ViewHolder) convertView.getTag();//有什么用
 		}
 		// 根据position 获取item数据
 		Music music = musics.get(position);

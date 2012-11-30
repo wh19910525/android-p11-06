@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:stretchColumns="0,1" >
+    
     <TableRow >
         <TextView android:id="@+id/tvId"/>
         <TextView android:id="@+id/tvName"/>
     </TableRow>
+    
     <TableRow >
         <TextView android:id="@+id/tvSex"/>
         <TextView android:id="@+id/tvAge"/>

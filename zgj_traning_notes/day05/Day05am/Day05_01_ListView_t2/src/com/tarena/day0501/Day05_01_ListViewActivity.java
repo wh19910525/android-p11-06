@@ -14,21 +14,27 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class Day05_01_ListViewActivity extends Activity {
+	
     private ListView lvStudents;
     private StudentBiz biz;
     private LayoutInflater inflater;
-    private StudentAapter adapter;
+    private StudentAapter adapter;//
+    
     private void setupView(){
+
     	//获取ListView的引用
     	lvStudents = (ListView)findViewById(R.id.lvStudents);
+
     	//获取数据集
     	ArrayList<Student> students = biz.getStudents();
+		
     	//实例化adapter
-    	adapter = new StudentAapter(this, students);
+    	adapter = new StudentAapter(this, students);//
+		
     	//设置listView的adapter
-    	lvStudents.setAdapter(adapter);
-    	
+    	lvStudents.setAdapter(adapter);//
     }
+    
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
