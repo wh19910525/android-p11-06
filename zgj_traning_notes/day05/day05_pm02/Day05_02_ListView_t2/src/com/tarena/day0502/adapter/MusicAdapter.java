@@ -27,7 +27,7 @@ public class MusicAdapter extends BaseAdapter {//对比 Day05_01_ListView_t2 项目
 
 	public MusicAdapter(Context context, ArrayList<Music> musics) {
 		this.setMusics(musics);
-		this.inflater = LayoutInflater.from(context);
+		this.inflater = LayoutInflater.from(context);//
 	}
 
 	@Override
@@ -61,10 +61,11 @@ public class MusicAdapter extends BaseAdapter {//对比 Day05_01_ListView_t2 项目
 			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
 			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
-			convertView.setTag(holder);//有什么用
+			convertView.setTag(holder);//减少  内存垃圾
 		} else {
-			holder = (ViewHolder) convertView.getTag();//有什么用
+			holder = (ViewHolder) convertView.getTag();//和 setTag 结合 使用
 		}
+		
 		// 根据position 获取item数据
 		Music music = musics.get(position);
 

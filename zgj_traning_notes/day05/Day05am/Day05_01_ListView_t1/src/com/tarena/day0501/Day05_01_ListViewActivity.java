@@ -29,7 +29,7 @@ public class Day05_01_ListViewActivity extends Activity {
     	//遍历数据集
     	if(students!=null && !students.isEmpty()){
     		
-    		for(Student stu : students){//这个for语句 是否有问题
+    		for(Student stu : students){//遍历 students 这个集合
     			//加载item界面
     			View item = inflater.inflate(R.layout.item, null);
     			

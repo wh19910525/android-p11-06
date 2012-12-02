@@ -36,7 +36,7 @@ public class Day05_02_ListViewActivity extends Activity {
 		//获取ListView的引用
 		lvMusics = (ListView) findViewById(R.id.lvMusics);
 		
-		//实例化adapter，并且在 MusicAdapter 的构造函数里 获取 数据集
+		//实例化adapter，并且在 MusicBiz 的构造函数里 获取 数据集
 		adapter = new MusicAdapter(this, biz.getMusics());
 		
 		//设置listView的adapter
@@ -47,11 +47,11 @@ public class Day05_02_ListViewActivity extends Activity {
 				.setPositiveButton("确定", null).create();
 	}
 
-	private void addListener() {
-		lvMusics.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+	private void addListener() {//
+		lvMusics.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {//这个方法 是对 ListView 控件监听的，当 用 鼠标 长按ListView的 Menu 里的 条目时，调用此方法
 
 			@Override
-			public void onCreateContextMenu(ContextMenu menu, View v,
+			public void onCreateContextMenu(ContextMenu menu, View v,//
 					ContextMenuInfo menuInfo) {
 				// TODO Auto-generated method stub
 				menu.setHeaderIcon(android.R.drawable.ic_menu_camera);
@@ -74,7 +74,7 @@ public class Day05_02_ListViewActivity extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu) {//参考 day03_12
 		// TODO Auto-generated method stub
 		menu.add(1, MENU_OPTS_ADD, 1, "添加").setIcon(
 				android.R.drawable.ic_menu_add);
@@ -84,9 +84,10 @@ public class Day05_02_ListViewActivity extends Activity {
 	}
 
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {//第二 和 第三个参数 就是 setResult 传过来的
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
+		
 		switch (resultCode) {
 		case RESULT_OK:
 			int opType = data.getIntExtra(GlobalUtils.EXTRA_OP_TYPE,
@@ -104,7 +105,7 @@ public class Day05_02_ListViewActivity extends Activity {
 					break;
 				}
 				//更新界面
-				adapter.notifyDataSetChanged();
+				adapter.notifyDataSetChanged();//
 			}
 			break;
 
@@ -119,10 +120,10 @@ public class Day05_02_ListViewActivity extends Activity {
 		switch (item.getItemId()) {
 		case MENU_OPTS_ADD:// 添加
 			Intent intent = new Intent(this, MusicOpActivity.class);
-			intent.putExtra(GlobalUtils.EXTRA_OP_TYPE, GlobalUtils.OP_TYPE_ADD);
-			intent.putExtra(GlobalUtils.EXTRA_MUSIC_ID, adapter.getCount() + 1);
+			intent.putExtra(GlobalUtils.EXTRA_OP_TYPE, GlobalUtils.OP_TYPE_ADD);//
+			intent.putExtra(GlobalUtils.EXTRA_MUSIC_ID, adapter.getCount() + 1);//第二个参数在 另一个 activity里使用
 			// startActivity(intent);
-			startActivityForResult(intent, 0);
+			startActivityForResult(intent, 0);//在activity1 里，用 这个方法 启动的 另一个 activity2之后，当在 activity2里 使用了 setResult 函数 之后，那么 会自动 启动activity1里的onActivityResult函数； 
 			break;
 
 		case MENU_OPTS_EXIT:// 退出

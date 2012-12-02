@@ -5,53 +5,40 @@
     android:stretchColumns="1" >
 
     <TableRow>
-
         <TextView android:text="编号" />
-
         <EditText
             android:id="@+id/etId"
-            android:editable="false" />
+            android:editable="false"
+            android:enabled="false" />
     </TableRow>
 
     <TableRow>
-
         <TextView android:text="歌名" />
-
         <EditText android:id="@+id/etName" />
     </TableRow>
 
     <TableRow>
-
         <TextView android:text="专辑" />
-
         <EditText android:id="@+id/etAlbum" />
     </TableRow>
 
     <TableRow>
-
         <TextView android:text="歌手" />
-
         <EditText android:id="@+id/etSinger" />
     </TableRow>
 
     <TableRow>
-
         <TextView android:text="作者" />
-
         <EditText android:id="@+id/etComposer" />
     </TableRow>
 
     <TableRow>
-
         <TextView android:text="时长" />
-
         <EditText android:id="@+id/etDuration" />
     </TableRow>
 
     <TableRow>
-
         <TextView android:text="路径" />
-
         <EditText android:id="@+id/etPath" />
     </TableRow>
 

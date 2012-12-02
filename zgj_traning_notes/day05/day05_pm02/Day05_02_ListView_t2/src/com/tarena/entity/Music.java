@@ -6,7 +6,7 @@ import java.util.Date;
 
 import com.tarena.utils.TimeFormatter;
 
-public class Music implements Serializable {
+public class Music implements Serializable {//实现 Serializable 接口，主要是 想用 putExtra 这个方法 传送 Music这个类
 	private int id;
 	private String name;
 	private String album;
@@ -72,7 +72,7 @@ public class Music implements Serializable {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() {//重写
 		// TODO Auto-generated method stub
 		StringBuilder sb = new StringBuilder();
 		sb.append("音乐信息如下：\n");
@@ -87,7 +87,7 @@ public class Music implements Serializable {
 	}
 
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(Object o) {//重写
 		// TODO Auto-generated method stub
 		return this.id == ((Music) o).getId();
 	}

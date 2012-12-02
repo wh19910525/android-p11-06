@@ -29,7 +29,7 @@ public class Day05_01_ListViewActivity extends Activity {
     	ArrayList<Student> students = biz.getStudents();
 		
     	//实例化adapter
-    	adapter = new StudentAapter(this, students);//
+    	adapter = new StudentAapter(this, students);//注意 这两个参数，他们 一个 为 adapter提供数据  和 另一个提供 item；
 		
     	//设置listView的adapter
     	lvStudents.setAdapter(adapter);//

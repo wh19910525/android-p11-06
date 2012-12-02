@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
+	
 	public void doClick(View v) {
 		Intent intent = new Intent(this, SecondActivity.class);
 		// startActivity(intent);
-		startActivityForResult(intent, 0);
+		startActivityForResult(intent, 0);//
 	}
 
 	@Override

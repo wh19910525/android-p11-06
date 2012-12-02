@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class SecondActivity extends Activity {
+	
 	private EditText etInput;
 
 	private void setupView() {
@@ -18,7 +19,7 @@ public class SecondActivity extends Activity {
 		// setResult(resultCode)
 		Intent intent = new Intent();
 		intent.putExtra("key", value);
-		setResult(RESULT_OK, intent);
+		setResult(RESULT_OK, intent);//
 		finish();
 	}
 

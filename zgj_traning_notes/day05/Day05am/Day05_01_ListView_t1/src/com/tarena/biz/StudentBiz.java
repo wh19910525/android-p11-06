@@ -9,7 +9,7 @@ public class StudentBiz {
 	private Random rand;//
 
 	public StudentBiz() {
-		rand = new Random(System.currentTimeMillis());//
+		rand = new Random(System.currentTimeMillis());//生成一个随机数
 	}
 
 	public ArrayList<Student> getStudents() {//
@@ -26,7 +26,6 @@ public class StudentBiz {
 
 			students.add(stu);
 		}
-
 		return students;
 	}
 }

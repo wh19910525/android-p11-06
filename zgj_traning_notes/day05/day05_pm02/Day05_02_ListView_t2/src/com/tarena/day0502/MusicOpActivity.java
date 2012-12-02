@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MusicOpActivity extends Activity {
+	
 	private int opType;
 	private EditText etName, etAlbum, etSinger, etComposer, etDuration,
 			etMusicPath, etId;
@@ -27,6 +28,7 @@ public class MusicOpActivity extends Activity {
 		etMusicPath = (EditText) findViewById(R.id.etPath);
 
 		btnOp = (Button) findViewById(R.id.btnOp);
+		
 		switch (opType) {
 		case GlobalUtils.OP_TYPE_ADD:
 			btnOp.setText("添加");
@@ -38,7 +40,7 @@ public class MusicOpActivity extends Activity {
 
 		case GlobalUtils.OP_TYPE_UPDATE:
 			btnOp.setText("修改");
-			Music music = (Music) getIntent().getSerializableExtra(
+			Music music = (Music) getIntent().getSerializableExtra(//返回 参数 键 的 值，如果 获取不到，就返回 null
 					GlobalUtils.EXTRA_OP_DATA);
 			if (music != null) {
 				etId.setText(music.getId() + "");
@@ -54,6 +56,7 @@ public class MusicOpActivity extends Activity {
 	}
 
 	public void doClick(View v) {
+		
 		Music music = new Music();
 		music.setId(Integer.parseInt(etId.getText().toString()));
 		music.setName(etName.getText().toString());
@@ -64,9 +67,9 @@ public class MusicOpActivity extends Activity {
 		music.setDuration(Long.parseLong(etDuration.getText().toString()));
 
 		Intent data = new Intent();
-		data.putExtra(GlobalUtils.EXTRA_OP_DATA, music);
+		data.putExtra(GlobalUtils.EXTRA_OP_DATA, music);//想用 putExtra 这个方法 传送 类，那么 这个类需要  实现 Serializable 接口
 		data.putExtra(GlobalUtils.EXTRA_OP_TYPE, opType);
-		setResult(RESULT_OK, data);
+		setResult(RESULT_OK, data);//当执行完 此方法之后，会自动启动 onActivityResult，所以 这里 就启动了 另一个 activity，
 		finish();
 	}
 
@@ -75,7 +78,7 @@ public class MusicOpActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.musicop);
-		opType = getIntent().getIntExtra(GlobalUtils.EXTRA_OP_TYPE,
+		opType = getIntent().getIntExtra(GlobalUtils.EXTRA_OP_TYPE,//返回 第一参数 键 的 值，如果 获取不到，就用 第二个参数的值
 				GlobalUtils.OP_TYPE_ADD);
 		setupView();
 

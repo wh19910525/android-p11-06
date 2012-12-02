@@ -19,7 +19,7 @@ public class MusicBiz {
 		music.setMusicPath("/mnt/sdcard/musics/yingbi.mp3");
 		musics.add(music);
 
-		music = new Music();
+		music = new Music();//注意 每一个 add的对象 必须 要 重新 开辟 实例，否则 添加的信息 相同;
 		music.setId(2);
 		music.setName("歌唱祖国");
 		music.setAlbum("笑着哭");

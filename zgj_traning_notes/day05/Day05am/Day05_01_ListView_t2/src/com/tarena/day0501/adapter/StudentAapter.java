@@ -41,8 +41,9 @@ public class StudentAapter extends BaseAdapter {
 		return 0;
 	}
 
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View convertView, ViewGroup parent) {//这个方法 很重要
 		// TODO Auto-generated method stub
+		
 		//加载item界面
 		View item = inflater.inflate(R.layout.item, null);//
 		
