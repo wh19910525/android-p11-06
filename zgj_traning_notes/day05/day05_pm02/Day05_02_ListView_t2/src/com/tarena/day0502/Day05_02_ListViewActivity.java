@@ -37,7 +37,7 @@ public class Day05_02_ListViewActivity extends Activity {
 		lvMusics = (ListView) findViewById(R.id.lvMusics);
 		
 		//实例化adapter，并且在 MusicBiz 的构造函数里 获取 数据集
-		adapter = new MusicAdapter(this, biz.getMusics());
+		adapter = new MusicAdapter(this, biz.getMusics());//注意 这 两个参数；
 		
 		//设置listView的adapter
 		lvMusics.setAdapter(adapter);
@@ -48,7 +48,7 @@ public class Day05_02_ListViewActivity extends Activity {
 	}
 
 	private void addListener() {//
-		lvMusics.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {//这个方法 是对 ListView 控件监听的，当 用 鼠标 长按ListView的 Menu 里的 条目时，调用此方法
+		lvMusics.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {//这个方法 是对 ListView 控件监听的，当 用 鼠标 长按ListView里的 条目时，调用此方法
 
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v,//
@@ -93,7 +93,7 @@ public class Day05_02_ListViewActivity extends Activity {
 			int opType = data.getIntExtra(GlobalUtils.EXTRA_OP_TYPE,
 					GlobalUtils.OP_TYPE_ADD);
 			Music music = (Music) data
-					.getSerializableExtra(GlobalUtils.EXTRA_OP_DATA);
+					.getSerializableExtra(GlobalUtils.EXTRA_OP_DATA);//获取 用 putExtra()发送的 键EXTRA_OP_DATA 对应的值  类；
 			if (music != null) {
 				switch (opType) {
 				case GlobalUtils.OP_TYPE_ADD:// 添加
@@ -134,15 +134,16 @@ public class Day05_02_ListViewActivity extends Activity {
 	}
 
 	@Override
-	public boolean onContextItemSelected(MenuItem item) {
+	public boolean onContextItemSelected(MenuItem item) {//当 点击 监听 ListView 弹出见面的 选项时，执行 次方法
 		// TODO Auto-generated method stub
+		
 		// 获取上下文菜单信息,并强转为AdapterCotnextMenuInfo
-		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
-				.getMenuInfo();
-		// 根据menuinfo中的position属性，从adapter中获取被长按的item对应的数据项
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
+		
+		// 根据menuinfo中的position属性，从adapter中 获取 被长按的item对应的 数据项
 		Music music = (Music) adapter.getItem(menuInfo.position);
 
-		switch (item.getItemId()) {
+		switch (item.getItemId()) {//getItemId 获取 弹出见面的 选项号
 		case MENU_CONTEXT_DETAILS:// 详情
 			dialog.setMessage(music.toString());
 			dialog.show();
