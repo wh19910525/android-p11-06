@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <TableRow >
+        <TextView android:text="@string/text_tv_height"/>
+        <EditText android:id="@+id/etHeight"
+            android:inputType="number"
+            android:hint="@string/hint_et_height"/>
+    </TableRow>
+    <TableRow >
+        <TextView android:text="@string/text_tv_weight"/>
+        <EditText android:id="@+id/etWeight"
+            android:inputType="number"
+            android:hint="@string/hint_et_weight"/>
+    </TableRow>
+	<TableLayout 
+	    android:stretchColumns="0,1"
+	    >
+	    <TableRow >
+	        <Button android:id="@+id/btnCalc"
+	            android:text="@string/text_btn_calc"
+	            android:onClick="doClick"/>
+	        <Button android:id="@+id/btnReset"
+	            android:text="@string/text_btn_reset"
+	            android:onClick="doClick"/>
+	    </TableRow>
+	</TableLayout>
+</TableLayout>

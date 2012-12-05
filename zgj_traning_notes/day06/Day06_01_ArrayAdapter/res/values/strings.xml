@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day06_01_ArrayAdapterActivity!</string>
+    <string name="app_name">Day06_01_ArrayAdapter</string>
+
+</resources>

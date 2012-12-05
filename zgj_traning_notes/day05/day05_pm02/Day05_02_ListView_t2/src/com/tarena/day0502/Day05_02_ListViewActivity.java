@@ -28,7 +28,7 @@ public class Day05_02_ListViewActivity extends Activity {
 	private static final int MENU_CONTEXT_DELETE = 5;
 
 	private MusicBiz biz;
-	private MusicAdapter adapter;//
+	private MusicAdapter adapter;//ผฬณะ BaseAdapter
 	private ListView lvMusics;
 	private AlertDialog dialog;
 

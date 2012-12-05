@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day06_03_ResActivity!</string>
+    <string name="app_name">Day06_03_Res</string>
+	<string name="text_tv_weight">体重</string>
+	<string name="text_tv_height">身高</string>
+	<string name="hint_et_weight">请输入体重，单位kg</string>
+	<string name="hint_et_height">请输入身高，单位cm</string>
+	<string name="error_et_weight">体重不能为空</string>
+	<string name="error_et_height">身高不能为空</string>
+	<string name="text_btn_calc">计算</string>
+	<string name="text_btn_reset">重置</string>
+	<string name="message_lv1">您的身材偏瘦，请加强营养</string>
+	<string name="message_lv2">您的身材标准，请继续保持</string>
+	<string name="message_lv3">您的身材偏胖，请加强锻炼</string>
+	<string name="message_lv4">您的身材轻度肥胖，请加强锻炼</string>
+	<string name="message_lv5">您的身材中度肥胖，请加强锻炼</string>
+	<string name="message_lv6">您的身材严重肥胖，请加强锻炼</string>
+	<string name="message_lv7">保重</string>
+</resources>	

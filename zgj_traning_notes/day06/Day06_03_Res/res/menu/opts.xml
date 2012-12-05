@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:id="@+id/group1">
+        <item
+            android:title="播放模式"
+            android:icon="@drawable/ic_launcher"
+            >
+            <menu >
+                <item 
+                    android:id="@+id/menu_sub_loop"
+                    android:title="循环播放"
+                    />
+                <item 
+                    android:id="@+id/menu_sub_random"
+                    android:title="随机播放"
+                    />
+            </menu>
+            
+        </item>
+        <item 
+            android:id="@+id/menu_opts_about"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="关于"
+            />
+        <item 
+            android:id="@+id/menu_opts_exit"
+            android:icon="@android:drawable/ic_menu_close_clear_cancel"
+            android:title="退出"
+            />
+    </group>
+
+</menu>
