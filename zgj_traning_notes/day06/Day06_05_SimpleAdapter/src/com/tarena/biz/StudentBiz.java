@@ -24,7 +24,7 @@ public class StudentBiz {
 				stu.put("sex", "ÄĞ");
 			else
 				stu.put("sex", "Å®");
-			stu.put("age", 18 + rand.nextInt(12));
+			stu.put("age", 18 + rand.nextInt(12));//
 
 			students.add(stu);
 		}

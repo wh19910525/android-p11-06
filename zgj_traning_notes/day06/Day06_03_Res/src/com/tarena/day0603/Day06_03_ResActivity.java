@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Day06_03_ResActivity extends Activity {
+	
 	private EditText etHeight, etWeight;
 
 	/**
@@ -95,31 +96,31 @@ public class Day06_03_ResActivity extends Activity {
 		setupView();
 	}
 
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	// // TODO Auto-generated method stub
-	// MenuInflater inflater = new MenuInflater(this);
-	// inflater.inflate(R.menu.opts, menu);
-	// return super.onCreateOptionsMenu(menu);
-	// }
+	 @Override
+	 public boolean onCreateOptionsMenu(Menu menu) {
+		 // TODO Auto-generated method stub
+		 MenuInflater inflater = new MenuInflater(this);
+		 inflater.inflate(R.menu.opts, menu);
+		 return super.onCreateOptionsMenu(menu);
+	 }
 
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//		// TODO Auto-generated method stub
-//		switch (item.getItemId()) {
-//		case R.id.menu_opts_about:
-//			Toast.makeText(this, "关于我们", 3000).show();
-//			break;
-//		case R.id.menu_sub_loop:
-//			Toast.makeText(this, "循环播放", 3000).show();
-//			break;
-//		case R.id.menu_sub_random:
-//			Toast.makeText(this, "随机播放", 3000).show();
-//			break;
-//		case R.id.menu_opts_exit:
-//			finish();
-//			break;
-//		}
-//		return super.onOptionsItemSelected(item);
-//	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		switch (item.getItemId()) {
+		case R.id.menu_opts_about:
+			Toast.makeText(this, "关于我们", 3000).show();
+			break;
+		case R.id.menu_sub_loop:
+			Toast.makeText(this, "循环播放", 3000).show();
+			break;
+		case R.id.menu_sub_random:
+			Toast.makeText(this, "随机播放", 3000).show();
+			break;
+		case R.id.menu_opts_exit:
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 }

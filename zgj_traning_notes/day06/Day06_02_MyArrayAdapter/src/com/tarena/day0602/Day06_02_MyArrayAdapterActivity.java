@@ -15,6 +15,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import com.tarena.day0602.adapter.MyArrayAdapter;
 
 public class Day06_02_MyArrayAdapterActivity extends Activity {
+	
 	private ListView lvData;
 	private MyArrayAdapter adapter;
 
@@ -22,9 +23,13 @@ public class Day06_02_MyArrayAdapterActivity extends Activity {
 	 * 界面初始化方法
 	 */
 	private void setupView() {
+		//获取ListView的引用
 		lvData = (ListView) findViewById(R.id.lvData);
-		adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_1,
-				getData());
+		
+		//实例化adapter，并且在 getData()函数里 获取 数据集
+		adapter = new MyArrayAdapter(this, android.R.layout.simple_list_item_1, getData());
+		
+		//设置listView的adapter
 		lvData.setAdapter(adapter);
 	}
 
@@ -52,7 +57,7 @@ public class Day06_02_MyArrayAdapterActivity extends Activity {
 				// TODO Auto-generated method stub
 				menu.setHeaderIcon(R.drawable.ic_launcher);
 				menu.setHeaderTitle("操作");
-				menu.add(1,1,1,"删除");
+				menu.add(1,1,1,"删除");//第二个参数，供给 item.getItemId() 使用
 			}
 		});
 	}
@@ -64,10 +69,11 @@ public class Day06_02_MyArrayAdapterActivity extends Activity {
 	public boolean onContextItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo)item.getMenuInfo();
+		// 根据menuinfo中的position属性，从adapter中 获取 被长按的item对应的 数据项
 		String data = adapter.getItem(menuInfo.position).toString();
 		switch (item.getItemId()) {
 		case 1://删除
-			adapter.remove(data);
+			adapter.remove(data);//注意 remove()函数里 有 更新 listview()函数
 			break;
 		}
 		return super.onContextItemSelected(item);

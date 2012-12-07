@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, Day06_03_ResActivity!</string>
-    <string name="app_name">Day06_03_Res</string>
+    <string name="hello">damlHello World, Day06_03_ResActivity!</string>
+    <string name="app_name">中文ml-Day06_03_Res</string>
 	<string name="text_tv_weight">体重</string>
 	<string name="text_tv_height">身高</string>
 	<string name="hint_et_weight">请输入体重，单位kg</string>
