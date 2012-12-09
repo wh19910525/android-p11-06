@@ -9,20 +9,21 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class Day07_03_GridViewActivity extends Activity {
+
+	private GridView gvLaunchers;//
+	private ArrayAdapter<String> adapter;
+
 	private ArrayList<String> getData() {
 		ArrayList<String> data = new ArrayList<String>();
 		for (int i = 1; i <= 50; i++) {
-			data.add("app" + i);
+			data.add("app" + i);//
 		}
 		return data;
 	}
 
-	private GridView gvLaunchers;
-	private ArrayAdapter<String> adapter;
-
 	private void setupView() {
 		gvLaunchers = (GridView) findViewById(R.id.gvLaunchers);
-		adapter = new ArrayAdapter<String>(this, R.layout.item,R.id.tvTitle, getData());
+		adapter = new ArrayAdapter<String>(this, R.layout.item, R.id.tvTitle, getData());
 		gvLaunchers.setAdapter(adapter);
 		
 		

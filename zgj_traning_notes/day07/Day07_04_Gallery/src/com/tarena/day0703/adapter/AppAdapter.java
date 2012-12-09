@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class AppAdapter extends BaseAdapter {
+	
 	private ArrayList<AppInfo> apps;
 	private LayoutInflater inflater;
 
@@ -48,15 +49,19 @@ public class AppAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// TODO Auto-generated method stub
 		Log.i("info", "position=" + position);
+		//加载item界面
 		convertView = inflater.inflate(R.layout.item, null);
 		ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon);
 		TextView tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
 
+		//根据position从集合中获取指定数据
 		AppInfo app = apps.get(position);
 
+		//绑定数据
 		ivIcon.setImageResource(app.getIconRes());
 		tvTitle.setText(app.getTitle());
+		
+		//返回绑定了数据的item界面
 		return convertView;
 	}
-
 }

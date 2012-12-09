@@ -2,6 +2,10 @@ package com.tarena.entity;
 
 public class AppInfo {
 
+
+	private int iconRes;
+	private String title;
+	
 	public AppInfo() {
 	}
 
@@ -10,9 +14,6 @@ public class AppInfo {
 		this.iconRes = iconRes;
 		this.title = title;
 	}
-
-	private int iconRes;
-	private String title;
 
 	public int getIconRes() {
 		return iconRes;
