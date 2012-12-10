@@ -12,9 +12,9 @@ public class Day07_09_TouchActivity extends Activity {
         super.onCreate(savedInstanceState);
         //创建一个MyTextView控件
         MyTextView tv = new MyTextView(this);
-        LayoutParams params = new LayoutParams(200,200);
+        LayoutParams params = new LayoutParams(300,300);//有什么用
         tv.setLayoutParams(params);
-        tv.setBackgroundColor(Color.GRAY);
+        tv.setBackgroundColor(Color.BLUE);
         //将控件添加到activity的内容区
         setContentView(tv);
     }

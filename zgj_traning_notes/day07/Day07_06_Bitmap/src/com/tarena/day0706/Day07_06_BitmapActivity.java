@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class Day07_06_BitmapActivity extends Activity {
+	
 	private ImageView ivPic;
 
 	private void setupView() {
@@ -22,7 +23,7 @@ public class Day07_06_BitmapActivity extends Activity {
 		// 加载位图对象
 		Options opts = new Options();
 		opts.inSampleSize = 4;//设置收缩比例
-		Bitmap bm1 = BitmapFactory.decodeFile("/mnt/sdcard/p01.jpg");
+		Bitmap bm1 = BitmapFactory.decodeFile("/mnt/sdcard/zgj.jpg");
 		Log.i("info", "bm=" + bm1);
 //		Bitmap bm2 = Bitmap.createBitmap(bm1, 0, bm1.getHeight() / 2,
 //				bm1.getWidth() / 2, bm1.getHeight() / 2);

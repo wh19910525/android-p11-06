@@ -1,0 +1,4 @@
+Day07_07_Gallery 里的 main.xml ，使用了 merge 标签 -- 什么是 merge 标签
+Day07_09 的java代码里 LayoutParams params = new LayoutParams(200,200);//有什么用，为什么layout不是200x200
+Day07_09 和 Day07_10 的布局大小不同
+Day07_12查看内部类 //如何 就能加载到ImageView里

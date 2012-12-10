@@ -15,6 +15,7 @@ import com.tarena.entity.ImageInfo;
 import com.tarena.utils.BitmapUtils;
 
 public class Day07_07_GalleryActivity extends Activity {
+	
 	private static final String DIR = "/mnt/sdcard/imags/";
 	private Gallery galThumb;
 	private ImageView ivPic;
@@ -22,8 +23,11 @@ public class Day07_07_GalleryActivity extends Activity {
 	private ImageAdapter adapter;
 
 	private void setupView() {
+		//获取 Gallery控件 的引用
 		galThumb = (Gallery) findViewById(R.id.galThumbnails);
+		//在getImages()方法里获取数据集，并且实例化adapter
 		adapter = new ImageAdapter(this, biz.getImages(DIR));
+		//设置Gallery的adapter
 		galThumb.setAdapter(adapter);
 
 		ivPic = (ImageView) findViewById(R.id.ivPic);
@@ -36,12 +40,11 @@ public class Day07_07_GalleryActivity extends Activity {
 		galThumb.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
+			public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				// TODO Auto-generated method stub
 				ImageInfo img = (ImageInfo) adapter.getItem(position);
 				String path = DIR + img.getTitle();
-				Bitmap bm = BitmapUtils.loadBitmap(path, 5);
+				Bitmap bm = BitmapUtils.loadBitmap(path, 5);//
 				if (bm != null)
 					ivPic.setImageBitmap(bm);//添加图片 
 				else

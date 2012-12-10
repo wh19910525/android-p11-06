@@ -94,7 +94,7 @@ public class Day07_05_BitmapActivity extends Activity {
 		opts.inSampleSize = scale;
 		
 		// 加载图片
-		Bitmap bm = BitmapFactory.decodeFile(path, opts);
+		Bitmap bm = BitmapFactory.decodeFile(path, opts);//按指定比例 收缩加载指定路径的图片
 //		Bitmap bm = BitmapFactory.decodeFile(path);//String
 		
 		return bm;

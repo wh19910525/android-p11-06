@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory.Options;
 
 public class BitmapUtils {
 	/**
-	 * 按指定比例收缩加载指定路径的图片
+	 * 按指定比例 收缩加载指定路径的图片
 	 * 
 	 * @param path
 	 * @param scale
@@ -22,7 +22,7 @@ public class BitmapUtils {
 	}
 
 	/**
-	 * 根据指定尺寸保持纵横比 加载指定位置的图片
+	 * 根据指定尺寸 保持纵横比 加载指定位置的图片
 	 * @param path
 	 * @param widht
 	 * @param height
@@ -33,6 +33,7 @@ public class BitmapUtils {
 			Options opts = new Options();
 			opts.inJustDecodeBounds = true;//加载边界信息
 			BitmapFactory.decodeFile(path, opts);
+			
 			int x = opts.outWidth / widht;//opts.outWidth 获得所加载的边界信息的宽
 			int y = opts.outHeight / height;//opts.outHeight 获得所加载的边界信息的高
 			int scale = x > y ? x : y;

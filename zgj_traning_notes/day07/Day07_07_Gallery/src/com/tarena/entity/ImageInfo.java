@@ -3,6 +3,7 @@ package com.tarena.entity;
 import android.graphics.Bitmap;
 
 public class ImageInfo {
+	
 	private String title;
 	private Bitmap thumbnail;
 

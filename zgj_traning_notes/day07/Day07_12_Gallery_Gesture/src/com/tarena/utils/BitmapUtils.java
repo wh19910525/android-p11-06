@@ -31,13 +31,14 @@ public class BitmapUtils {
 	public static Bitmap loadBitmap(String path, int widht, int height) {
 		if (path != null && widht > 0 && height > 0) {
 			Options opts = new Options();
-			opts.inJustDecodeBounds = true;
+			opts.inJustDecodeBounds = true;//加载边界信息
 			BitmapFactory.decodeFile(path, opts);
-			int x = opts.outWidth / widht;
-			int y = opts.outHeight / height;
+			
+			int x = opts.outWidth / widht;//opts.outWidth 获得所加载的边界信息的宽
+			int y = opts.outHeight / height;//opts.outHeight 获得所加载的边界信息的高
 			int scale = x > y ? x : y;
 			opts.inJustDecodeBounds = false;
-			opts.inSampleSize = scale;
+			opts.inSampleSize = scale;//设置收缩比例
 			return BitmapFactory.decodeFile(path, opts);
 		}
 		return null;

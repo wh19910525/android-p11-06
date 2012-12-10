@@ -22,6 +22,7 @@ public class MyTextView extends TextView {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		Log.i("info", TAG+"onTouchEvent(action="+event.getAction()+")");
-		return false;
+		//return super.onTouchEvent(event);
+		return false;//为什么返回 false,和  上边的 返回值 有什么区别
 	}
 }

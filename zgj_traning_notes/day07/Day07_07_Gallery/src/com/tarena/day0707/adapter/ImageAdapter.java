@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ImageAdapter extends BaseAdapter {
+	
 	private ArrayList<ImageInfo> images;
 	private LayoutInflater inflater;
 
@@ -54,9 +55,9 @@ public class ImageAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.item, null);
 			holder = new ViewHolder();
-			holder.ivThumb = (ImageView) convertView
-					.findViewById(R.id.ivThumbnail);
+			holder.ivThumb = (ImageView) convertView.findViewById(R.id.ivThumbnail);
 			holder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
+			
 			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
@@ -74,5 +75,4 @@ public class ImageAdapter extends BaseAdapter {
 		private ImageView ivThumb;
 		private TextView tvTitle;
 	}
-
 }
