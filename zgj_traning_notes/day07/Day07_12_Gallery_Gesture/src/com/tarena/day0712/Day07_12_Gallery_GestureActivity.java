@@ -46,11 +46,12 @@ public class Day07_12_Gallery_GestureActivity extends Activity {
 			@Override
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				// TODO Auto-generated method stub
+				// 获取图片信息
 				ImageInfo img = (ImageInfo) adapter.getItem(position);
 				String path = DIR + img.getTitle();
 				Bitmap bm = BitmapUtils.loadBitmap(path, 2);
 				if (bm != null)
-					ivPic.setImageBitmap(bm);//添加图片 
+					ivPic.setImageBitmap(bm);// 设置显示图片 
 				else
 					ivPic.setImageResource(R.drawable.ic_launcher);//若所加载的图片为空,则使用默认的资源图片
 			}
@@ -85,7 +86,7 @@ public class Day07_12_Gallery_GestureActivity extends Activity {
 		@Override
 		public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 			// TODO Auto-generated method stub
-			int currentPosition = galThumb.getSelectedItemPosition();
+			int currentPosition = galThumb.getSelectedItemPosition();//当前所选择的 的 图片位置，从0开始；
 			if (e1.getX() - e2.getX() > 50 && Math.abs(velocityX) > 30) {//如何 计算
 				// 从右向左 下一幅
 				if(++currentPosition==galThumb.getCount()){

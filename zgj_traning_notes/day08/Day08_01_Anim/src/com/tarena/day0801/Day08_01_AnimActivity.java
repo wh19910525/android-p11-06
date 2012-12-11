@@ -18,11 +18,11 @@ public class Day08_01_AnimActivity extends Activity {
 
 	public void doClick(View v) {
 		// 获取动画对象
-		 Animation anim = AnimationUtils.loadAnimation(this, R.anim.translate);
+		 Animation anim = AnimationUtils.loadAnimation(this, R.anim.set);
 //		Animation anim = new TranslateAnimation(0, 100, 0, 200);
 //		anim.setDuration(2000);
 //		anim.setFillAfter(true);
-//		Animation anim = new TranslateAnimation(fromXType, fromXValue, toXType, toXValue, fromYType, fromYValue, toYType, toYValue)
+		//Animation anim = new TranslateAnimation(fromXType, fromXValue, toXType, toXValue, fromYType, fromYValue, toYType, toYValue)
 				
 		// 启动动画
 		// tvTest.setAnimation(anim);

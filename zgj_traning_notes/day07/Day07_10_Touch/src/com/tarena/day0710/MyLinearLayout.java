@@ -22,6 +22,8 @@ public class MyLinearLayout extends LinearLayout {
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
 		Log.i("info", TAG+"onTouchEvent(action="+event.getAction()+")");
-		return false;//为什么返回 false
+//		return false;//为什么返回 false
+
+		return super.onTouchEvent(event);
 	}
 }

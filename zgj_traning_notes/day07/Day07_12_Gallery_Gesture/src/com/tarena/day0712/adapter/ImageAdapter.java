@@ -54,8 +54,7 @@ public class ImageAdapter extends BaseAdapter {
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.item, null);
 			holder = new ViewHolder();
-			holder.ivThumb = (ImageView) convertView
-					.findViewById(R.id.ivThumbnail);
+			holder.ivThumb = (ImageView) convertView.findViewById(R.id.ivThumbnail);
 			holder.tvTitle = (TextView) convertView.findViewById(R.id.tvTitle);
 			convertView.setTag(holder);
 		} else {
