@@ -15,6 +15,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Day09_03_ViewPagerActivity extends Activity {
 	
@@ -97,18 +98,19 @@ public class Day09_03_ViewPagerActivity extends Activity {
 		pager.setOnPageChangeListener(new OnPageChangeListener() {
 
 			@Override
-			public void onPageSelected(int position) {
+			public void onPageSelected(int position) {//position 是 当前 图片的索引
 				// TODO Auto-generated method stub
 				// 设置动画
-				int width = ivCursor.getWidth();//这个 宽度有什么用，
+				int width = ivCursor.getWidth();//获取 进度条 的宽度，
 				TranslateAnimation anim = 
-						new TranslateAnimation(currentPosition * width, position * width, 0, 0);//前两个参数有什么用；
-				anim.setDuration(1000);//移动 需要的 时间
+						new TranslateAnimation(currentPosition * width, position * width, 0, 0);
+				anim.setDuration(500);//移动 需要的 时间
 				anim.setFillAfter(true);//显示 移动后的 图标
 				// 移动游标
 				ivCursor.startAnimation(anim);//启动 动画，参考 day08_01
 				// 设置当前位置
 				currentPosition = position;
+				Toast.makeText(Day09_03_ViewPagerActivity.this, "postion = " + position, 3000).show();
 			}
 
 			@Override

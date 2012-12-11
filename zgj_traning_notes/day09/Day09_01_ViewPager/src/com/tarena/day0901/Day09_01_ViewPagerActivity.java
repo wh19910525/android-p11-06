@@ -18,6 +18,7 @@ public class Day09_01_ViewPagerActivity extends Activity {
 
 	private ArrayList<View> getViews() {
 		ArrayList<View> views = new ArrayList<View>();
+		
 		ImageView iv = new ImageView(this);
 		iv.setScaleType(ScaleType.FIT_CENTER);
 		iv.setImageResource(R.drawable.p01);

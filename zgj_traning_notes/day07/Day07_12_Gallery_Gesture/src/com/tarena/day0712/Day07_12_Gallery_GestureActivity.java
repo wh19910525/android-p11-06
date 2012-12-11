@@ -19,7 +19,7 @@ import com.tarena.utils.BitmapUtils;
 
 public class Day07_12_Gallery_GestureActivity extends Activity {
 
-	private static final String DIR = "/mnt/sdcard/imags/";
+	private static final String DIR = "/mnt/sdcard/image/";
 	private Gallery galThumb;
 	private ImageView ivPic;
 	private ImageBiz biz;
