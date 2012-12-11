@@ -45,6 +45,7 @@ public class Day08_03_ImageSwitcherActivity extends Activity {
 
 		//获取 imageSwitcher控件 的引用
 		isPic = (ImageSwitcher) findViewById(R.id.isPic);
+		
 		isPic.setFactory(new ViewFactory() {// 实现并设置工厂内部接口的makeView方法，用来显示视图。
 
 			public View makeView() {

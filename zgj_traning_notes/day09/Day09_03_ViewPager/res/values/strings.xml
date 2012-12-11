@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day09_03_ViewPagerActivity!</string>
+    <string name="app_name">Day09_03_ViewPager</string>
+
+</resources>
