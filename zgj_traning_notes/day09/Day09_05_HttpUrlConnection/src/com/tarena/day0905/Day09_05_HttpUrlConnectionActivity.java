@@ -21,7 +21,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class Day09_05_HttpUrlConnectionActivity extends Activity {
-	private String uri = "http://192.168.188.36:8080/stu_server/student";
+	
+	private String uri = "http://10.28.9.164:8080/stu_server/student";
 	private TextView tvContent;
 	private RadioGroup rgSex;
 
@@ -40,9 +41,9 @@ public class Day09_05_HttpUrlConnectionActivity extends Activity {
 		params.put("sex", sex);
 		
 		try {
-			InputStream is = HttpUtils.doPost(uri, params);
+			InputStream is = HttpUtils.doPost(uri, params);//
 			if (is != null) {
-				ByteArrayOutputStream os = readStream(is);
+				ByteArrayOutputStream os = readStream(is);//
 				tvContent.setText(new String(os.toByteArray()));
 			}
 		} catch (IOException e) {
@@ -61,8 +62,7 @@ public class Day09_05_HttpUrlConnectionActivity extends Activity {
 		// //允许获取指向服务端的输出流
 		// conn.setDoOutput(true);
 		// // 设置实体消息头
-		// conn.setRequestProperty("Content-Type",
-		// "application/x-www-form-urlencoded");
+		// conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 		// conn.setRequestProperty("Content-Length", content.length() + "");
 		// // 获取指向服务端的输出流
 		// OutputStream out = conn.getOutputStream();
@@ -73,7 +73,7 @@ public class Day09_05_HttpUrlConnectionActivity extends Activity {
 		// if (conn.getResponseCode() == 200) {
 		// InputStream is = conn.getInputStream();
 		// if (is != null) {
-		// ByteArrayOutputStream os = readStream(is);
+		// ByteArrayOutputStream os = readStream(is);//
 		// tvContent.setText(new String(os.toByteArray()));
 		// }
 		// }
@@ -100,7 +100,7 @@ public class Day09_05_HttpUrlConnectionActivity extends Activity {
 		params.put("sex", sex);
 		
 		try {
-			InputStream is = HttpUtils.doGet(uri, params);
+			InputStream is = HttpUtils.doGet(uri, params);//
 			if (is != null) {
 				ByteArrayOutputStream os = readStream(is);
 				tvContent.setText(new String(os.toByteArray()));

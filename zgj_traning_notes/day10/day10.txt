@@ -1,0 +1,119 @@
+
+  setDoInput
+  connect()
+  
+使用HttpClient访问Http服务端的步骤
+ 1、创建一个DefaultHttpClient对象
+ 2、创建一个请求对象(HttpUriRequest--HttpGet\HttpPost)
+    如果使用HttpPost，且有数据上传到服务端
+    需要调用HttpPost对象的 setEntity方法设置请求实体
+ 3、客户端执行请求，获得响应对象
+ 4、获取状态行的状态码
+ 5、如果状态码为200，则获取响应实体对象
+ 6、解析响应实体
+DefaultHttpClient
+ 构造方法： DefaultHttpClient()
+ 主要方法：
+  HttpResponse execute(HttpUriRequest request)
+  HttpParam getParams()
+HttpUriRequest
+ HttpGet
+  构造方法： HttpGet(String uri)
+ HttpPost
+  构造方法： HttpPost(String uri)
+  主要方法：
+   void setEntity(HttpEntity entity)
+  UrlEncodedFormEntity
+   构造方法： UrlEncodedFormEntity(List<? extends NameValuePair> params)
+   BasicNameValuePair
+    构造方法：BasicNameValuePair(String name,String value)
+    主要方法：
+     String getName()
+     String getValue()
+HttpResponse
+ 主要方法：
+  StatusLine getStatusLine()
+  Header[] getAllHeaders()
+  HttpEntity getEntity()
+ StatusLine
+  int getStatusCode()
+  String getReasonPhrase()
+  ProtocolVersion getProtocolVersion()
+ Header
+  String getName()
+  String getValue()
+ HttpEntity
+  InputStream getContent()
+  Header getContentType()
+  long getContentLength()
+ EntityUtils
+  static byte[] toByteArray(HttpEntity entity)
+  static String toString(HttpEntity entity)
+  static String toString(HttpEntity entity,String encoding)
+HttpParams
+ 主要方法:
+ setParameter(String name,Object value)
+ 
+ CoreConnectionPNames
+  CONNECTION_TIMEOUT
+  
+XmlPullParser
+ 1、实例化:
+  调用XmlPullParserFactory对象的 newPullParser
+  调用Xml类的静态方法 newPullParser
+ 2、主要方法和常量
+  void setInput(Reader in)
+  void setInput(InputStream in,String encoding)
+  int getEventType()
+  int next()
+  String nextText()
+  String getName()
+  String getAttributeValue(int index)
+  String getAttributeValue(String namespace,String name)
+
+  START_DOCUMENT
+  START_TAG
+  END_TAG
+  END_DOCUMENT
+ 3、使用XmlPullParser解析xml的步骤
+  1）创建xmlPullParser实例
+  2）设置输入源
+  3）获取当前的事件类型
+  4）当 事件类型不是 文档解析完成时
+     循环解析
+
+
+练习1：
+ 使用ListView，显示stu_server服务端的学员信息
+ 分析:
+  数据集
+   Student
+   HttpUtils
+   StudentXmlParser
+   StudentBiz
+  适配器
+   StudentAdapter
+  Activity
+练习2、
+ 使用ListView，显示从服务端加载的音乐信息。
+ 支持查看详情和音乐下载
+ 分析：
+  Music
+  HttpUtils
+   HttpEntity getEntity(String uri...)
+   InputStream getStream(HttpEntity entity)
+   long getLength(HttpEntity entity)
+  MusicXmlParser
+   ArrayList<Music> parse(Reader reader)
+  MusicBiz
+   ArrayList<Music> getMusics(String uri,params,method)
+  BitmapUtils
+   Bitmap loadBitmap(byte[] data,int widht,int height)
+  StreamUtils
+   void save(InputStream in,String path)
+  MusicAdapter
+  Activity
+   ListView
+    
+
+   

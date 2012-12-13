@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day10_01_HttpClientActivity!</string>
+    <string name="app_name">Day10_01_HttpClient</string>
+
+</resources>

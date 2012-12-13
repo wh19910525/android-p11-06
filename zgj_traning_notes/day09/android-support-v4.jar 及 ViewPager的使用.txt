@@ -1,0 +1,14 @@
+android-support-v4.jar 这是谷歌官方给我们提供的一个兼容低版本安卓设备的软件包，里面包囊了只有在安卓3.0以上可以使用的api。而viewpager就是其中之一,利用它，我们可以做很多事情，从最简单的导航，到页面菜单等等。那如何使用它呢，与LisstView类似，我们也需要一个适配器，他就是PagerAdapter。
+在eclipse里，需要在 工程下 新建 一个目录 libs/ ，然后 把 android-support-v4.jar 包，拷贝到 libs目录下就 可以使用了；
+
+ViewPager 的功能就是可以使视图滑动，就像Lanucher左右滑动那样。分三个步骤来使用它：
+1.在住布局文件里加入
+<android.support.v4.view.ViewPager 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/pager" />
+2.使用PagerAdapter来添加ImageView 对象
+3.在Activity里实例化ViewPager组件，并设置它的Adapter（就是PagerAdapter，方法与ListView一样的），在这里一般需要重写PagerAdapter。
+
+参考：day09_03
+

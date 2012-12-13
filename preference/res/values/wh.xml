@@ -1,0 +1,18 @@
+
+<resources>
+     <string-array name="cities">
+        <item>Pittsburgh</item>
+        <item>Allentown/Bethlehem</item>
+        <item>Erie</item>
+    </string-array>
+    
+    <string-array name="airport_codes">
+        <item>PHL</item>
+        <item>PIT</item>
+                <item>ss</item>
+    </string-array>
+ 	
+
+    
+    
+</resources>
