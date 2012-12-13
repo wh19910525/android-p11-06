@@ -17,7 +17,7 @@ public class HttpUtils {
 			StringBuilder sb = new StringBuilder(uri);//
 			if (params != null && !params.isEmpty()) {
 				sb.append('?');//
-				buildEntity(params, sb);
+				buildEntity(params, sb);//
 			}
 
 			URL url = new URL(sb.toString());//
@@ -26,7 +26,7 @@ public class HttpUtils {
 			conn.setConnectTimeout(3000);
 			conn.setReadTimeout(3000);
 			if (conn.getResponseCode() == 200)
-				is = conn.getInputStream();
+				is = conn.getInputStream();//
 		}
 		return is;
 	}
@@ -47,9 +47,9 @@ public class HttpUtils {
 				
 				conn.setDoOutput(true);//允许获得指向服务端的输出流
 				conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");//设置实体消息头
-				conn.setRequestProperty("Content-Length", sb.length() + "");//以上两句有什么用
+				conn.setRequestProperty("Content-Length", sb.length() + "");//用post方法 必须要用 这两句话；
 				
-				OutputStream out = conn.getOutputStream();// 获取指向服务端的输出流,往服务器 上传东西
+				OutputStream out = conn.getOutputStream();// 获取指向服务端的输出流
 				out.write(sb.toString().getBytes());
 				out.close();
 			}

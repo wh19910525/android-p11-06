@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 public class Day09_05_HttpUrlConnectionActivity extends Activity {
 	
-	private String uri = "http://10.28.9.164:8080/stu_server/student";
+	private String uri = "http://192.168.1.100:8080/stu_server/student";
 	private TextView tvContent;
 	private RadioGroup rgSex;
 

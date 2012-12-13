@@ -29,13 +29,13 @@ public class Day10_01_HttpClientActivity extends Activity {
 		ivPic = (ImageView) findViewById(R.id.ivPic);
 	}
 
-	public void doClick(View v) {
+	public void doClick(View v) throws ConnectTimeoutException, ClientProtocolException,IllegalStateException, IOException{
 		Bitmap bm = null;
 		// 加载图片
-		try {
+		//try {
 			HttpClient client = new DefaultHttpClient();//
 			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
-			HttpGet request = new HttpGet("http://10.28.9.164:8080/test/imgs/p2.jpg");
+			HttpGet request = new HttpGet("http://192.168.1.100:8080/test/imgs/p2.jpg");
 			HttpResponse response = client.execute(request);
 			
 			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
@@ -45,7 +45,8 @@ public class Day10_01_HttpClientActivity extends Activity {
 				bm = BitmapFactory.decodeStream(is);
 				is.close();
 			}
-			
+			ivPic.setImageBitmap(bm);
+/*			
 		} catch (ConnectTimeoutException e) {
 			// TODO: handle exception
 			Log.i("info", "连接超时");
@@ -60,7 +61,7 @@ public class Day10_01_HttpClientActivity extends Activity {
 			e.printStackTrace();
 		}
 		// 显示图片
-		ivPic.setImageBitmap(bm);
+		ivPic.setImageBitmap(bm); */
 	}
 
 	/** Called when the activity is first created. */
