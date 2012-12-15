@@ -25,17 +25,15 @@ public class Day10_03_PullActivity extends Activity {
 
 	public void doClick(View v) {
 		try {
-			HttpEntity entity = HttpUtils.getEntity(
-					"http://192.168.1.102:8080/stu_server/student", null,
-					HttpUtils.METHOD_GET);
+			HttpEntity entity = HttpUtils.getEntity("http://10.28.9.164:8080/stu_server/student", 
+					null, HttpUtils.METHOD_GET);
 			InputStream is = HttpUtils.getStream(entity);
 			// 解析xml,获取实体集合
-			ArrayList<Student> students = StudentXmlParser
-					.parse(new InputStreamReader(is));
+			ArrayList<Student> students = StudentXmlParser.parse(new InputStreamReader(is));
 			// 将实体集合的内容显示再textView中
 			StringBuilder sb = new StringBuilder();
 			for (Student stu : students) {
-				sb.append(stu.toString());
+				sb.append(stu.toString()).append("\n");
 			}
 			tvContent.setText(sb.toString());
 		} catch (ConnectTimeoutException e) {

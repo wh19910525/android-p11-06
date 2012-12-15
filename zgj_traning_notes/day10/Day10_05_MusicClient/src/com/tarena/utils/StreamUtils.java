@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class StreamUtils {
+	
 	public static void save(InputStream in, String path) throws IOException {
 		if (in != null && path != null) {
 			File file = new File(path);

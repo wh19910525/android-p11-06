@@ -29,16 +29,17 @@ public class Day10_01_HttpClientActivity extends Activity {
 		ivPic = (ImageView) findViewById(R.id.ivPic);
 	}
 
-	public void doClick(View v) throws ConnectTimeoutException, ClientProtocolException,IllegalStateException, IOException{
+	public void doClick(View v) 
+			throws ConnectTimeoutException, ClientProtocolException,IllegalStateException, IOException{
 		Bitmap bm = null;
 		// 加载图片
 		//try {
-			HttpClient client = new DefaultHttpClient();//
+			HttpClient client = new DefaultHttpClient();//创建一个DefaultHttpClient对象
 			client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
-			HttpGet request = new HttpGet("http://192.168.1.100:8080/test/imgs/p2.jpg");
-			HttpResponse response = client.execute(request);
+			HttpGet request = new HttpGet("http://10.28.9.164:8080/test/imgs/p2.jpg");//创建一个请求对象
+			HttpResponse response = client.execute(request);//客户端执行请求，获得响应对象
 			
-			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
+			if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {//获取状态行的状态码, 如果状态码为200，则获取响应实体对象
 				HttpEntity entity = response.getEntity();
 				response.getAllHeaders();
 				InputStream is = entity.getContent();//

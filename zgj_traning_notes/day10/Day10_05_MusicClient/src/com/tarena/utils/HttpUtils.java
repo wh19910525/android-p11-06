@@ -18,7 +18,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 
 public class HttpUtils {
-	public static final String BASE_URL = "http://192.168.188.36:8080/musiconline/";
+	
+	public static final String BASE_URL = "http://10.28.9.164:8080/musiconline/";
 	public static final int METHOD_GET = 1;
 	public static final int METHOD_POST = 2;
 
@@ -31,15 +32,13 @@ public class HttpUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static HttpEntity getEntity(String uri,
-			List<? extends NameValuePair> params, int method)
+	public static HttpEntity getEntity(String uri, List<? extends NameValuePair> params, int method)
 			throws ConnectTimeoutException, IOException {
 		HttpEntity entity = null;
 		// 创建客户端对象
-		HttpClient client = new DefaultHttpClient();
+ 		HttpClient client = new DefaultHttpClient();
 		// 设置连接属性
-		client.getParams().setParameter(
-				CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
+		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
 		// 创建请求对象
 		HttpUriRequest request = null;
 		switch (method) {

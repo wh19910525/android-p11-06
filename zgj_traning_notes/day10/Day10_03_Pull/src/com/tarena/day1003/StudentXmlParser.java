@@ -42,8 +42,7 @@ public class StudentXmlParser {
 					String tagName = parser.getName();
 					if ("student".equals(tagName)) {
 						stu = new Student();
-						stu.setId(Integer.parseInt(parser.getAttributeValue(
-								null, "id")));
+						stu.setId(Integer.parseInt(parser.getAttributeValue(null, "id")));
 					} else if ("name".equals(tagName)) {
 						stu.setName(parser.nextText());
 					} else if ("sex".equals(tagName)) {

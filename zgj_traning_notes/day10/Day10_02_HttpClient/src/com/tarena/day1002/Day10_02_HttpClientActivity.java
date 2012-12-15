@@ -44,13 +44,12 @@ public class Day10_02_HttpClientActivity extends Activity {
 			sex = "female";
 
 		// 创建请求参数集合
-		ArrayList<BasicNameValuePair> parameters = new ArrayList<BasicNameValuePair>();
+		ArrayList<BasicNameValuePair> parameters = new ArrayList<BasicNameValuePair>();//
 		parameters.add(new BasicNameValuePair("sex", sex));
 
 		try {
-			HttpEntity entity = HttpUtils.getEntity(
-					"http://10.28.9.164:8080/stu_server/student",
-					parameters, HttpUtils.METHOD_GET);
+			HttpEntity entity = HttpUtils.getEntity("http://10.28.9.164:8080/stu_server/student", 
+					parameters, HttpUtils.METHOD_GET);//
 			String content = EntityUtils.toString(entity);
 			tvContent.setText(content);
 		} catch (ConnectTimeoutException e) {
@@ -67,10 +66,8 @@ public class Day10_02_HttpClientActivity extends Activity {
 		// try {
 		// // 获取图片
 		// HttpClient client = new DefaultHttpClient();
-		// HttpPost request = new HttpPost(
-		// "http://192.168.188.36:8080/stu_server/student");
-		// UrlEncodedFormEntity reqEntity = new
-		// UrlEncodedFormEntity(parameters);
+		// HttpPost request = new HttpPost("http://192.168.188.36:8080/stu_server/student");
+		// UrlEncodedFormEntity reqEntity = new UrlEncodedFormEntity(parameters);//使用HttpPost
 		// request.setEntity(reqEntity);
 		// HttpResponse response = client.execute(request);
 		// if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {

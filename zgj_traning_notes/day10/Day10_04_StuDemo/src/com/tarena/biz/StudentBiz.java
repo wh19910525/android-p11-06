@@ -20,8 +20,9 @@ public class StudentBiz {
 		try {
 			HttpEntity entity = HttpUtils.getEntity(uri, params, method);
 			InputStream in = HttpUtils.getStream(entity);
-			ArrayList<Student> students = StudentXmlParser.parse(new InputStreamReader(in));
+			ArrayList<Student> students = StudentXmlParser.parse(new InputStreamReader(in));//½âÎöxml
 			return students;
+			
 		} catch (ConnectTimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

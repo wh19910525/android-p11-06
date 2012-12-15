@@ -15,7 +15,9 @@ import org.xml.sax.helpers.DefaultHandler;
 import com.tarena.entity.Music;
 
 public class MusicXmlParser {
+	
 	private class MusicXmlHandler extends DefaultHandler {
+		
 		private ArrayList<Music> musics;
 		private Music music;
 		private String tagName;
@@ -24,7 +26,7 @@ public class MusicXmlParser {
 		public void characters(char[] ch, int start, int length)
 				throws SAXException {
 			// TODO Auto-generated method stub
-			String data = new String(ch, start, length);
+			String data = new String(ch, start, length);//这个是什么意思？
 			if ("name".equals(tagName)) {
 				music.setName(data);
 			} else if ("singer".equals(tagName)) {
@@ -77,8 +79,9 @@ public class MusicXmlParser {
 
 	}
 
-	public ArrayList<Music> parse(InputStream in)
+	public ArrayList<Music> parse(InputStream in)//这个函数 如何理解
 			throws ParserConfigurationException, SAXException, IOException {
+		
 		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser parser = factory.newSAXParser();
 		MusicXmlHandler handler = new MusicXmlHandler();

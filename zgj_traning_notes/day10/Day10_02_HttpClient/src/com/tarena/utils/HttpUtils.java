@@ -21,8 +21,7 @@ public class HttpUtils {
 	public static final int METHOD_GET = 1;
 	public static final int METHOD_POST = 2;
 
-	public static HttpEntity getEntity(String uri,
-			List<? extends NameValuePair> params, int method)
+	public static HttpEntity getEntity(String uri, List<? extends NameValuePair> params, int method)
 			throws ConnectTimeoutException, IOException {
 		HttpEntity entity = null;
 		// 创建客户端对象
@@ -72,6 +71,5 @@ public class HttpUtils {
 			return entity.getContent();
 		return null;
 	}
-	
 	
 }

@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MusicAdapter extends BaseAdapter {
+	
 	private ArrayList<Music> musics;
 	private LayoutInflater inflater;
 
@@ -85,9 +86,8 @@ public class MusicAdapter extends BaseAdapter {
 		try {
 			// 获取专辑图片的路径
 			String uri = HttpUtils.BASE_URL + music.getAlbumPath();
-			HttpEntity entity = HttpUtils.getEntity(uri, null,
-					HttpUtils.METHOD_GET);
-			byte[] data = EntityUtils.toByteArray(entity);
+			HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
+			byte[] data = EntityUtils.toByteArray(entity);//把 实体对象转换为字节；
 			bm = BitmapUtils.loadBitmap(data, 100, 100);
 		} catch (ConnectTimeoutException e) {
 			// TODO Auto-generated catch block

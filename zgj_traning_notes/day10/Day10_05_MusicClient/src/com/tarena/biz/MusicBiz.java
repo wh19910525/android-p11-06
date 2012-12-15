@@ -17,7 +17,7 @@ import com.tarena.utils.HttpUtils;
 import com.tarena.utils.MusicXmlParser;
 
 public class MusicBiz {
-	public ArrayList<Music> getMusics(String uri,List<? extends NameValuePair> params,int method){
+	public ArrayList<Music> getMusics(String uri, List<? extends NameValuePair> params, int method){
 		ArrayList<Music> musics = null;
 		try {
 			HttpEntity entity = HttpUtils.getEntity(uri, params, method);

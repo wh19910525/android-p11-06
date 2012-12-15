@@ -11,8 +11,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import com.tarena.entity.Student;
 
 public class StudentXmlParser {
-	public static ArrayList<Student> parse(Reader reader) throws IOException,
-			XmlPullParserException {
+	public static ArrayList<Student> parse(Reader reader) throws IOException, XmlPullParserException {
+
 		ArrayList<Student> students = null;
 		Student stu = null;
 
@@ -35,11 +35,10 @@ public class StudentXmlParser {
 				students = new ArrayList<Student>();
 				break;
 			case XmlPullParser.START_TAG:
-				String tagName = parser.getName();
+				String tagName = parser.getName();//这里如何理解？
 				if ("student".equals(tagName)) {
 					stu = new Student();
-					stu.setId(Integer.parseInt(parser.getAttributeValue(null,
-							"id")));
+					stu.setId(Integer.parseInt(parser.getAttributeValue(null, "id")));
 				} else if ("name".equals(tagName)) {
 					stu.setName(parser.nextText());
 				} else if ("sex".equals(tagName)) {

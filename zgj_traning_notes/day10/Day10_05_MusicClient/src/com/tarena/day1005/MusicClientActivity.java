@@ -26,6 +26,7 @@ import com.tarena.utils.HttpUtils;
 import com.tarena.utils.StreamUtils;
 
 public class MusicClientActivity extends Activity {
+	
 	private static final int MENU_CONTEXT_DETAILS = 1;
 	private static final int MENU_CONTEXT_DOWNLOAD = 2;
 	private ListView lvMusics;
@@ -36,7 +37,7 @@ public class MusicClientActivity extends Activity {
 	private void setupView() {
 		lvMusics = (ListView) findViewById(R.id.lvMusics);
 		ArrayList<Music> musics = biz.getMusics(
-				"http://192.168.188.36:8080/musiconline/sounds.xml", null,
+				"http://10.28.9.164:8080/musiconline/sounds.xml", null,
 				HttpUtils.METHOD_POST);
 		adapter = new MusicAdapter(this, musics);
 		lvMusics.setAdapter(adapter);
@@ -78,8 +79,7 @@ public class MusicClientActivity extends Activity {
 			try {
 				String uri = HttpUtils.BASE_URL + music.getMusicPath();
 				String path = "/mnt/sdcard/" + music.getMusicPath();
-				HttpEntity entity = HttpUtils.getEntity(uri, null,
-						HttpUtils.METHOD_GET);
+				HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
 				InputStream in = HttpUtils.getStream(entity);
 				StreamUtils.save(in, path);
 			} catch (ConnectTimeoutException e) {
