@@ -23,10 +23,10 @@ public class MusicXmlParser {
 		private String tagName;
 
 		@Override
-		public void characters(char[] ch, int start, int length)
+		public void characters(char[] ch, int start, int length)//解析 普通标签
 				throws SAXException {
 			// TODO Auto-generated method stub
-			String data = new String(ch, start, length);//这个是什么意思？
+			String data = new String(ch, start, length);
 			if ("name".equals(tagName)) {
 				music.setName(data);
 			} else if ("singer".equals(tagName)) {
@@ -51,7 +51,7 @@ public class MusicXmlParser {
 		}
 
 		@Override
-		public void endElement(String uri, String localName, String qName)
+		public void endElement(String uri, String localName, String qName)//解析 每一个 结束 标签
 				throws SAXException {
 			// TODO Auto-generated method stub
 			if ("music".equals(localName)) {
@@ -61,13 +61,13 @@ public class MusicXmlParser {
 		}
 
 		@Override
-		public void startDocument() throws SAXException {
+		public void startDocument() throws SAXException {//解析 根标签
 			// TODO Auto-generated method stub
 			musics = new ArrayList<Music>();
 		}
 
 		@Override
-		public void startElement(String uri, String localName, String qName,
+		public void startElement(String uri, String localName, String qName,//解析:每一次标签，都会 执行此方法
 				Attributes attributes) throws SAXException {
 			// TODO Auto-generated method stub
 			tagName = localName;
@@ -79,7 +79,7 @@ public class MusicXmlParser {
 
 	}
 
-	public ArrayList<Music> parse(InputStream in)//这个函数 如何理解
+	public ArrayList<Music> parse(InputStream in)
 			throws ParserConfigurationException, SAXException, IOException {
 		
 		SAXParserFactory factory = SAXParserFactory.newInstance();

@@ -1,6 +1,4 @@
-List<? extends NameValuePair> 是什么？ day10_02 第二个类；
 
-day10_05 解析 xml文件部分 如何理解；
 
 
 

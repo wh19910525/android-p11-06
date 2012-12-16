@@ -67,9 +67,9 @@ public class MusicAdapter extends BaseAdapter {
 			holder.tvSinger = (TextView) convertView
 					.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
-			convertView.setTag(holder);
+			convertView.setTag(holder);//
 		} else {
-			holder = (ViewHolder) convertView.getTag();
+			holder = (ViewHolder) convertView.getTag();//
 		}
 
 		// 获取数据
