@@ -33,10 +33,10 @@ public class MusicAdapter extends BaseAdapter {
 	private ArrayList<Music> musics;
 	private LayoutInflater inflater;
 	private Handler handler;
-	private AsyncImageLoader loader;
+	private AsyncImageLoader loader;//
 
-	public MusicAdapter(Context context, ArrayList<Music> musics,
-			final ListView lvMusics) {
+	public MusicAdapter(Context context, ArrayList<Music> musics, final ListView lvMusics) {//
+		
 		this.setMusics(musics);
 		this.inflater = LayoutInflater.from(context);
 		this.handler = new Handler() {
@@ -47,8 +47,7 @@ public class MusicAdapter extends BaseAdapter {
 					// 获取已完成任务对象
 					Task task = (Task) msg.obj;
 					// 根据图片路径为tag，从listview中查找imageView
-					ImageView iv = (ImageView) lvMusics.findViewWithTag(task
-							.getPath());
+					ImageView iv = (ImageView) lvMusics.findViewWithTag(task.getPath());
 					// 如果该imageview未被复用，则在iamgeview上显示图片
 					if (iv != null && task.getBitmap() != null) {
 						iv.setImageBitmap(task.getBitmap());
@@ -58,7 +57,7 @@ public class MusicAdapter extends BaseAdapter {
 
 			}
 		};
-		this.loader = new AsyncImageLoader(handler);
+		this.loader = new AsyncImageLoader(handler);//
 	}
 
 	private void setMusics(ArrayList<Music> musics) {
@@ -106,10 +105,8 @@ public class MusicAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.ivAlbum = (ImageView) convertView.findViewById(R.id.ivAlbum);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
-			holder.tvDuration = (TextView) convertView
-					.findViewById(R.id.tvDuration);
-			holder.tvSinger = (TextView) convertView
-					.findViewById(R.id.tvSinger);
+			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
+			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
 			convertView.setTag(holder);
 		} else {
@@ -127,9 +124,9 @@ public class MusicAdapter extends BaseAdapter {
 
 		String path = music.getAlbumPath();
 		// 设置图片路径为iamgeview的tag
-		holder.ivAlbum.setTag(path);
+		holder.ivAlbum.setTag(path);//
 		// 加载图片
-		Bitmap bm = loader.loadBitmap(path);
+		Bitmap bm = loader.loadBitmap(path);//
 		// 如果存在缓存图片则显示，否则显示默认图片
 		if (bm != null)
 			holder.ivAlbum.setImageBitmap(bm);

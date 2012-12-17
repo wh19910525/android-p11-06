@@ -15,8 +15,8 @@ public class Day12_02_SoftReferenceActivity extends Activity {
 		setContentView(R.layout.main);
 
 		
-		SoftReference<Bitmap> sb = new SoftReference<Bitmap>(BitmapFactory.decodeFile("/mnt/sdcard/imgs/p01.jpg"));
-		if(sb.get()!=null){
+		SoftReference<Bitmap> sb = new SoftReference<Bitmap>(BitmapFactory.decodeFile("/mnt/sdcard/imags/p2.jpg"));
+			if(sb.get()!=null){
 			
 		}else{
 			

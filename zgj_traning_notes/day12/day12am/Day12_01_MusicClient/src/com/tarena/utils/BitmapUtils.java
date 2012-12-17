@@ -24,7 +24,7 @@ public class BitmapUtils {
 		return bm;
 	}
 	
-	public static void save(Bitmap bm,String savePath){
+	public static void save(Bitmap bm, String savePath){
 		if(bm!=null && savePath!=null){
 			File file = new File(savePath);
 			if(!file.getParentFile().exists()){
@@ -34,7 +34,7 @@ public class BitmapUtils {
 			if(!file.exists()){
 				try {
 					file.createNewFile();
-					bm.compress(CompressFormat.JPEG, 100, new FileOutputStream(file));
+					bm.compress(CompressFormat.JPEG, 100, new FileOutputStream(file));//”– ≤√¥”√
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

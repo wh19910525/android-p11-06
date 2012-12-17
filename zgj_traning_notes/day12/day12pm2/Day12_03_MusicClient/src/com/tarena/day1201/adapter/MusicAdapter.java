@@ -21,11 +21,11 @@ public class MusicAdapter extends BaseAdapter {
 
 	private ArrayList<Music> musics;
 	private LayoutInflater inflater;
-	private AsyncImageLoader loader;
+	private AsyncImageLoader loader;//
 	private Callback callback;
 
-	public MusicAdapter(Context context, ArrayList<Music> musics,
-			final ListView lvMusics) {
+	public MusicAdapter(Context context, ArrayList<Music> musics, final ListView lvMusics) {//
+		
 		this.setMusics(musics);
 		this.inflater = LayoutInflater.from(context);
 		this.callback = new Callback() {
@@ -90,10 +90,8 @@ public class MusicAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.ivAlbum = (ImageView) convertView.findViewById(R.id.ivAlbum);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
-			holder.tvDuration = (TextView) convertView
-					.findViewById(R.id.tvDuration);
-			holder.tvSinger = (TextView) convertView
-					.findViewById(R.id.tvSinger);
+			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
+			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
 			convertView.setTag(holder);
 		} else {

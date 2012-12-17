@@ -20,8 +20,8 @@ public class MusicBiz {
 	public ArrayList<Music> getMusics(String uri,List<? extends NameValuePair> params,int method){
 		ArrayList<Music> musics = null;
 		try {
-			HttpEntity entity = HttpUtils.getEntity(uri, params, method);
-			InputStream in = HttpUtils.getStream(entity);
+			HttpEntity entity = HttpUtils.getEntity(uri, params, method);//通过网络得到响应头,响应行,响应体对象
+			InputStream in = HttpUtils.getStream(entity);//此处返回响应体的流对象
 			musics = new MusicXmlParser().parse(in);
 		} catch (ConnectTimeoutException e) {
 			// TODO Auto-generated catch block

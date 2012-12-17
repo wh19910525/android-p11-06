@@ -1,5 +1,11 @@
+day11_03 以下函数 什么时候 调用？
 
-
+	public void quit() {//什么时候调用
+		isLoop = false;
+		synchronized (workThread) {
+			workThread.notify();
+		}
+	}
 
 
 

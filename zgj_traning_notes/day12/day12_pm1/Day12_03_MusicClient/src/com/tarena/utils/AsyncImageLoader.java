@@ -16,18 +16,21 @@ import android.os.Message;
 import com.tarena.entity.Task;
 
 public class AsyncImageLoader {
+	
 	public static final int MSG_TAG_FINISHED = 1;
 	private boolean isLoop;
 	private Thread workThread;
 	private ArrayList<Task> tasks;
-	private HashMap<String, SoftReference<Bitmap>> caches;
+	private HashMap<String, SoftReference<Bitmap>> caches;//
 
 	// private Handler handler;
 
-	public AsyncImageLoader(final Handler handler) {
+	public AsyncImageLoader(final Handler handler) {//
+		
 		this.tasks = new ArrayList<Task>();
 		this.caches = new HashMap<String, SoftReference<Bitmap>>();
 		this.isLoop = true;
+		
 		this.workThread = new Thread() {
 			@Override
 			public void run() {
@@ -37,23 +40,18 @@ public class AsyncImageLoader {
 						try {
 							Task task = tasks.remove(0);
 							// 加载图片
-							HttpEntity entity = HttpUtils.getEntity(
-									HttpUtils.BASE_URL + task.getPath(), null,
-									HttpUtils.METHOD_GET);
+							HttpEntity entity = HttpUtils.getEntity(HttpUtils.BASE_URL + task.getPath(), null, HttpUtils.METHOD_GET);
 							byte[] data = EntityUtils.toByteArray(entity);
 							task.setBitmap(BitmapUtils.loadBitmap(data, 100, 100));
 
 							// 添加到缓存集合
-							caches.put(task.getPath(), new SoftReference<Bitmap>(
-									task.getBitmap()));
+							caches.put(task.getPath(), new SoftReference<Bitmap>(task.getBitmap()));
 
 							// 添加到文件缓存
-							BitmapUtils.save(task.getBitmap(), "/mnt/sdcard/"
-									+ task.getPath());
+							BitmapUtils.save(task.getBitmap(), "/mnt/sdcard/" + task.getPath());
 
 							// 发送消息
-							Message msg = Message.obtain(handler, MSG_TAG_FINISHED,
-									task);
+							Message msg = Message.obtain(handler, MSG_TAG_FINISHED, task);
 							msg.sendToTarget();
 						} catch (ConnectTimeoutException e) {
 							// TODO Auto-generated catch block
@@ -88,7 +86,7 @@ public class AsyncImageLoader {
 			if (bm != null)
 				return bm;
 			else
-				caches.remove(path);
+				caches.remove(path);//
 		}
 
 		// 从文件缓存查找图片

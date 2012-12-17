@@ -25,6 +25,7 @@ public class AsyncImageLoader {
 		this.tasks = new ArrayList<Task>();
 		this.caches = new HashMap<String, SoftReference<Bitmap>>();
 		this.isLoop = true;
+		
 		this.handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
@@ -46,9 +47,7 @@ public class AsyncImageLoader {
 						try {
 							Task task = tasks.remove(0);
 							// 加载图片
-							HttpEntity entity = HttpUtils.getEntity(
-									HttpUtils.BASE_URL + task.path, null,
-									HttpUtils.METHOD_GET);
+							HttpEntity entity = HttpUtils.getEntity(HttpUtils.BASE_URL + task.path, null, HttpUtils.METHOD_GET);
 							byte[] data = EntityUtils.toByteArray(entity);
 							task.bitmap = BitmapUtils
 									.loadBitmap(data, 100, 100);
@@ -58,8 +57,7 @@ public class AsyncImageLoader {
 									task.bitmap));
 
 							// 添加到文件缓存
-							BitmapUtils.save(task.bitmap, "/mnt/sdcard/"
-									+ task.path);
+							BitmapUtils.save(task.bitmap, "/mnt/sdcard/" + task.path);
 
 							// 发送消息
 							Message msg = Message.obtain(handler,

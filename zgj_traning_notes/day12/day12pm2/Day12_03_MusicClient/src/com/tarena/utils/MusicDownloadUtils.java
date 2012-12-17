@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.tarena.entity.MusicDownloadTask;
 
 public class MusicDownloadUtils {
+	
 	private static final int MSG_TAG_EXISTS = 1;
 	private static final int MSG_TAG_FINISHED = 2;
 	private static final int MSG_TAG_FAILED = 3;
@@ -49,6 +50,7 @@ public class MusicDownloadUtils {
 				Toast.makeText(context, content, 3000).show();
 			};
 		};
+		
 		workThread = new Thread() {
 			@Override
 			public void run() {
@@ -58,35 +60,31 @@ public class MusicDownloadUtils {
 					while (tasks.size() > 0) {
 						MusicDownloadTask task = tasks.remove(0);
 						// 判断本地是否存在该音乐
-						File file = new File(task.getPath());
+						File file = new File(task.getPath());//
 						if (file.exists()) {
 							// 如果文件已存在发送消息回主线程
-							msg = Message.obtain(handler, MSG_TAG_EXISTS,
-									task.getUri());
+							msg = Message.obtain(handler, MSG_TAG_EXISTS, task.getUri());
 							msg.sendToTarget();
 							continue;
 						}
 
 						try {
 							// 下载音乐
-							HttpEntity entity = HttpUtils.getEntity(
-									task.getUri(), null, HttpUtils.METHOD_GET);
+							HttpEntity entity = HttpUtils.getEntity(task.getUri(), null, HttpUtils.METHOD_GET);
 							InputStream in = HttpUtils.getStream(entity);
 							StreamUtils.save(in, task.getPath());
 
 							// 发消息回主线程
-							msg = Message.obtain(handler, MSG_TAG_FINISHED,
-									task.getPath());
+							msg = Message.obtain(handler, MSG_TAG_FINISHED, task.getPath());
 							msg.sendToTarget();
-						} catch (ConnectTimeoutException e) {
+ 						} catch (ConnectTimeoutException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 							handler.sendEmptyMessage(MSG_TAG_CONNECT_TIME_OUT);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-							msg = Message.obtain(handler, MSG_TAG_FAILED,
-									task.getUri());
+							msg = Message.obtain(handler, MSG_TAG_FAILED, task.getUri());
 							msg.sendToTarget();
 						}
 					}

@@ -63,8 +63,7 @@ public class MusicClientActivity extends Activity {
 					// 发送消息到主线程，提示开始解析
 					handler.sendEmptyMessage(MSG_TAG_STARTED);
 					// 连接服务端获得响应实体对象
-					HttpEntity entity = HttpUtils.getEntity(HttpUtils.BASE_URL
-							+ "sounds.xml", null, HttpUtils.METHOD_GET);
+					HttpEntity entity = HttpUtils.getEntity(HttpUtils.BASE_URL + "sounds.xml", null, HttpUtils.METHOD_GET);
 					// 根据实体对象获取实体输入流
 					InputStream in = HttpUtils.getStream(entity);
 					// 解析输入流，获取数据集
@@ -72,8 +71,7 @@ public class MusicClientActivity extends Activity {
 
 					/* 发送消息到主线程 */
 					// 创建消息对象
-					Message msg = Message.obtain(handler, MSG_TAG_FINISHED,
-							musics);
+				Message msg = Message.obtain(handler, MSG_TAG_FINISHED, musics);
 					// 发送消息
 					msg.sendToTarget();
 				} catch (ConnectTimeoutException e) {
@@ -111,8 +109,7 @@ public class MusicClientActivity extends Activity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		// 获取当前music信息
-		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
-				.getMenuInfo();
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
 		Music music = (Music) adapter.getItem(menuInfo.position);
 
 		switch (item.getItemId()) {
@@ -125,8 +122,7 @@ public class MusicClientActivity extends Activity {
 			try {
 				String uri = HttpUtils.BASE_URL + music.getMusicPath();
 				String path = "/mnt/sdcard/" + music.getMusicPath();
-				HttpEntity entity = HttpUtils.getEntity(uri, null,
-						HttpUtils.METHOD_GET);
+				HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
 				InputStream in = HttpUtils.getStream(entity);
 				StreamUtils.save(in, path);
 			} catch (ConnectTimeoutException e) {
@@ -158,8 +154,7 @@ public class MusicClientActivity extends Activity {
 					break;
 
 				case MSG_TAG_STARTED:// 开始解析
-					Toast.makeText(MusicClientActivity.this, "开始解析xml，请稍候...",
-							3000).show();
+					Toast.makeText(MusicClientActivity.this, "开始解析xml，请稍候...", 3000).show();
 					break;
 				}
 			};

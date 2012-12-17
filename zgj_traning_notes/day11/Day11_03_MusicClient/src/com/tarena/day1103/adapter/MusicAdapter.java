@@ -45,8 +45,9 @@ public class MusicAdapter extends BaseAdapter {
 				switch (msg.what) {
 				case 0:// 图片加载完成
 					Bitmap bm = (Bitmap) msg.obj;
-					String path = msg.getData().getString("path");//这两句是什么意思？
-					ImageView iv = (ImageView) MusicAdapter.this.lvMusics.findViewWithTag(path);//
+					String path = msg.getData().getString("path");
+					ImageView iv = (ImageView) MusicAdapter.this.lvMusics.findViewWithTag(path);
+					// 如果该imageview未被复用，则在iamgeview上显示图片
 					if (bm != null && iv != null) {
 						iv.setImageBitmap(bm);
 					}
@@ -56,7 +57,7 @@ public class MusicAdapter extends BaseAdapter {
 		};
 
 		this.isLoop = true;
-		this.tasks = new ArrayList<String>();
+		this.tasks = new ArrayList<String>();//
 		
 		this.workThread = new Thread() {
 			@Override
@@ -65,13 +66,12 @@ public class MusicAdapter extends BaseAdapter {
 					// 如果任务集合有任务，则循环执行这些任务
 					while (isLoop && tasks.size() > 0) {
 						// 获取并从集合中移除第一条任务
-						String path = tasks.remove(0);
+						String path = tasks.remove(0);//
 						// 加载
 						try {
 							// 获取专辑图片的路径
 							String uri = HttpUtils.BASE_URL + path;
-							HttpEntity entity = HttpUtils.getEntity(uri, null,
-									HttpUtils.METHOD_GET);
+							HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
 							byte[] data = EntityUtils.toByteArray(entity);
 							Bitmap bm = BitmapUtils.loadBitmap(data, 100, 100);
 
@@ -99,7 +99,7 @@ public class MusicAdapter extends BaseAdapter {
 					// 如果所有任务都执行完成，则线程等待
 					synchronized (this) {
 						try {
-							this.wait();
+							this.wait();//
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -116,7 +116,7 @@ public class MusicAdapter extends BaseAdapter {
 	 */
 	public void quit() {
 		isLoop = false;
-		synchronized (workThread) {
+		synchronized (workThread) {//启动线程
 			workThread.notify();
 		}
 	}
@@ -135,7 +135,7 @@ public class MusicAdapter extends BaseAdapter {
 	 */
 	public void changeData(ArrayList<Music> musics) {
 		this.setMusics(musics);
-		this.notifyDataSetChanged();// 更新listView
+		this.notifyDataSetChanged();// 更新 adapter
 	}
 
 	@Override
@@ -166,10 +166,8 @@ public class MusicAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.ivAlbum = (ImageView) convertView.findViewById(R.id.ivAlbum);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
-			holder.tvDuration = (TextView) convertView
-					.findViewById(R.id.tvDuration);
-			holder.tvSinger = (TextView) convertView
-					.findViewById(R.id.tvSinger);
+			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
+			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
 			convertView.setTag(holder);
 		} else {
@@ -186,13 +184,14 @@ public class MusicAdapter extends BaseAdapter {
 		holder.tvSinger.setText(music.getSinger());
 
 		// 设置音乐专辑路径为imageview对象的tag
-		holder.ivAlbum.setTag(music.getAlbumPath());
+		holder.ivAlbum.setTag(music.getAlbumPath());//
 		// 设置默认图片
 		holder.ivAlbum.setImageResource(R.drawable.ic_launcher);
-		// 将图片加载任务添加到任务集合
+		// 将图片路径添加到任务集合
 		tasks.add(music.getAlbumPath());
+		
 		// 唤醒线程开始加载
-		synchronized (workThread) {
+		synchronized (workThread) {//他 会 调用 线程？
 			workThread.notify();
 		}
 		return convertView;

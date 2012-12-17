@@ -48,10 +48,9 @@ public class MusicAdapter extends BaseAdapter {
 	private Thread workThread;
 	private boolean isLoop;
 	private ArrayList<Task> tasks;
-	private HashMap<String, SoftReference<Bitmap>> caches;
+	private HashMap<String, SoftReference<Bitmap>> caches;//
 
-	public MusicAdapter(Context context, ArrayList<Music> musics,
-			final ListView lvMusics) {
+	public MusicAdapter(Context context, ArrayList<Music> musics, final ListView lvMusics) {
 		this.setMusics(musics);
 		this.inflater = LayoutInflater.from(context);
 		this.caches = new HashMap<String, SoftReference<Bitmap>>();
@@ -64,8 +63,7 @@ public class MusicAdapter extends BaseAdapter {
 						// 获取已完成任务对象
 					Task task = (Task) msg.obj;
 					// 根据图片路径为tag，从listview中查找imageView
-					ImageView iv = (ImageView) lvMusics
-							.findViewWithTag(task.path);
+					ImageView iv = (ImageView) lvMusics.findViewWithTag(task.path);
 					// 如果该imageview未被复用，则在iamgeview上显示图片
 					if (iv != null && task.bitmap != null) {
 						iv.setImageBitmap(task.bitmap);
@@ -88,18 +86,13 @@ public class MusicAdapter extends BaseAdapter {
 							// 获取并移除第一个任务
 							Task task = tasks.remove(0);
 							// 加载图片
-							HttpEntity entity = HttpUtils.getEntity(
-									HttpUtils.BASE_URL + task.path, null,
-									HttpUtils.METHOD_GET);
+							HttpEntity entity = HttpUtils.getEntity(HttpUtils.BASE_URL + task.path, null, HttpUtils.METHOD_GET);
 							byte[] data = EntityUtils.toByteArray(entity);
-							task.bitmap = BitmapUtils
-									.loadBitmap(data, 100, 100);
+							task.bitmap = BitmapUtils.loadBitmap(data, 100, 100);
 							// 向缓存集合中添加图片
-							caches.put(task.path, new SoftReference<Bitmap>(
-									task.bitmap));
+							caches.put(task.path, new SoftReference<Bitmap>(task.bitmap));
 							// 向文件缓存添加图片
-							BitmapUtils.save(task.bitmap, "/mnt/sdcard/"
-									+ task.path);
+							BitmapUtils.save(task.bitmap, "/mnt/sdcard/" + task.path);
 							
 							// 发送消息到主线程
 							Message msg = Message.obtain(handler, 0, task);
@@ -183,10 +176,8 @@ public class MusicAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.ivAlbum = (ImageView) convertView.findViewById(R.id.ivAlbum);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
-			holder.tvDuration = (TextView) convertView
-					.findViewById(R.id.tvDuration);
-			holder.tvSinger = (TextView) convertView
-					.findViewById(R.id.tvSinger);
+			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
+			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
 			convertView.setTag(holder);
 		} else {
@@ -204,12 +195,13 @@ public class MusicAdapter extends BaseAdapter {
 
 		String path = music.getAlbumPath();
 		// 设置图片路径为iamgeview的tag
-		holder.ivAlbum.setTag(path);
+		holder.ivAlbum.setTag(path);//
 
-		// 如果缓存集存在该路径的图片，则直接显示图片，
-		// 否则添加下载任务显示默认图片
+		// 1.如果缓存集存在该路径的图片，则直接显示图片，
+		// 2.如果 sd卡里有 对应的图片，那么 加载sd卡里的图片
+		// 3.否则添加下载任务显示默认图片
 		Bitmap bm = null;
-		if (caches.containsKey(path)) {
+		if (caches.containsKey(path)) {//
 			holder.ivAlbum.setImageBitmap(caches.get(path).get());
 		} else if((bm=BitmapUtils.loadBitmap("/mnt/sdcard/"+path))!=null){
 			holder.ivAlbum.setImageBitmap(bm);

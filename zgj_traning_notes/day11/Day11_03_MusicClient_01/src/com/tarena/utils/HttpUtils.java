@@ -18,7 +18,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 
 public class HttpUtils {
-	public static final String BASE_URL = "http://192.168.1.101:8080/musiconline/";
+	public static final String BASE_URL = "http://10.28.9.164:8080/musiconline/";
 	public static final int METHOD_GET = 1;
 	public static final int METHOD_POST = 2;
 
@@ -41,7 +41,7 @@ public class HttpUtils {
 		client.getParams().setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 3000);
 		
 		// 创建请求对象
-		//HttpGet.HttpPost 是HttpUriRequest的子类，在确定请求方法之前,用HttpUriRequest创建请求对象
+		//HttpGet 和 HttpPost 是HttpUriRequest的子类，在确定请求方法之前,用HttpUriRequest创建请求对象
 		HttpUriRequest request = null;
 		switch (method) {
 		case METHOD_GET:

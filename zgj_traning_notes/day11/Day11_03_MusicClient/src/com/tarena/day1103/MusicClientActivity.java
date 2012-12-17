@@ -44,8 +44,7 @@ public class MusicClientActivity extends Activity {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case MSG_TAG_STARTED:// 开始解析
-				Toast.makeText(MusicClientActivity.this, "正在联网解析xml，请稍候...",
-						3000).show();
+				Toast.makeText(MusicClientActivity.this, "正在联网解析xml，请稍候...", 3000).show();
 				break;
 
 			case MSG_TAG_FINISHED:// 解析完成
@@ -73,8 +72,7 @@ public class MusicClientActivity extends Activity {
 				// 联网解析xml，获取实体集合
 				handler.sendEmptyMessage(MSG_TAG_STARTED);
 				ArrayList<Music> musics = biz.getMusics(
-						"http://192.168.1.101:8080/musiconline/sounds.xml",
-						null, HttpUtils.METHOD_POST);
+						"http://10.28.9.164:8080/musiconline/sounds.xml", null, HttpUtils.METHOD_POST);
 				// 发送消息到主线程更新界面
 				Message msg = Message.obtain(handler, MSG_TAG_FINISHED, musics);
 				msg.sendToTarget();
@@ -100,8 +98,7 @@ public class MusicClientActivity extends Activity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		// 获取当前music信息
-		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
-				.getMenuInfo();
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
 		Music music = (Music) adapter.getItem(menuInfo.position);
 
 		switch (item.getItemId()) {
@@ -114,8 +111,7 @@ public class MusicClientActivity extends Activity {
 			try {
 				String uri = HttpUtils.BASE_URL + music.getMusicPath();
 				String path = "/mnt/sdcard/" + music.getMusicPath();
-				HttpEntity entity = HttpUtils.getEntity(uri, null,
-						HttpUtils.METHOD_GET);
+				HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
 				InputStream in = HttpUtils.getStream(entity);
 				StreamUtils.save(in, path);
 			} catch (ConnectTimeoutException e) {
@@ -146,6 +142,6 @@ public class MusicClientActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		adapter.quit();
+		adapter.quit();//结束工作线程
 	}
 }
