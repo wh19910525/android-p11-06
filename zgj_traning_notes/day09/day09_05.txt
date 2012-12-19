@@ -1,7 +1,7 @@
 可以在 浏览器里 查看 serverlet里的东西，如：
 1、以下是 GET模式查看：
 http://192.168.1.100:8080/stu_server/student  //查看所有信息
-http://192.168.1.100:8080/stu_server/student?sex=male  //查看sex=male的信息
+http://192.168.1.100:8080/stu_server/student?sex=male  //查看sex=male的信息,也就是过滤，注意 前面的问号？，这是规则；
 http://192.168.1.100:8080/stu_server/student?sex=female  //查看 sex=female的信息
 
 
