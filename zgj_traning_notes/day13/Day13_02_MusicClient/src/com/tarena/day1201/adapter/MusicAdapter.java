@@ -21,8 +21,8 @@ public class MusicAdapter extends BaseAdapter {
 
 	private ArrayList<Music> musics;
 	private LayoutInflater inflater;
-	private AsyncImageLoader loader;//
-	private Callback callback;//
+	private AsyncImageLoader loader;
+	private Callback callback;
 
 	public MusicAdapter(Context context, ArrayList<Music> musics, final ListView lvMusics) {//
 		
@@ -31,14 +31,13 @@ public class MusicAdapter extends BaseAdapter {
 		this.callback = new Callback() {
 
 			@Override
-			public void imageLoaded(String path, Bitmap bitmap) {//
+			public void imageLoaded(String path, Bitmap bitmap) {
 				// TODO Auto-generated method stub
 				ImageView iv = (ImageView) lvMusics.findViewWithTag(path);
 				if (iv != null && bitmap != null)
 					iv.setImageBitmap(bitmap);
 			}
 		};
-		
 		this.loader = new AsyncImageLoader();
 	}
 
@@ -112,7 +111,7 @@ public class MusicAdapter extends BaseAdapter {
 		// 设置图片路径为iamgeview的tag
 		holder.ivAlbum.setTag(path);
 		// 加载图片
-		Bitmap bm = loader.loadBitmap(path, callback);//
+		Bitmap bm = loader.loadBitmap(path, callback);
 		// 如果存在缓存图片则显示，否则显示默认图片
 		if (bm != null)
 			holder.ivAlbum.setImageBitmap(bm);

@@ -14,20 +14,17 @@ import android.os.Handler;
 import android.os.Message;
 
 public class AsyncImageLoader {
-	
 	public static final int MSG_TAG_FINISHED = 1;
 	private boolean isLoop;
 	private Thread workThread;
-	private ArrayList<Task> tasks;//
-	private HashMap<String, SoftReference<Bitmap>> caches;//
+	private ArrayList<Task> tasks;
+	private HashMap<String, SoftReference<Bitmap>> caches;
 	private Handler handler;
 
 	public AsyncImageLoader() {
-		
 		this.tasks = new ArrayList<Task>();
 		this.caches = new HashMap<String, SoftReference<Bitmap>>();
 		this.isLoop = true;
-		
 		this.handler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
@@ -35,12 +32,11 @@ public class AsyncImageLoader {
 				case MSG_TAG_FINISHED:// 图片加载完成
 					Task task = (Task) msg.obj;
 					// 回调
-					task.callabck.imageLoaded(task.path, task.bitmap);//
+					task.callabck.imageLoaded(task.path, task.bitmap);
 					break;
 				}
 			}
 		};
-		
 		this.workThread = new Thread() {
 			@Override
 			public void run() {
@@ -125,7 +121,7 @@ public class AsyncImageLoader {
 		private Callback callabck;
 	}
 
-	public interface Callback {//有什么用？
+	public interface Callback {
 		void imageLoaded(String path, Bitmap bitmap);
 	}
 
