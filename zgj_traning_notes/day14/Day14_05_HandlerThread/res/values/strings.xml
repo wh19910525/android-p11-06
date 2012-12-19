@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day14_05_HandlerThreadActivity!</string>
+    <string name="app_name">Day14_05_HandlerThread</string>
+
+</resources>

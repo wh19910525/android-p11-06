@@ -1,0 +1,108 @@
+Notification
+ 构造方法：
+  Notification()
+  Notification(int icon,CharSequence tickerText,long when)
+ 主要属性：
+  int icon
+  CharSequence tickerText
+  long when
+  int defaults
+  int flags
+  PendingIntent contentIntent
+  RemoteViews contentView
+ 方法
+  setLastestEventInfo(Context context,CharSequence contentTitle,CharSequence contentText,PendingIntent contentIntent)
+RemoteViews
+ 构造方法：
+  RemoteViews(String pkgName,int layoutRes)
+ 主要方法：
+  void setTextViewText(int textViewIdRes,CharSequence text)
+  void setTextViewColor(int textViewIdRes,int color)
+  void setProgressBar(int viewId, int max,int progress,boolean indeterminate)
+  void setOnClickPendingIntent(int viewId, PendingIntent pendingIntent)
+进程优先级
+ 1、前台进程
+  1） 包含处于交互状态的activity的进程
+  2） 包含与处于交互状态的Activity绑定的Service的进程
+  3） 包含正在执行生命周期方法的组件的进程
+  4） 包含执行了 setForeground（true）方法的Service的进程
+ 2、可见进程
+  1）包含了处于暂停状态（可见）的Activity的进程
+  2）包含了与处于暂停状态的Activity绑定的Service的进程
+ 3、服务进程
+  包含了正在运行的Service的进程
+ 4、后台进程
+  包含了处于停止状态（不可见）的Activity的进程
+ 5、空进程
+  不包含任何处于生存状态的组件的进程
+ 进程会自动获取其所能获得的最高的优先级
+
+Service
+ 1、Android的四大组件之一
+ 2、是Context
+ 3、不包含界面
+ 4、适合于执行需要长时间在后台执行的任务
+ 5、Service是单例的，即每个Service同一时间内，
+    在Android系统中只能存在一个实例
+ 6、创建Service
+  1）创建一个服务类 扩展自 Service
+  2）在AndroidManifest.xml中使用service标签注册
+ 7、访问Service
+  启动service：
+   context.startService(intent)
+  停止Service 
+   context.stopService(intent)
+   在Service中调用stopSelf()
+   在Service中调用stopSelf(int startId)
+ 8、启动模式下，Service的生命周期
+  onCreate
+  onStartCommand
+  onDestroy
+ 9、绑定到Service的步骤
+  1）在Service中创建Binder类的子类
+  2）在Service的onBind方法中返回上述类的实例
+  3）在Activity中 使用
+     context.bindService（intent,conn,flags）
+  注意：一个客户端(Activity实例)只能绑定到Service一次
+  解绑Service
+   activity.unBind(ServiceConnection conn)
+
+ 10、绑定模式下的service生命周期
+  onCreate
+  onBind    : 在第一绑定到Service时执行此方法
+  onUnbind  ：当最后一个客户端从Service解绑时执行
+  onDestroy
+
+HandlerThread
+ 1、是一个包含了消息队列的线程
+ 2、构造方法：
+  HandlerThread(String name)
+ 3、主要方法：
+  Looper getLooper()
+  void quit()
+ 4、实现原理：
+  在run方法中 执行
+   Looper.prepare()
+   looper = Looper.myLooper();
+   Looper.loop();
+
+IntentService
+ 1、是一个包含了HandlerThread线程对象，以及指向该线程的消息队列的
+    handler的Service
+ 2、工作原理：
+  在onCreate中实例化thread和指向该thread的handler
+  在onStartCommand方法中，通过handler向工作线程中
+  发送消息（包含aintent和startId）。在工作线程中
+  执行handleMessage方法，该方法中调用
+   onHandleIntent（intent）;
+   stopSelf（startId）;
+ 3、构造方法：
+  IntentService(String threadName)
+ 4、主要方法：
+  public abstract void onHandleIntent(Intent intent)
+
+
+练习1、
+ 自定义MyIntentservice，模仿Intentservice
+练习2、
+ 改写MusicClient项目，使用IntentService实现音乐下载
