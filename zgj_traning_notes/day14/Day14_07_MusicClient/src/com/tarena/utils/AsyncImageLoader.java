@@ -46,24 +46,18 @@ public class AsyncImageLoader {
 						try {
 							Task task = tasks.remove(0);
 							// 加载图片
-							HttpEntity entity = HttpUtils.getEntity(
-									HttpUtils.BASE_URL + task.path, null,
-									HttpUtils.METHOD_GET);
+							HttpEntity entity = HttpUtils.getEntity(HttpUtils.BASE_URL + task.path, null, HttpUtils.METHOD_GET);
 							byte[] data = EntityUtils.toByteArray(entity);
-							task.bitmap = BitmapUtils
-									.loadBitmap(data, 100, 100);
+							task.bitmap = BitmapUtils.loadBitmap(data, 100, 100);
 
 							// 添加到缓存集合
-							caches.put(task.path, new SoftReference<Bitmap>(
-									task.bitmap));
+							caches.put(task.path, new SoftReference<Bitmap>(task.bitmap));
 
 							// 添加到文件缓存
-							BitmapUtils.save(task.bitmap, "/mnt/sdcard/"
-									+ task.path);
+							BitmapUtils.save(task.bitmap, "/mnt/sdcard/" + task.path);
 
 							// 发送消息
-							Message msg = Message.obtain(handler,
-									MSG_TAG_FINISHED, task);
+							Message msg = Message.obtain(handler, MSG_TAG_FINISHED, task);
 							msg.sendToTarget();
 						} catch (ConnectTimeoutException e) {
 							// TODO Auto-generated catch block

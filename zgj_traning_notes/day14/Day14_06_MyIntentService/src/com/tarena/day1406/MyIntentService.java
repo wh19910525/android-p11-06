@@ -10,15 +10,24 @@ import android.os.Message;
 import android.util.Log;
 
 public abstract class MyIntentService extends Service {
+	
 	private HandlerThread thread;
 	private Handler handler;
-
+	private String name;
+	public abstract void onHandleIntent(Intent intent);//这是一个 抽象方法，说明 这个类 需要 其他类 继承
+	
+	public MyIntentService(String name)
+	{
+		this.name = name;
+	}
+	
+	
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		Log.i("info", "MyIntentService.onCreate");
-		thread = new HandlerThread("workThread");
+		thread = new HandlerThread(name);
 		thread.start();
 
 		Looper looper = thread.getLooper();
@@ -38,7 +47,6 @@ public abstract class MyIntentService extends Service {
 		};
 	}
 
-	public abstract void onHandleIntent(Intent intent);
 
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {

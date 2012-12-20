@@ -4,10 +4,11 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
-public class MyService extends IntentService {
+public class MyService extends MyIntentService {
+//public class MyService extends IntentService {
 
 	public MyService() {
-		super("workThread");
+		super("whworkThread");
 	}
 	
 //	public MyService(String name){
@@ -22,8 +23,7 @@ public class MyService extends IntentService {
 		if (path != null) {
 			Log.i("info", "ÕýÔÚÏÂÔØ£º" + path);
 			for (int i = 1; i <= 5; i++) {
-				Log.i("info", "thread " + Thread.currentThread().getName()
-						+ ",i=" + i);
+				Log.i("info", "thread " + Thread.currentThread().getName() + ",i=" + i);
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {

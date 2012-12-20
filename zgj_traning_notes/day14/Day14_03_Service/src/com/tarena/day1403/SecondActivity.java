@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 public class SecondActivity extends Activity {
+	
 	private ServiceConnection conn = new ServiceConnection() {
 
 		@Override
@@ -21,7 +22,7 @@ public class SecondActivity extends Activity {
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder service) {
 			// TODO Auto-generated method stub
-			Log.i("info", "FirstActivity.ServiceConnection.onServiceConnected");
+			Log.i("info", "SecondActivity.ServiceConnection.onServiceConnected");
 		}
 	};
 

@@ -24,8 +24,7 @@ public class MusicAdapter extends BaseAdapter {
 	private AsyncImageLoader loader;
 	private Callback callback;
 
-	public MusicAdapter(Context context, ArrayList<Music> musics,
-			final ListView lvMusics) {
+	public MusicAdapter(Context context, ArrayList<Music> musics, final ListView lvMusics) {
 		this.setMusics(musics);
 		this.inflater = LayoutInflater.from(context);
 		this.callback = new Callback() {

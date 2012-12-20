@@ -7,7 +7,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class MyService extends Service {
-	public class MyBinder extends Binder {
+	
+	public class MyBinder extends Binder {//
 
 	}
 
@@ -22,7 +23,7 @@ public class MyService extends Service {
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
 		Log.i("info", "MyService.onBind");
-		return new MyBinder();
+		return new MyBinder();//
 	}
 
 	@Override

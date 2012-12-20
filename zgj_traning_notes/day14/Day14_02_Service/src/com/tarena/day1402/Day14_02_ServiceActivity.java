@@ -12,6 +12,9 @@ import android.util.Log;
 import android.view.View;
 
 public class Day14_02_ServiceActivity extends Activity {
+
+	private MusicPlayService service;
+	
 	private ServiceConnection conn = new ServiceConnection() {
 
 		@Override
@@ -24,10 +27,9 @@ public class Day14_02_ServiceActivity extends Activity {
 		public void onServiceConnected(ComponentName name, IBinder binder) {
 			// TODO Auto-generated method stub
 			Log.i("info", "ServiceConnection.onServiceConnected()");
-			service = ((MyBinder) binder).getService();
+			service = ((MyBinder) binder).getService();//
 		}
 	};
-	private MusicPlayService service;
 
 	public void doClick(View v) {
 		switch (v.getId()) {
@@ -56,7 +58,7 @@ public class Day14_02_ServiceActivity extends Activity {
 		setContentView(R.layout.main);
 		// 绑定到服务
 		Intent intent = new Intent(this, MusicPlayService.class);
-		bindService(intent, conn, BIND_AUTO_CREATE);
+		bindService(intent, conn, BIND_AUTO_CREATE);//
 		startService(intent);
 	}
 
@@ -64,6 +66,7 @@ public class Day14_02_ServiceActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		unbindService(conn);
+		unbindService(conn);//
+		Log.i("wang","activity.onDestroy");
 	}
 }

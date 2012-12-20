@@ -4,15 +4,17 @@ import android.os.Looper;
 import android.util.Log;
 
 public class MyHandlerThread extends Thread {
-	private Looper looper;
+	
+	private Looper looper;//
 
 	public Looper getLooper() {
-		if (!isAlive())
+		if (!isAlive())//
 			return null;
+		
 		if (looper == null) {
-			synchronized (this) {
+			synchronized (this) {//
 				try {
-					this.wait();
+					this.wait();//
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -30,13 +32,14 @@ public class MyHandlerThread extends Thread {
 		Log.i("info", "已创建消息队列");
 		// 获取Looper对象
 		looper = Looper.myLooper();
-		synchronized (this) {
-			this.notifyAll();
-		}
 		Log.i("info", "获取looper对象");
+		synchronized (this) {
+			this.notifyAll();//有什么作用
+		}
+		
 		// 使用looper轮询消息队列
 		Log.i("info", "开始轮询");
-		Looper.loop();
+		Looper.loop();//
 		Log.i("info", "轮询结束");
 		Log.i("info", "工作线程执行结束");
 	}

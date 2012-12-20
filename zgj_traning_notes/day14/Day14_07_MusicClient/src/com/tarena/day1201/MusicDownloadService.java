@@ -23,6 +23,7 @@ import com.tarena.utils.HttpUtils;
 import com.tarena.utils.StreamUtils;
 
 public class MusicDownloadService extends IntentService {
+	
 	private Handler handler;
 	private Notification noti;
 	private NotificationManager manager;
@@ -42,55 +43,44 @@ public class MusicDownloadService extends IntentService {
 		// TODO Auto-generated method stub
 		super.onCreate();//一定不可以删除
 		manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-		noti = new Notification(android.R.drawable.ic_notification_overlay,
-				"下载提示", System.currentTimeMillis());
+		noti = new Notification(android.R.drawable.ic_notification_overlay, "下载提示", System.currentTimeMillis());
 		noti.defaults = Notification.DEFAULT_LIGHTS;
 		noti.flags = Notification.FLAG_NO_CLEAR;
-		noti.contentIntent = PendingIntent.getActivity(this, 0, new Intent(
-				this, MusicClientActivity.class),
+		noti.contentIntent = PendingIntent.getActivity(this, 0, 
+				new Intent(this, MusicClientActivity.class),
 				PendingIntent.FLAG_UPDATE_CURRENT);
-		noti.contentView = new RemoteViews(getPackageName(),
-				R.layout.layout_noti);
+		noti.contentView = new RemoteViews(getPackageName(), R.layout.layout_noti);
 
 		handler = new Handler() {//将消息发到主线程进行处理
 			@Override
 			public void handleMessage(Message msg) {
 				switch (msg.what) {
 				case GlobalUtils.MSG_TAG_EXISTS:// 文件已存在
-					Toast.makeText(MusicDownloadService.this, "文件已存在，请勿重复下载.",
-							3000).show();
+					Toast.makeText(MusicDownloadService.this, "文件已存在，请勿重复下载.", 3000).show();
 					break;
 				case GlobalUtils.MSG_TAG_STARTED:// 开始下载
-					noti.contentView
-							.setTextViewText(R.id.tvFileName, musicName);
-					noti.contentView.setTextViewText(R.id.tvFileLength,
-							format(fileLength));
-					noti.contentView.setTextViewText(R.id.tvLoadedLength,
-							format(0));
-					noti.contentView.setProgressBar(R.id.progressBar1,
-							fileLength, 0, false);
+					noti.contentView.setTextViewText(R.id.tvFileName, musicName);
+					noti.contentView.setTextViewText(R.id.tvFileLength, format(fileLength));
+					noti.contentView.setTextViewText(R.id.tvLoadedLength, format(0));
+					noti.contentView.setProgressBar(R.id.progressBar1, fileLength, 0, false);
 					manager.notify(0, noti);
 					break;
 				case GlobalUtils.MSG_TAG_UPDATE_PROGRESS:// 下载进度变更
-					noti.contentView.setTextViewText(R.id.tvLoadedLength,
-							format(msg.arg1));
-					noti.contentView.setProgressBar(R.id.progressBar1,
-							fileLength, msg.arg1, false);
+					noti.contentView.setTextViewText(R.id.tvLoadedLength, format(msg.arg1));
+					noti.contentView.setProgressBar(R.id.progressBar1, fileLength, msg.arg1, false);
 					manager.notify(0, noti);
 					break;
 				case GlobalUtils.MSG_TAG_FAILED:// 下载失败
 					Notification noti1 = new Notification(
-							android.R.drawable.ic_notification_overlay, "下载失败",
-							System.currentTimeMillis());
+							android.R.drawable.ic_notification_overlay, "下载失败", System.currentTimeMillis());
 					noti1.defaults = Notification.DEFAULT_LIGHTS;
 					noti1.flags = Notification.FLAG_NO_CLEAR;
-					noti1.setLatestEventInfo(MusicDownloadService.this, "下载失败",
-							"文件下载失败。", PendingIntent.getActivity(
-									MusicDownloadService.this, 0, new Intent(
-											MusicDownloadService.this,
-											MusicClientActivity.class),
+					noti1.setLatestEventInfo(MusicDownloadService.this, "下载失败", "文件下载失败。", 
+							PendingIntent.getActivity(MusicDownloadService.this, 0, 
+									new Intent(MusicDownloadService.this, MusicClientActivity.class),
 									PendingIntent.FLAG_UPDATE_CURRENT));
 					manager.notify(1, noti1);
+					
 				case GlobalUtils.MSG_TAG_FINISHED:// 下载完成
 					manager.cancel(0);
 					break;
@@ -106,7 +96,7 @@ public class MusicDownloadService extends IntentService {
 	 * 此方法在工作线程中运行，用于执行具体的任务逻辑
 	 */
 	@Override
-	protected void onHandleIntent(Intent intent) {//在工作线程中进行来自主线程发来消息的处理
+	protected void onHandleIntent(Intent intent) {//在工作线程中 对 来自主线程的消息 进行处理
 		// TODO Auto-generated method stub
 		// 从intent中获取要下载的音乐路径和保存路径
 		String uri = intent.getStringExtra("uri");
@@ -114,19 +104,17 @@ public class MusicDownloadService extends IntentService {
 		// 判断是否已存在该文件
 		File file = new File(path);
 		if (file.exists()) {
-			Message msg = Message.obtain(handler, GlobalUtils.MSG_TAG_EXISTS,
-					path);
+			Message msg = Message.obtain(handler, GlobalUtils.MSG_TAG_EXISTS, path);
 			msg.sendToTarget();
 			return;
 		}
 		// 下载
 		
 			try {
-				HttpEntity entity = HttpUtils.getEntity(uri, null,
-						HttpUtils.METHOD_GET);
+				HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
 				fileLength = (int) HttpUtils.getLength(entity);
-				musicName = file.getName();
-				handler.sendEmptyMessage(GlobalUtils.MSG_TAG_STARTED);//将工作线程的消息发到主线程的handler中
+				musicName = file.getName();//
+				handler.sendEmptyMessage(GlobalUtils.MSG_TAG_STARTED);//将工作线程的消息   发到主线程的handler中
 				InputStream in = HttpUtils.getStream(entity);
 				StreamUtils.save(in, path, handler);
 				handler.sendEmptyMessage(GlobalUtils.MSG_TAG_FINISHED);
@@ -138,17 +126,13 @@ public class MusicDownloadService extends IntentService {
 				e.printStackTrace();
 			}
 	
-			Message msg = Message.obtain(handler, GlobalUtils.MSG_TAG_FAILED,
-					uri);
+			Message msg = Message.obtain(handler, GlobalUtils.MSG_TAG_FAILED, uri);//以下  这两次 操作 有什么用？
 			msg.sendToTarget();
 	
 			// TODO Auto-generated catch block
 			
-			Message msg1 = Message.obtain(handler, GlobalUtils.MSG_TAG_FAILED,
-					uri);
+			Message msg1 = Message.obtain(handler, GlobalUtils.MSG_TAG_FAILED, uri);
 			msg1.sendToTarget();
-		
-
 	}
 
 }

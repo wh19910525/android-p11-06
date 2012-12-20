@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Day14_06_MyIntentServiceActivity extends Activity {
+	
 	private EditText etName;
 
 	private void setupView() {

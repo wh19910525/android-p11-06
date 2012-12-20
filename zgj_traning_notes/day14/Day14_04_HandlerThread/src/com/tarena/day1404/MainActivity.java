@@ -9,8 +9,9 @@ import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends Activity {
+	
 	private Handler handler;
-	private MyHandlerThread thread;
+	private MyHandlerThread thread;//
 
 	/** Called when the activity is first created. */
 	@Override
@@ -18,22 +19,23 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		thread = new MyHandlerThread();
-		thread.start();
+		thread.start();//调用 run；
 
 		Looper looper = thread.getLooper();
+		
 		handler = new Handler(looper) {
 			@Override
 			public void handleMessage(Message msg) {
 				// TODO Auto-generated method stub
-				Log.i("info", "在线程：" + Thread.currentThread().getName()
-						+ "中,执行handleMessage方法，msg.obj=" + msg.obj);
+				Log.i("info", "在线程：" + Thread.currentThread().getName() + "中,执行handleMessage方法，msg.obj=" + msg.obj);
+			
 			}
 		};
 	}
 
 	public void doClick(View v) {
 		Message msg = Message.obtain();
-		msg.obj = "这是一条消息，创建于：" + Thread.currentThread().getName();
+		msg.obj = "这是一条消息，创建于：" + Thread.currentThread().getName() + "线程";
 		handler.sendMessage(msg);
 		Log.i("info", "消息已发送，在线程：" + Thread.currentThread().getName());
 	}

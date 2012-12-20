@@ -7,9 +7,11 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class MusicPlayService extends Service {
+	
 	public class MyBinder extends Binder {
+		
 		public MusicPlayService getService() {
-			return MusicPlayService.this;
+			return MusicPlayService.this;//
 		}
 	}
 
@@ -24,7 +26,7 @@ public class MusicPlayService extends Service {
 	public IBinder onBind(Intent intent) {
 		// TODO Auto-generated method stub
 		Log.i("info", "MusicPlayService.onBind()");
-		return new MyBinder();
+		return new MyBinder();//
 	}
 
 	@Override

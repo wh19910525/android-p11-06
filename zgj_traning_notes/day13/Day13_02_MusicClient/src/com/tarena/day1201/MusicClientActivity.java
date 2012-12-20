@@ -29,11 +29,8 @@ import android.widget.Toast;
 import com.tarena.biz.MusicBiz;
 import com.tarena.day1201.adapter.MusicAdapter;
 import com.tarena.entity.Music;
-import com.tarena.entity.MusicDownloadTask;
 import com.tarena.utils.HttpUtils;
-import com.tarena.utils.MusicDownloadUtils;
 import com.tarena.utils.MusicXmlParser;
-import com.tarena.utils.StreamUtils;
 
 public class MusicClientActivity extends Activity {
 	private static final int MENU_CONTEXT_DETAILS = 1;

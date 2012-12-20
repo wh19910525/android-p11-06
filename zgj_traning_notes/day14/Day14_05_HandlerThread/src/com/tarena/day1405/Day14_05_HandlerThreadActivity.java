@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 public class Day14_05_HandlerThreadActivity extends Activity {
+	
 	private HandlerThread thread;
 	private Handler handler;
 
@@ -19,7 +20,7 @@ public class Day14_05_HandlerThreadActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		thread = new HandlerThread("handlerThread");
+		thread = new HandlerThread("handlerThread");//对比day14_04
 		thread.start();
 		Looper looper = thread.getLooper();
 
@@ -27,8 +28,7 @@ public class Day14_05_HandlerThreadActivity extends Activity {
 			@Override
 			public void handleMessage(Message msg) {
 				// TODO Auto-generated method stub
-				Log.i("info", "handleMessage 运行在线程："
-						+ Thread.currentThread().getName());
+				Log.i("info", "handleMessage 运行在线程：" + Thread.currentThread().getName());
 				Log.i("info", "msg.obj=" + msg.obj);
 			}
 		};
