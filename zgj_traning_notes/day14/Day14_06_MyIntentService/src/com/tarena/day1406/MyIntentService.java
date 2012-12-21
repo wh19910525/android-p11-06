@@ -27,11 +27,11 @@ public abstract class MyIntentService extends Service {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		Log.i("info", "MyIntentService.onCreate");
-		thread = new HandlerThread(name);
+		thread = new HandlerThread(name);//
 		thread.start();
 
 		Looper looper = thread.getLooper();
-		handler = new Handler(looper) {
+		handler = new Handler(looper) {//
 			/**
 			 * 此方法运行于工作线程 workThread中
 			 */

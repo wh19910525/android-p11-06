@@ -18,7 +18,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreConnectionPNames;
 
 public class HttpUtils {
-	public static final String BASE_URL = "http://10.28.9.164:8080/musiconline/";
+	public static final String BASE_URL = "http://172.16.5.36:8080/musiconline/";
 	public static final int METHOD_GET = 1;
 	public static final int METHOD_POST = 2;
 
@@ -58,7 +58,7 @@ public class HttpUtils {
 			break;
 		case METHOD_POST:
 			request = new HttpPost(uri);
-			if (params != null && !params.isEmpty()) {//UrlEncodedFormEntity是HttpEntity的多层间接子类
+			if (params != null && !params.isEmpty()) {
 				UrlEncodedFormEntity reqEntity = new UrlEncodedFormEntity(
 						params);
 				((HttpPost) request).setEntity(reqEntity);
@@ -77,7 +77,7 @@ public class HttpUtils {
 	public static InputStream getStream(HttpEntity entity) throws IOException {
 		InputStream in = null;
 		if (entity != null) {
-			in = entity.getContent();//得到响应体的流
+			in = entity.getContent();
 		}
 
 		return in;

@@ -21,42 +21,36 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Day14_08_MyAsyncTaskActivity extends Activity {
+	
 	private ImageView ivPic;
-	private Handler handler;
 
 	private void setupView() {
 		ivPic = (ImageView) findViewById(R.id.ivPic);
 	}
 
 	public void doClick(View v) {
-		MyTask task = new MyTask();
-		task.execute("http://192.168.1.102:8080/test/imgs/p4.jpg");
+		MyTask task = new MyTask();//
+		task.execute("http://10.28.9.164:8080/test/imgs/p4.jpg");
 	}
 
-	/** Called when the activity is first created. */
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		setupView();
-	}
-
-	private abstract class MyAsyncTask<Params, Progress, Result> {
-		private Handler handler;
+	private abstract class MyAsyncTask<Params, Progress, Result> {//
+		
+		private Handler handler;//
 
 		public MyAsyncTask() {
+			Log.i("father", "ok!");
 			handler = new Handler() {
 				@Override
 				public void handleMessage(Message msg) {
 					// TODO Auto-generated method stub
-					Log.i("info", "abstract class"+Thread.currentThread().getName());
+					Log.i("info", "abstract class: "+Thread.currentThread().getName());
 					switch (msg.what) {
 					case 0:// 异步任务执行完成
-						onPostExecute((Result) msg.obj);
+						onPostExecute((Result) msg.obj);//
 						break;
 
 					case 1:// 进度更新
-						onUpdateProgress((Progress) msg.obj);
+						onUpdateProgress((Progress) msg.obj);//
 						break;
 					}
 				}
@@ -65,12 +59,12 @@ public class Day14_08_MyAsyncTaskActivity extends Activity {
 
 		public void execute(final Params uri) {
 			// 准备工作
-			onPreExecute();
+			onPreExecute();//
 			// 启动工作线程，执行异步任务
 			new Thread() {
 				public void run() {
 					// 执行异步任务
-					Result bm = doInBackground(uri);
+					Result bm = doInBackground(uri);//
 
 					// 发送消息回主线程
 					Message msg = Message.obtain();
@@ -110,9 +104,7 @@ public class Day14_08_MyAsyncTaskActivity extends Activity {
 			Bitmap bm = null;
 			try {
 				// 加载图片
-				HttpEntity entity = HttpUtils.getEntity(
-						uri, null,
-						HttpUtils.METHOD_GET);
+				HttpEntity entity = HttpUtils.getEntity(uri, null, HttpUtils.METHOD_GET);
 				publishProgress("连接服务端，获取响应实体");
 
 				InputStream is = HttpUtils.getStream(entity);
@@ -139,9 +131,16 @@ public class Day14_08_MyAsyncTaskActivity extends Activity {
 		@Override
 		public void onUpdateProgress(String progress) {
 			// TODO Auto-generated method stub
-			Toast.makeText(Day14_08_MyAsyncTaskActivity.this, progress, 3000)
-					.show();
+			Toast.makeText(Day14_08_MyAsyncTaskActivity.this, progress, 3000).show();
 		}
-
 	}
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		setupView();
+	}
+
 }

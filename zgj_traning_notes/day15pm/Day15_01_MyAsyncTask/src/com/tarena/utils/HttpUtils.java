@@ -58,7 +58,7 @@ public class HttpUtils {
 			break;
 		case METHOD_POST:
 			request = new HttpPost(uri);
-			if (params != null && !params.isEmpty()) {//UrlEncodedFormEntity是HttpEntity的多层间接子类
+			if (params != null && !params.isEmpty()) {
 				UrlEncodedFormEntity reqEntity = new UrlEncodedFormEntity(
 						params);
 				((HttpPost) request).setEntity(reqEntity);
@@ -77,7 +77,7 @@ public class HttpUtils {
 	public static InputStream getStream(HttpEntity entity) throws IOException {
 		InputStream in = null;
 		if (entity != null) {
-			in = entity.getContent();//得到响应体的流
+			in = entity.getContent();
 		}
 
 		return in;
