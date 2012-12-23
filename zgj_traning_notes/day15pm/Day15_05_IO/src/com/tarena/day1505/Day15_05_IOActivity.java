@@ -27,9 +27,9 @@ public class Day15_05_IOActivity extends Activity {
         		file.getParentFile().mkdirs();
         	}
         	try {
-				//从原生资源目录向数据库目录复制数据库文件
+				//从原生资源目录 向数据库目录复制数据库文件
 				InputStream in = getAssets().open("media.db");
-				BufferedInputStream is = new BufferedInputStream(in);
+				BufferedInputStream is = new BufferedInputStream(in);//
 				FileOutputStream out = new FileOutputStream(file);
 				BufferedOutputStream os = new BufferedOutputStream(out);
 				int len = -1;

@@ -16,9 +16,9 @@ import com.tarena.day1201.MusicClientActivity;
 import com.tarena.entity.Music;
 import com.tarena.utils.MyAsyncTask;
 
-public class MusicXmlParseTask extends
-		MyAsyncTask<String, String, ArrayList<Music>> {
-	private MusicClientActivity context;
+public class MusicXmlParseTask extends MyAsyncTask<String, String, ArrayList<Music>> {
+	
+	private MusicClientActivity context;//
 
 	public MusicXmlParseTask(MusicClientActivity context) {
 		this.context = context;
@@ -28,8 +28,7 @@ public class MusicXmlParseTask extends
 	public ArrayList<Music> doInBackground(String params) {
 		ArrayList<Music> musics = null;
 		try {
-			HttpEntity entity = HttpUtils.getEntity(params, null,
-					HttpUtils.METHOD_GET);
+			HttpEntity entity = HttpUtils.getEntity(params, null, HttpUtils.METHOD_GET);
 			publishProgress("访问服务端，获取响应实体对象");
 
 			InputStream in = HttpUtils.getStream(entity);
@@ -37,6 +36,7 @@ public class MusicXmlParseTask extends
 
 			musics = new MusicXmlParser().parse(in);
 			publishProgress("xml解析完成");
+			
 		} catch (ConnectTimeoutException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -20,8 +20,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class Day15_03_AsyncTaskActivity extends Activity {
+	
 	private ImageView ivPic;
 	private MyTask task;
+	
 	private void setupView() {
 		ivPic = (ImageView) findViewById(R.id.ivPic);
 	}
@@ -30,23 +32,13 @@ public class Day15_03_AsyncTaskActivity extends Activity {
 		task.execute("http://192.168.1.101:8080/test/imgs/p3.jpg");
 	}
 
-	/** Called when the activity is first created. */
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		setupView();
-		task = new MyTask();
-	}
-
-	private class MyTask extends AsyncTask<String, String, Bitmap> {
+	private class MyTask extends AsyncTask<String, String, Bitmap> {//
 
 		@Override
 		protected Bitmap doInBackground(String... params) {
 			Bitmap bm = null;
 			try {
-				HttpEntity entity = HttpUtils.getEntity(params[0], null,
-						HttpUtils.METHOD_GET);
+				HttpEntity entity = HttpUtils.getEntity(params[0], null, HttpUtils.METHOD_GET);
 				publishProgress("连接服务端，获取响应实体对象");
 
 				InputStream in = HttpUtils.getStream(entity);
@@ -79,8 +71,7 @@ public class Day15_03_AsyncTaskActivity extends Activity {
 
 		@Override
 		protected void onProgressUpdate(String... values) {
-			Toast.makeText(Day15_03_AsyncTaskActivity.this, values[0], 3000)
-					.show();
+			Toast.makeText(Day15_03_AsyncTaskActivity.this, values[0], 3000).show();
 		}
 
 		@Override
@@ -88,8 +79,15 @@ public class Day15_03_AsyncTaskActivity extends Activity {
 			// TODO Auto-generated method stub
 			super.onCancelled();
 		}
-		
-		
-
 	}
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		setupView();
+		task = new MyTask();
+	}
+
 }

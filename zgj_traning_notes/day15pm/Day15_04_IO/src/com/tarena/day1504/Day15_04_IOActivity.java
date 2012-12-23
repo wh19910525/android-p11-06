@@ -26,19 +26,32 @@ public class Day15_04_IOActivity extends Activity {
 		// File file = getDatabasePath("user.db");
 		// File file = getExternalCacheDir();
 		// File file = getExternalFilesDir(Environment.DIRECTORY_DCIM);
+		
 		// File file = Environment.getDataDirectory();
-		// File file = Environment.getDownloadCacheDirectory();
 		// File file = Environment.getDownloadCacheDirectory();
 		// File file = Environment.getRootDirectory();
 		// File file = Environment.getExternalStorageDirectory();
 
 		String state = Environment.getExternalStorageState();
 		if (Environment.MEDIA_MOUNTED.equals(state)) {
-			File file = Environment
-					.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
+			File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
 			Log.i("info", "file=" + file);
 		}
 
+		File ttt = new File("/sdcard/image/", "2.jpg/");
+		if (ttt.isFile())
+			Log.i("wh", "这是一个文件！");
+		else
+			Toast.makeText(this, "这不是一个文件！", 3000).show();
+		if (ttt.isDirectory())
+			Log.i("wh", "这是一个目录！");
+		else
+			Toast.makeText(this, "这不是一个目录！", 3000).show();
+		
+		String wanghai = ttt.getParent();
+		Log.i("wh", wanghai);
+		String zgj = ttt.getParentFile().toString();
+		Log.i("zgj", zgj);
 		// File root = new File("/");
 		// String[] fileNames = root.list();
 		// for (String fileName : fileNames) {

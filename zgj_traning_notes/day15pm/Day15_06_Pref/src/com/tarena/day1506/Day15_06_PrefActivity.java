@@ -16,17 +16,14 @@ public class Day15_06_PrefActivity extends Activity {
 		setContentView(R.layout.main);
 
 		// 获取Preferences对象
-		// SharedPreferences pref = getPreferences(MODE_PRIVATE);
-		// SharedPreferences pref = getSharedPreferences("myPref",
-		// MODE_PRIVATE);
-		SharedPreferences pref = PreferenceManager
-				.getDefaultSharedPreferences(this);
+		SharedPreferences pref = getPreferences(MODE_PRIVATE);
+		//  SharedPreferences pref = getSharedPreferences("myPrefwh", MODE_PRIVATE);
+		//SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
 		// 获取Editor
 		Editor editor = pref.edit();
 		// 编辑偏好设置
-		editor.putString("name", "张三").putInt("age", 18)
-				.putBoolean("sex", true)
-				.putLong("birthday", System.currentTimeMillis())
+		editor.putString("name", "张三").putInt("age", 123345)
+				.putBoolean("sex", true).putLong("birthday", System.currentTimeMillis())
 				.putFloat("weight", 59.5f).commit();
 
 		editor.putString("name", "李四").remove("weight").commit();

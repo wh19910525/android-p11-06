@@ -87,8 +87,7 @@ public class MusicClientActivity extends Activity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		// 获取当前music信息
-		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
-				.getMenuInfo();
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
 		Music music = (Music) adapter.getItem(menuInfo.position);
 
 		switch (item.getItemId()) {
