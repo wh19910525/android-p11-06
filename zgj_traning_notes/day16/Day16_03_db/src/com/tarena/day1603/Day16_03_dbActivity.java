@@ -13,10 +13,11 @@ public class Day16_03_dbActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
+		//db 执行的 sql语句无返回值，所以 只能 执行 增 删 改 语句;
 		SQLiteDatabase db = openOrCreateDatabase("user.db", MODE_PRIVATE, null);
 		db.execSQL("create table if not exists usertbl("
-				+ "_id integer primary key autoincrement,"
-				+ "username text not null," + "userpass text not null" + ")");
+				+ "_id integer primary key autoincrement,"//主键 自动创建
+				+ "username text not null," + "userpass text not null" + ")");//每次 执行insert 本 字段 不能为空
 
 		db.execSQL("insert into usertbl(username,userpass) values('admin','123456')");
 		db.execSQL("insert into usertbl(username,userpass) values('zhangsan','111111')");
@@ -27,11 +28,13 @@ public class Day16_03_dbActivity extends Activity {
 
 		db.execSQL("delete from usertbl where username='zhangsan'");
 
+		//如果执行查询语句 只能 用 游标Cursor，这样可以返回值;
 		Cursor c = db.rawQuery("select * from usertbl where username like ?", new String[] { "%a%" });//什么意思？
-		
+		// * 代表 所有 字段 ，？代表任意一个字符，%a%代表  ？取 a值;
+		///moveTonext 第一次 指向 第一条，第二次 指向 第二条，以此类推;
 		while (c.moveToNext()) {
-			int id = c.getInt(c.getColumnIndex("_id"));
-			String name = c.getString(c.getColumnIndex("username"));
+			int id = c.getInt(c.getColumnIndex("_id"));//获取_id这一字段的id值
+			String name = c.getString(c.getColumnIndex("username"));//获取username这一字段的 值
 			String pass = c.getString(c.getColumnIndex("userpass"));
 			Log.i("info", id + "," + name + "," + pass);
 		}
