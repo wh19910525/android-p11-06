@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends Activity {
+	
 	private EditText etName, etPassword;
 	private CheckBox chkSaveName;
 	private SharedPreferences pref;
@@ -39,7 +40,7 @@ public class LoginActivity extends Activity {
 			String name = etName.getText().toString();
 			String password = etPassword.getText().toString();
 			// 登录验证
-			if ("admin".equals(name) && "password".equals(password)) {
+			if ("www".equals(name) && "123".equals(password)) {
 				// 记住用户名
 				Editor editor = pref.edit();
 				if (chkSaveName.isChecked()) {

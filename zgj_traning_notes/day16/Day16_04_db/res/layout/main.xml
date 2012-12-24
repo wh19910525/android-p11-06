@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <TextView android:text="姓名" />
+
+        <EditText android:id="@+id/etName" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="性别" />
+
+        <EditText android:id="@+id/etSex" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="年龄" />
+
+        <EditText android:id="@+id/etAge" />
+    </TableRow>
+
+    <Button
+        android:onClick="doClick"
+        android:text="确定" />
+
+</TableLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_col_entries">
+        <item>按歌名排序</item>
+        <item>按歌手排序</item>
+        <item>按时长排序</item>
+        <item>按专辑排序</item>
+    </string-array>
+    <string-array  name="sort_col_entry_values">
+        <item >1</item>
+        <item >2</item>
+        <item >3</item>
+        <item >4</item>
+    </string-array>
+</resources>

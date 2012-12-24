@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFCCCCCC"
+        android:text="选择显示列"
+        android:textColor="#FFFFFFFF"
+        android:textSize="18sp" />
+
+    <CheckBox
+        android:id="@+id/chkAlbum"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="显示专辑名" />
+
+    <CheckBox
+        android:id="@+id/chkSinger"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="显示歌手名" />
+
+    <CheckBox
+        android:id="@+id/chkDuration"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="显示时长" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFCCCCCC"
+        android:text="选择排序方式"
+        android:textColor="#FFFFFFFF"
+        android:textSize="18sp" />
+    
+    <RadioGroup 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/rgSortCol"
+        android:checkedButton="@+id/rdoMusicName"
+        >
+        <RadioButton 
+            android:id="@id/rdoMusicName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="按歌名排序"
+            />
+        <RadioButton 
+            android:id="@+id/rdoAlbum"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="按专辑排序"
+            />
+        <RadioButton 
+            android:id="@+id/rdoSinger"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="按歌手排序"
+            />
+        <RadioButton 
+            android:id="@+id/rdoDuration"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="按时长排序"
+            />
+    </RadioGroup>
+
+</LinearLayout>

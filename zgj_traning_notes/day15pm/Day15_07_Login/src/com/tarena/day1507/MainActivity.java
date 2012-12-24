@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	
 	private TextView tvInfo;
 
 	private void setupView() {

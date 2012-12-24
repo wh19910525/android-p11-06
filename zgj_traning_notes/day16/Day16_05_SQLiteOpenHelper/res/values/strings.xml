@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day16_05_SQLiteOpenHelperActivity!</string>
+    <string name="app_name">Day16_05_SQLiteOpenHelper</string>
+
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceScreen android:title="显示风格" 
+        android:summary="设置显示列" >
+         
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_show_album"
+            android:summaryOff="不显示专辑名"
+            android:summaryOn="显示专辑名"
+            android:title="专辑名" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_show_Singer"
+            android:summaryOff="不显示歌手姓名"
+            android:summaryOn="显示歌手姓名"
+            android:title="歌手" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="pref_show_Duration"
+            android:summaryOff="不显示时长信息"
+            android:summaryOn="显示时长信息"
+            android:title="时长" />
+    </PreferenceScreen>
+    
+    <PreferenceScreen android:title="排序方式" >
+        <ListPreference
+            android:defaultValue="@string/sort_col_default_value"
+            android:dialogIcon="@android:drawable/ic_dialog_info"
+            android:dialogTitle="请选择排序方式"
+            android:entries="@array/sort_col_entries"
+            android:entryValues="@array/sort_col_entry_values"
+            android:key="pref_sort_col"
+            android:summary="选择排序方式"
+            android:title="排序" />
+    </PreferenceScreen>
+    
+    <PreferenceScreen android:title="来源网站" >
+        <EditTextPreference
+            android:defaultValue="http://www.music.com"
+            android:dialogIcon="@android:drawable/ic_dialog_info"
+            android:dialogMessage="请输入音乐信息来源网站的网址"
+            android:dialogTitle="输入"
+            android:key="pref_web_site"
+            android:summary="请输入音乐信息的来源网站"
+            android:title="音乐网站" />
+    </PreferenceScreen>
+
+</PreferenceScreen>
