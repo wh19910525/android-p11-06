@@ -7,6 +7,7 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.Log;
 
 public class StuProvider extends ContentProvider {
 	
@@ -19,7 +20,7 @@ public class StuProvider extends ContentProvider {
 	static {//什么意思 这个static？
 		matcher = new UriMatcher(UriMatcher.NO_MATCH);
 		matcher.addURI("com.tarena.providers.stu", "student", MULTI_MUSIC);
-		matcher.addURI("com.tarena.providers.stu", "student/#", SINGLE_MUSIC);
+		matcher.addURI("com.tarena.providers.stu", "student/#", SINGLE_MUSIC);//这是个站位符;
 	}
 
 	@Override
@@ -31,6 +32,7 @@ public class StuProvider extends ContentProvider {
 			break;
 		case SINGLE_MUSIC:
 			where = "_id=" + uri.getLastPathSegment();
+			Log.i("delete:", where);
 			if (selection != null)
 				where += " and (" + selection + ")";
 			break;
@@ -56,6 +58,8 @@ public class StuProvider extends ContentProvider {
 	public Uri insert(Uri uri, ContentValues values) {
 		if (matcher.match(uri) != MULTI_MUSIC) {
 			throw new IllegalArgumentException("未知uri:" + uri);
+		}else{
+			Log.i("insert:","ContentProvider -- insert");
 		}
 
 		SQLiteDatabase db = helper.getWritableDatabase();
@@ -86,8 +90,7 @@ public class StuProvider extends ContentProvider {
 		}
 
 		SQLiteDatabase db = helper.getReadableDatabase();
-		Cursor c = db.query("stutbl", projection, where, selectionArgs, null,
-				null, sortOrder);
+		Cursor c = db.query("stutbl", projection, where, selectionArgs, null, null, sortOrder);
 		return c;
 	}
 
