@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day17_0301_ContentResolverActivity!</string>
+    <string name="app_name">Day17_0301_ContentResolver</string>
+
+</resources>

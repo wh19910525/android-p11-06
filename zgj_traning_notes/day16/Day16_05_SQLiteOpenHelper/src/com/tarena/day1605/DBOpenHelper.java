@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
+	
 	public DBOpenHelper(Context context) {
 		super(context, "stu.db", null, 1);
 	}
@@ -19,7 +20,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 	}
 
 	public DBOpenHelper(Context context, int version) {
-		super(context, "stu.db", null, 1);
+		super(context, "stu.db", null, version);
 	}
 
 	@Override
