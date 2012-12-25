@@ -20,6 +20,7 @@ import com.tarena.entity.Music;
 import com.tarena.utils.GlobalUtils;
 
 public class MainActivity extends Activity {
+	
 	private static final int MENU_OPTS_ADD = 1;
 	private static final int MENU_OPTS_EXIT = 2;
 	private static final int MENU_CONTEXT_DETAILS = 3;

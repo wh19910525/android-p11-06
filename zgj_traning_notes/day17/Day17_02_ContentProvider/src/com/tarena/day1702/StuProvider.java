@@ -9,12 +9,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 
 public class StuProvider extends ContentProvider {
+	
 	private static final int MULTI_MUSIC = 1;
 	private static final int SINGLE_MUSIC = 2;
 
 	private DBOpenHelper helper;
 	private static UriMatcher matcher;
-	static {
+	
+	static {//什么意思 这个static？
 		matcher = new UriMatcher(UriMatcher.NO_MATCH);
 		matcher.addURI("com.tarena.providers.stu", "student", MULTI_MUSIC);
 		matcher.addURI("com.tarena.providers.stu", "student/#", SINGLE_MUSIC);
@@ -65,14 +67,6 @@ public class StuProvider extends ContentProvider {
 		return null;
 	}
 
-	@Override
-	public boolean onCreate() {
-		// TODO Auto-generated method stub
-		helper = new DBOpenHelper(getContext());
-		if (helper != null)
-			return true;
-		return false;
-	}
 
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection,
@@ -98,8 +92,7 @@ public class StuProvider extends ContentProvider {
 	}
 
 	@Override
-	public int update(Uri uri, ContentValues values, String selection,
-			String[] selectionArgs) {
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		String where = null;
 		switch (matcher.match(uri)) {
 		case MULTI_MUSIC:
@@ -122,4 +115,13 @@ public class StuProvider extends ContentProvider {
 		return count;
 	}
 
+	@Override
+	public boolean onCreate() {
+		// TODO Auto-generated method stub
+		helper = new DBOpenHelper(getContext());
+		if (helper != null)
+			return true;
+		
+		return false;
+	}
 }

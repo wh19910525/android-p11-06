@@ -1,13 +1,4 @@
-day11_03 以下函数 什么时候 调用？
-
-	public void quit() {//什么时候调用
-		isLoop = false;
-		synchronized (workThread) {
-			workThread.notify();
-		}
-	}
-
-
+day17_01 布局为什么 不能 看到 按键，当 把 按键的布局 上移之后，报错；
 
 
 

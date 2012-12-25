@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class UserDao {
+	
 	private DBOpenHelper helper;
 
 	public UserDao(Context context) {
@@ -15,7 +16,7 @@ public class UserDao {
 
 	public boolean isExists(User user) {
 		boolean exists = false;
-		SQLiteDatabase db = helper.getReadableDatabase();
+		SQLiteDatabase db = helper.getReadableDatabase();//
 		Cursor c = db.rawQuery(
 				"select * from usertbl where username=? and userpass=?",
 				new String[] { user.getName(), user.getPassword() });

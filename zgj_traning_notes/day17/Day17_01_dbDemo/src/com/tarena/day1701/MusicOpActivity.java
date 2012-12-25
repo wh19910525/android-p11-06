@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MusicOpActivity extends Activity {
+	
 	private int opType;
 	private MusicBiz biz;
 	private EditText etName, etAlbum, etSinger, etAuthor, etComposer,
@@ -84,8 +85,7 @@ public class MusicOpActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.music_op);
-		opType = getIntent().getIntExtra(GlobalUtils.EXTRA_OP_TYPE,
-				GlobalUtils.OP_TYPE_ADD);
+		opType = getIntent().getIntExtra(GlobalUtils.EXTRA_OP_TYPE, GlobalUtils.OP_TYPE_ADD);
 		biz = new MusicBiz(this);
 		setupView();
 	}

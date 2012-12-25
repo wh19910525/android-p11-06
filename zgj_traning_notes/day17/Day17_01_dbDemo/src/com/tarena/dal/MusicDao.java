@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class MusicDao {
+	
 	private DBOpenHelper helper;
 
 	public MusicDao(Context context) {

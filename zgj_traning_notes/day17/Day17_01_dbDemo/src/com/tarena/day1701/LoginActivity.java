@@ -18,6 +18,7 @@ import com.tarena.entity.User;
 import com.tarena.utils.GlobalUtils;
 
 public class LoginActivity extends Activity {
+	
 	private EditText etName, etPass;
 	private CheckBox chkSaveName;
 	private SharedPreferences pref;

@@ -6,7 +6,9 @@ import com.tarena.dal.UserDao;
 import com.tarena.entity.User;
 
 public class UserBiz {
+	
 	private UserDao dao;
+	
 	public UserBiz(Context context){
 		dao = new UserDao(context);
 	}

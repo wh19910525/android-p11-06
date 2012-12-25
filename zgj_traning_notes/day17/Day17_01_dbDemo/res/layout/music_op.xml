@@ -61,9 +61,11 @@
 
         <EditText android:id="@+id/etAlbumPath" />
     </TableRow>
+    
 
+    
     <TableRow>
-
+	
         <TextView android:text="歌曲路径" />
 
         <EditText android:id="@+id/etMusicPath" />
@@ -71,6 +73,7 @@
 
     <Button
         android:id="@+id/btnOp"
-        android:onClick="doClick" />
+        android:onClick="doClick"
+        android:text="ok" ></Button>
 
 </TableLayout>
