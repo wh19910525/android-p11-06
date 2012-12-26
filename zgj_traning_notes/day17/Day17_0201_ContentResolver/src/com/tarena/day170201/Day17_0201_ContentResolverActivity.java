@@ -38,7 +38,7 @@ public class Day17_0201_ContentResolverActivity extends Activity {
 		
 //		cr.delete(ContentUris.withAppendedId(uri, 2), null, null);
 //		cr.delete(ContentUris.withAppendedId(uri, 4), null, null);
-		Cursor c = cr.query(uri, null, null, null, "age desc");//获取 student表 中 所有记录
+		Cursor c = cr.query(uri, null, null, null, "age desc");//获取 student表 中 所有记录, 最后 一个 参数 没用，可以用 null；
 		if (c != null) {
 			while (c.moveToNext()) {
 				String[] cols = c.getColumnNames();

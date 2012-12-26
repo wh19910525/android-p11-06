@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBOpenHelper extends SQLiteOpenHelper {
+	
 	static final String TBL_STU = "stutbl";
 	static final String TBL_USER = "usertbl";
 

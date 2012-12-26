@@ -21,7 +21,7 @@ public class Day17_0301_ContentResolverActivity extends Activity {
 		setContentView(R.layout.main);
 
 		Uri uri = ProviderInfo.StudentInfo.CONTENT_URI;
-		ContentResolver cr = getContentResolver();
+		ContentResolver cr = getContentResolver();//
 
 		ContentValues values = new ContentValues();
 		values.put(ProviderInfo.StudentInfo.NAME, "ÕÅÈý");
@@ -47,13 +47,12 @@ public class Day17_0301_ContentResolverActivity extends Activity {
 
 		cr.delete(ContentUris.withAppendedId(uri, 3), null, null);
 
-		Cursor c = cr.query(uri, null, null, null, null);
+		Cursor c = cr.query(uri, null, null, null, null);//
 		if (c != null) {
 			String[] cols = c.getColumnNames();
 			while (c.moveToNext()) {
 				for (String col : cols) {
-					Log.i("info",
-							col + ":" + c.getString(c.getColumnIndex(col)));
+					Log.i("info", col + ":" + c.getString(c.getColumnIndex(col)));
 				}
 				Log.i("info", "--------------------------");
 			}
@@ -76,8 +75,7 @@ public class Day17_0301_ContentResolverActivity extends Activity {
 			String[] cols = c.getColumnNames();
 			while (c.moveToNext()) {
 				for (String col : cols) {
-					Log.i("info",
-							col + ":" + c.getString(c.getColumnIndex(col)));
+					Log.i("info", col + ":" + c.getString(c.getColumnIndex(col)));
 				}
 				Log.i("info", "--------------------------");
 			}

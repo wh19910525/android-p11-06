@@ -7,25 +7,24 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.Log;
 
 import com.tarena.entity.ProviderInfo;
 
 public class StudentProvider extends ContentProvider {
+	
 	private static final int MULTI_STU = 1;
 	private static final int SINGLE_STU = 2;
 	private static final int MULTI_USER = 3;
 	private static final int SINGLE_USER = 4;
+	
 	private static UriMatcher matcher;
 	static {
 		matcher = new UriMatcher(UriMatcher.NO_MATCH);
-		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.MULTI_STU_PATH,
-				MULTI_STU);
-		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.SINGLE_STU_PATH,
-				SINGLE_STU);
-		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.MULTI_USER_PATH,
-				MULTI_USER);
-		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.SINGLE_USER_PATH,
-				SINGLE_USER);
+		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.MULTI_STU_PATH, MULTI_STU);
+		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.SINGLE_STU_PATH, SINGLE_STU);
+		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.MULTI_USER_PATH, MULTI_USER);
+		matcher.addURI(ProviderInfo.AUTHORITY, ProviderInfo.SINGLE_USER_PATH, SINGLE_USER);
 	}
 
 	private DBOpenHelper helper;
@@ -96,17 +95,7 @@ public class StudentProvider extends ContentProvider {
 	}
 
 	@Override
-	public boolean onCreate() {
-		// TODO Auto-generated method stub
-		helper = new DBOpenHelper(getContext());
-		if (helper != null)
-			return true;
-		return false;
-	}
-
-	@Override
-	public Cursor query(Uri uri, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
+	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		String tblName = null;
 		String where = null;
 		switch (matcher.match(uri)) {
@@ -136,14 +125,12 @@ public class StudentProvider extends ContentProvider {
 		}
 
 		SQLiteDatabase db = helper.getReadableDatabase();
-		Cursor c = db.query(tblName, projection, where, selectionArgs, null,
-				null, sortOrder);
+		Cursor c = db.query(tblName, projection, where, selectionArgs, null, null, sortOrder);
 		return c;
 	}
 
 	@Override
-	public int update(Uri uri, ContentValues values, String selection,
-			String[] selectionArgs) {
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		String tblName = null;
 		String where = null;
 		switch (matcher.match(uri)) {
@@ -176,6 +163,17 @@ public class StudentProvider extends ContentProvider {
 		int count = db.update(tblName, values, where, selectionArgs);
 		db.close();
 		return count;
+	}
+
+	@Override
+	public boolean onCreate() {
+		// TODO Auto-generated method stub
+		helper = new DBOpenHelper(getContext());
+		Log.i("context-getContext", getContext().toString());
+		Log.i("context-this", this.toString());
+		if (helper != null)
+			return true;
+		return false;
 	}
 
 }
