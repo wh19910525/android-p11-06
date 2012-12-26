@@ -30,7 +30,7 @@ public class Day16_03_dbActivity extends Activity {
 		db.execSQL("delete from usertbl where username='zhangsan'");
 
 		//如果执行查询语句 只能 用 游标Cursor，这样可以返回值;
-		Cursor c = db.rawQuery("select * from usertbl where username like ?", new String[] { "%a%" });//查询usertbl的所有字段，条件 username里包含a字符;
+		Cursor c = db.rawQuery("select * from usertbl where username like ?", new String[] { "%a%" });//查询usertbl表的所有字段，条件是 username里包含a字符;
 		// * 代表 所有 字段 ，？代表任意一个字符，%a%代表  ？取 a值;
 		///moveTonext 第一次 指向 第一条，第二次 指向 第二条，以此类推;
 		Log.i("wanghai", c.getCount() + "");
@@ -38,9 +38,11 @@ public class Day16_03_dbActivity extends Activity {
 			int id = c.getInt(c.getColumnIndex("_id"));//getColumnIndex 获取 指定字段的 索引，这一字段的id值
 			String name = c.getString(c.getColumnIndex("username"));//获取username这一字段的 值
 			String pass = c.getString(c.getColumnIndex("userpass"));
+			
 			Log.i("-id", c.getColumnIndex("_id") + "");
 			Log.i("username", c.getColumnIndex("username") + "");
 			Log.i("userpass", c.getColumnIndex("userpass") + "");
+			
 			Log.i("info", id + "," + name + "," + pass);
 		}
 		c.close();

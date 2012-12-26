@@ -1,7 +1,8 @@
 day17_01 布局为什么 不能 看到 按键，当 把 按键的布局 上移之后，报错；
-
-
-
+重新 查看 day18_03 
+day18_02 查看 缩略图 报错 Media.EXTERNAL_CONTENT_URI 和 Thumbnails.EXTERNAL_CONTENT_URI 指 具体文件路径是什么？
+day18_04 用 静态 注册 为什么 退出是 报错，并且 如何 注销
+为什么 day19_02 里的 Media.EXTERNAL_CONTENT_URI 和 day18_02里的 它  指的 位置 不一样
 
 
 
