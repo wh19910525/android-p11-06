@@ -79,10 +79,8 @@ public class MusicAdapter extends BaseAdapter {
 			holder = new ViewHolder();
 			holder.ivAlbum = (ImageView) convertView.findViewById(R.id.ivAlbum);
 			holder.tvName = (TextView) convertView.findViewById(R.id.tvName);
-			holder.tvDuration = (TextView) convertView
-					.findViewById(R.id.tvDuration);
-			holder.tvSinger = (TextView) convertView
-					.findViewById(R.id.tvSinger);
+			holder.tvDuration = (TextView) convertView.findViewById(R.id.tvDuration);
+			holder.tvSinger = (TextView) convertView.findViewById(R.id.tvSinger);
 			holder.tvAlbum = (TextView) convertView.findViewById(R.id.tvAlbum);
 			convertView.setTag(holder);
 		} else {

@@ -9,20 +9,21 @@ import android.view.View;
 import android.widget.TextView;
 
 public class Day19_04_ApplicationActivity extends Activity {
+	
 	private TextView tvInfo;
 	private MyApplication app;
 
 	private void setupView() {
 		tvInfo = (TextView) findViewById(R.id.tvInfo);
-
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		
 		StringBuilder sb = new StringBuilder();
-		ArrayList<String> list = app.getList();
+		ArrayList<String> list = app.getList();//
 		for (String item : list) {
 			sb.append(item).append('\n');
 		}
@@ -42,7 +43,7 @@ public class Day19_04_ApplicationActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		app = (MyApplication) getApplication();
+		app = (MyApplication) getApplication();//
 		setupView();
 	}
 }

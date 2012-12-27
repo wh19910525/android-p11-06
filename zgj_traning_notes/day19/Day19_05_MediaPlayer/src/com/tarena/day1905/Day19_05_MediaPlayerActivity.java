@@ -8,6 +8,7 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 
 public class Day19_05_MediaPlayerActivity extends Activity {
+	
 	private MediaPlayer player ;
 	/** Called when the activity is first created. */
 	@Override
@@ -21,7 +22,7 @@ public class Day19_05_MediaPlayerActivity extends Activity {
 			player.reset();
 			
 			/**如果本身音频数据在本地,无需再下载即直接采用此方式即可*/
-			player.setDataSource("/mnt/sdcard/musics/lanlianhua.mp3");
+			player.setDataSource("/mnt/sdcard/musics/yingbi.mp3");
 			player.prepare();
 			player.start();
 			

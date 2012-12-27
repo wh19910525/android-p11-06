@@ -20,6 +20,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+     
+          <!-- 为什么不能 用这里 替换 代码的 注册 -->   <!--
+        <receiver 
+            android:name=".Day19_03_Local_MusicActivity" >
+            <intent-filter>
+
+                <action android:name="Intent.ACTION_MEDIA_SCANNER_FINISHED"/>
+                <action android:name="Intent.ACTION_MEDIA_SCANNER_STARTED"/>
+                <data android:scheme="file"/>
+            </intent-filter>
+        </receiver>
+          -->
+
     </application>
 
 </manifest>

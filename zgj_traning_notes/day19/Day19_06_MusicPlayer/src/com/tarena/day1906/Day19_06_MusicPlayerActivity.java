@@ -24,7 +24,7 @@ import com.tarena.utils.GlobalUtils;
 
 public class Day19_06_MusicPlayerActivity extends Activity {
 	
-	
+
 	private ListView lvMusics;
 	private TextView tvMusicName, tvProgress, tvDuration;
 	private SeekBar sbProgress;

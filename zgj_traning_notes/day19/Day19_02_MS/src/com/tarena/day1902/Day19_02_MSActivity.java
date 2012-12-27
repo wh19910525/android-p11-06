@@ -41,8 +41,9 @@ public class Day19_02_MSActivity extends Activity {
 		// Albums.ALBUM_ART
 
 		String[] projection = { "_id", "title", "composer", "artist", "album",
-				"duration", "album_key", "_data" };//这是指 同时 拥有 这些列，还是包含之一 就 ok
+				"duration", "album_key", "_data" };//这是指 同时 拥有 这些列，还是包含之一 就 ok,感觉没有什么用。
 		ContentResolver cr = getContentResolver();
+		//为什么 这里 同过 Media.EXTERNAL_CONTENT_URI 就能够访问到 音乐，而 18_03 能够访问到 图片
 		Cursor c = cr.query(Media.EXTERNAL_CONTENT_URI, projection, null, null, null);
  		if (c != null) {
 			while (c.moveToNext()) {
@@ -62,7 +63,7 @@ public class Day19_02_MSActivity extends Activity {
 					String album_art = c1.getString(0);
 					Log.i("info", "album_art:" + album_art);
 					Bitmap bm = BitmapFactory.decodeFile(album_art);
-					Log.i("info", "专辑图片：" + bm);
+					Log.i("info", "s专辑图片：" + bm);
 					c1.close();
 				}
 			}

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Application;
 
 public class MyApplication extends Application {
+	
 	private ArrayList<String> list;
 
 	public void addItem(String item) {

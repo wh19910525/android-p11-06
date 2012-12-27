@@ -30,13 +30,15 @@ public class Day18_02_MSActivity extends Activity {
 //				 for (String col : cols) {
 //					 Log.i("info", col + ":" + c.getString(c.getColumnIndex(col)));
 //				 }
-//			
-//				 String path = c.getString(c.getColumnIndex(Media.DATA));
+//				 Log.i("info", "-----------------------------------------------------");
+//				 String path = c.getString(c.getColumnIndex(Media.DATA));//为什么这里的Media.DATA 和下面的Media._ID 打印出来的不是同一张 图片
+//				 Log.i("info", "patch-wh:" +path);
 //				 Bitmap bm = BitmapFactory.decodeFile(path);
 //				 Log.i("info", "bm=" + bm.toString());
 //				  int id = c.getInt(c.getColumnIndex(Media._ID));
 //				  try {
 //					  bm = Media.getBitmap(cr, ContentUris.withAppendedId(Media.EXTERNAL_CONTENT_URI, id));//获得真图
+//					  Log.i("info", "id=" + id);
 //					  Log.i("info", "bitmap=" + bm.toString());
 //				  } catch (FileNotFoundException e) {
 //				  // TODO Auto-generated catch block
@@ -45,7 +47,7 @@ public class Day18_02_MSActivity extends Activity {
 //				  // TODO Auto-generated catch block
 //					  e.printStackTrace();
 //				  }
-//				 Log.i("info", "-----------------------------------------------------");
+//				 Log.i("info", "+++++++++++++++++++++++++++++++++");
 //			 }
 //			 c.close();
 //		 }
@@ -70,9 +72,10 @@ public class Day18_02_MSActivity extends Activity {
 				if (bm == null)
 				{
 					Log.i("info", "===+++++++++============");
+				}else{
+					Log.i("info", "thumb=" + bm.toString());
 				}
-			//	Log.i("info", "thumb=" + bm.toString());
-
+				
 				Log.i("info", "===================================");
 			}
 
@@ -81,6 +84,7 @@ public class Day18_02_MSActivity extends Activity {
 
 		// MediaStore.Images
 		// Images.Media
+
 		// Media.EXTERNAL_CONTENT_URI
 		// Media.INTERNAL_CONTENT_URI
 		// Media._ID

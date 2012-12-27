@@ -12,9 +12,11 @@ import android.provider.MediaStore.Audio.Albums;
 import android.provider.MediaStore.Audio.Media;
 
 public class MusicDao {
+	
 	private ContentResolver cr;
 
 	public MusicDao(Context context) {
+		
 		cr = context.getContentResolver();
 	}
 
@@ -34,8 +36,7 @@ public class MusicDao {
 		ArrayList<Music> musics = null;
 		String[] projection = { "_id", "title", "album", "composer", "artist",
 				"duration", "_data", "album_key" };
-		Cursor c = cr.query(Media.EXTERNAL_CONTENT_URI, projection, null, null,
-				null);
+		Cursor c = cr.query(Media.EXTERNAL_CONTENT_URI, projection, null, null, null);
 		if (c != null) {
 			musics = new ArrayList<Music>();
 			while (c.moveToNext()) {
@@ -60,9 +61,7 @@ public class MusicDao {
 
 	public int delete(int id) {
 		int count = 0;
-		count = cr.delete(
-				ContentUris.withAppendedId(Media.EXTERNAL_CONTENT_URI, id),
-				null, null);
+		count = cr.delete(ContentUris.withAppendedId(Media.EXTERNAL_CONTENT_URI, id), null, null);
 		return count;
 	}
 }

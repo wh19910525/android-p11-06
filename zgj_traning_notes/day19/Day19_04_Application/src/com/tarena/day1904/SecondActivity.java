@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class SecondActivity extends Activity {
+	
 	private TextView tvInfo;
 	private MyApplication app;
 

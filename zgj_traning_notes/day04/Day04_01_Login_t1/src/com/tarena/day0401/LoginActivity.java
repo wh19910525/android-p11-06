@@ -41,7 +41,7 @@ public class LoginActivity extends Activity {
 			String pass = etPass.getText().toString();
 			// 登录验证
 			if ("w".equals(name) && ".".equals(pass)
-					|| "zhangsan".equals(name) && "111111".equals(pass)) {
+					|| "ww".equals(name) && "123".equals(pass)) {
 				// 启动MainActivity
 				// Intent intent = new Intent(this, MainActivity.class);
 				// Intent intent = new Intent();
@@ -58,19 +58,19 @@ public class LoginActivity extends Activity {
 				// intent.setComponent(component);
 				//
 
-				//第一种
-				Intent intent = new Intent("com.tarena.action.TEST");
-				startActivity(intent);//被启动的 activity里的action是 这个intent，那么将启动这个activity；
+//				//第一种
+//				Intent intent = new Intent("com.tarena.action.TEST");
+//				startActivity(intent);//被启动的 activity里的action是 这个intent，那么将启动这个activity；
 				//第二种
-//				Intent intent = new Intent(this, MainActivity.class);
-//				startActivity(intent);
+				Intent intent = new Intent(this, MainActivity.class);
+				startActivity(intent);
 				//第三种
 //				Intent intent = new Intent();
 //				intent.setClass(this, MainActivity.class);
 //				startActivity(intent);
 				//第四种
 //				Intent intent = new Intent();
-//				ComponentName component = new ComponentName(this,MainActivity.class);
+//				ComponentName component = new ComponentName(this, MainActivity.class);
 //				intent.setComponent(component);
 //				startActivity(intent);
 				//第五种

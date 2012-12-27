@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- preference的组织方式有PreferenceScreen和PreferenceCategory，PreferenceCategory是带层次组织关系，在后面的例子体验 -->
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="first123" >
+    
     <!--RingtonePreference是选择铃音，这里给出两个选择，系统默认的铃音和无声 -->
     <PreferenceCategory
-	        android:title="firstwds Category"
- >
+        android:key="FistMe"
+	        android:title="firstwds Category" >
 	        
 	    <CheckBoxPreference android:key="checkbox"
 	        android:title="CheckBox Preference"
 	        android:summary="Check it on , check it off"
 			android:summaryOn="ok"
 	        android:selectable="true"
-
-	        android:defaultValue="true"
+			android:persistent="true"
+	        android:defaultValue="false"
  />
 	    
 	    <RingtonePreference android:key="ringtone"
@@ -23,46 +25,63 @@
 	        android:summary="Pick a tone, any tone"/>
     </PreferenceCategory>
     
+            <PreferenceScreen
+            
+            android:key="pfss1"
+            android:title="PreferenceScreettt"
+            android:summary="test summary"
+             >
+            
+            <EditTextPreference
+                android:key="gotosd"
+                android:title="EditTextPreferenc 1"
+                android:dialogTitle="dialog test"
+                android:summary="test another preference"></EditTextPreference> 
+            
+            </PreferenceScreen>
+            
     <PreferenceCategory
+        android:key="secondC"
         android:title="second Category">
         
         <PreferenceScreen
+            
             android:key="pfs1"
             android:title="PreferenceScree1"
-            android:summary="test summary" >
+            android:summary="test summary"
+             >
             
             <EditTextPreference
+                android:key="goto"
                 android:title="EditTextPreferenc 1"
                 android:dialogTitle="dialog test"
-                android:summary="test another preference"></EditTextPreference>
- 
-            
+                android:summary="test another preference"></EditTextPreference> 
             
             </PreferenceScreen>
         
     </PreferenceCategory>
     
     <PreferenceCategory
-        android:title="third Category" >
+        android:key="thirdC"
+        android:title="third Category" 
+          >
     
     	<ListPreference
+    	    android:key="thirdL"
     	    android:title="test Listpreference"
     		android:summary="first List"
 			android:entries="@array/cities"
 			android:entryValues="@array/airport_codes"
-			android:dependency="checkbox" />
+			 />
     	
     	<Preference
     	    android:title="ttt"
     	    android:summary="go to new"
-    	    android:key="ttt"
-    	    android:dependency="checkbox"	>
-    	    
-
-    	    
+    	    android:key="ttts"
+    		>
+    	        
     	</Preference>	
-    	    
-    	
+  	
     </PreferenceCategory>
     
     
