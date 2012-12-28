@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:stretchColumns="1" >
 
+        
     <TableRow>
 
         <TextView android:text="编号" />
@@ -48,8 +49,8 @@
         <EditText android:id="@+id/etComposer" />
     </TableRow>
 
-    <TableRow
-        android:visibility="gone">
+    <TableRow>
+
 
         <TextView android:text="时长" />
 
@@ -71,7 +72,9 @@
 
         <EditText android:id="@+id/etMusicPath" />
     </TableRow>
+    
 
+  
     <Button
         android:id="@+id/btnOp"
         android:layout_width="fill_parent"

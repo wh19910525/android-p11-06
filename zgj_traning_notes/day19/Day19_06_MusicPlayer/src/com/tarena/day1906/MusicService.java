@@ -15,12 +15,34 @@ import com.tarena.entity.Music;
 import com.tarena.utils.GlobalUtils;
 
 public class MusicService extends Service {
+	
 	private MusicApplication app;
 	private MediaPlayer player;
 	private boolean isPause;//用于判断音乐是否暂停
 	private int playMode;//播放模式
 	private Random rand;
 
+	@Override
+	public void onCreate() {
+		// TODO Auto-generated method stub
+		super.onCreate();
+		isPause = false;//个人觉得应该是true
+		playMode = GlobalUtils.PLAY_MODE_LOOP;
+		rand = new Random(System.currentTimeMillis());
+		app = (MusicApplication) getApplication();
+
+		player = new MediaPlayer();//
+		player.setOnCompletionListener(new OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				// TODO Auto-generated method stub
+				next();
+			}
+		});
+
+	}
+	
 	public boolean isPause() {
 		return isPause;
 	}
@@ -56,13 +78,12 @@ public class MusicService extends Service {
 		}
 
 		isPause = false;
-
 	}
 
 	public void pause() {
 		if (player.isPlaying()) {
 			player.pause();
-			isPause = true;
+			isPause = true;//
 		}
 	}
 
@@ -79,6 +100,7 @@ public class MusicService extends Service {
 			} while (currentIndex == app.getCurrentIndex());
 			break;
 		}
+		
 		app.setCurrentIndex(currentIndex);
 		isPause = false;
 		play();
@@ -117,27 +139,6 @@ public class MusicService extends Service {
 	}
 
 	@Override
-	public void onCreate() {
-		// TODO Auto-generated method stub
-		super.onCreate();
-		isPause = false;//个人觉得应该是true
-		playMode = GlobalUtils.PLAY_MODE_LOOP;
-		rand = new Random(System.currentTimeMillis());
-		app = (MusicApplication) getApplication();
-
-		player = new MediaPlayer();
-		player.setOnCompletionListener(new OnCompletionListener() {
-
-			@Override
-			public void onCompletion(MediaPlayer mp) {
-				// TODO Auto-generated method stub
-				next();
-			}
-		});
-
-	}
-
-	@Override
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
@@ -154,8 +155,10 @@ public class MusicService extends Service {
 	}
 
 	public class MyBinder extends Binder {
+		
 		public MusicService getService() {
 			return MusicService.this;
 		}
+		
 	}
 }

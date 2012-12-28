@@ -8,6 +8,7 @@ import com.tarena.entity.Music;
 import android.app.Application;
 
 public class MusicApplication extends Application {
+	
 	private ArrayList<Music> playList;
 	private int currentIndex;//定义当前索引
 
