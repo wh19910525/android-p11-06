@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Day_21_06_BroadcastActivity!</string>
+    <string name="app_name">Day_21_06_Broadcast</string>
+
+</resources>

@@ -8,6 +8,7 @@ import com.tarena.entity.Music;
 import android.app.Application;
 
 public class MusicApplication extends Application {
+	
 	private int currentPosition;// 当前播放音乐的索引
 	private ArrayList<Music> playList;// 播放列表
 
@@ -25,7 +26,7 @@ public class MusicApplication extends Application {
 	 * 
 	 * @return
 	 */
-	public void setCurrentPosition(int currentPosition) {
+	public void setCurrentPosition(int currentPosition) {//设置播放索引
 		if (currentPosition >= 0 && currentPosition < playList.size())
 			this.currentPosition = currentPosition;
 		else
@@ -39,6 +40,18 @@ public class MusicApplication extends Application {
 	 */
 	public ArrayList<Music> getPlayList() {
 		return playList;
+	}
+
+	/**
+	 * 根据位置获取播放列表中的一条音乐信息
+	 * 
+	 * @param position
+	 * @return
+	 */
+	public Music getMusic(int position) {//根据索引查询歌曲
+		if (position >= 0 && position < playList.size())
+			return playList.get(position);
+		return null;
 	}
 
 	/**
@@ -58,18 +71,6 @@ public class MusicApplication extends Application {
 	public void removeMusic(int position) {
 		if (position >= 0 && position < playList.size())
 			playList.remove(position);
-	}
-
-	/**
-	 * 根据位置获取播放列表中的一条音乐信息
-	 * 
-	 * @param position
-	 * @return
-	 */
-	public Music getMusic(int position) {
-		if (position >= 0 && position < playList.size())
-			return playList.get(position);
-		return null;
 	}
 
 	/**
@@ -93,6 +94,6 @@ public class MusicApplication extends Application {
 		super.onCreate();
 
 		this.playList = new MusicBiz(this).getMusics();
-		this.setCurrentPosition(0);
+		this.setCurrentPosition(0);//默认初始下标为0,即从第一首开始播放
 	}
 }

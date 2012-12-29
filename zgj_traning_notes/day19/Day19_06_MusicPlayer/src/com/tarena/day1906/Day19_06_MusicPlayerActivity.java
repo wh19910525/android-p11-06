@@ -68,7 +68,7 @@ public class Day19_06_MusicPlayerActivity extends Activity {
 				if (fromUser) {
 					Music m = app.getMusic(app.getCurrentIndex());
 					if (m != null) {
-						progress = progress * (int) m.getDuration() / 100;
+						progress = progress * (int) m.getDuration() / 100;//如何计算
 						service.seekTo(progress);//设置 音乐播放进度
 						flush();
 						synchronized (workThread) {
@@ -79,21 +79,7 @@ public class Day19_06_MusicPlayerActivity extends Activity {
 			}
 		});
 	}
-	
-	private Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case 0:
-				int position = msg.arg1;
-				tvProgress.setText(GlobalUtils.format(position));
-				Music m = app.getMusic(app.getCurrentIndex());
-				position = position * 100 / (int) m.getDuration();
-				sbProgress.setProgress((int) position);//设置 进度条的 进度
-				break;
-			}
-		};
-	};
-	
+
 	private ServiceConnection conn = new ServiceConnection() {
 
 		@Override
@@ -137,7 +123,21 @@ public class Day19_06_MusicPlayerActivity extends Activity {
 			workThread.notify();
 		}
 	}
-
+	
+	private Handler handler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case 0:
+				int position = msg.arg1;
+				tvProgress.setText(GlobalUtils.format(position));
+				Music m = app.getMusic(app.getCurrentIndex());
+				position = position * 100 / (int) m.getDuration();//如何计算
+				sbProgress.setProgress((int) position);//设置 进度条的 进度
+				break;
+			}
+		};
+	};
+	
 	/**
 	 把工作线程写到onStart()方法中的目的,是为了在Activity每次重新进入交互状态前，启动工作线程。
 	 而当Activity处于暂停或销毁状态时,工作线程就没有必要继续执行,从而降低内存消耗率。
@@ -151,7 +151,7 @@ public class Day19_06_MusicPlayerActivity extends Activity {
 			public void run() {
 				while (isLoop) {
 					if (service != null) {
-						while (isLoop && service.isPlaying()) {//
+						while (isLoop && service.isPlaying()) {//这个循环 用来 更新 进度条
 							Message msg = Message.obtain();
 							msg.what = 0;
 							msg.arg1 = (int) service.getCurrentPosition();

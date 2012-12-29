@@ -20,6 +20,7 @@ import com.tarena.entity.Music;
 import com.tarena.utils.GlobalUtils;
 
 public class Day20_01_MusicPlayerActivity extends Activity {
+	
 	private ListView lvMusics;
 	private Button btnPlayOrPasue;
 	private TextView tvName, tvProgress, tvDuration;
@@ -27,20 +28,21 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 	private MusicAdapter adapter;
 	private MusicApplication app;
 	private Music currentMusic;
+	private InnerReceiver receiver;
 
 	/**
 	 * 界面初始化方法
 	 */
 	private void setupView() {
-		btnPlayOrPasue = (Button) findViewById(R.id.btnPlayOrPause);
-		tvName = (TextView) findViewById(R.id.tvMusicName_Player);
-		tvProgress = (TextView) findViewById(R.id.tvProgress_Player);
-		tvDuration = (TextView) findViewById(R.id.tvDuration_Player);
-		sbProgress = (SeekBar) findViewById(R.id.sbProgress_Player);
 
 		lvMusics = (ListView) findViewById(R.id.lvMusics);
 		adapter = new MusicAdapter(this, app.getPlayList());
 		lvMusics.setAdapter(adapter);
+		btnPlayOrPasue = (Button) findViewById(R.id.btnPlayOrPause);
+		tvDuration = (TextView) findViewById(R.id.tvDuration_Player);
+		tvName = (TextView) findViewById(R.id.tvMusicName_Player);
+		tvProgress = (TextView) findViewById(R.id.tvProgress_Player);
+		sbProgress = (SeekBar) findViewById(R.id.sbProgress_Player);
 	}
 
 	private void addListener() {
@@ -49,24 +51,21 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-
 			}
 
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {//
 				// TODO Auto-generated method stub
 				if (fromUser) {
+			//	Music currentMusic = app.getMusic(app.getCurrentPosition());
 					// 发送广播，跳转
 					Intent intent = new Intent(GlobalUtils.ACTION_SEEK_TO);
-					progress = progress * (int) currentMusic.getDuration()
-							/ 100;
+					progress = progress * (int) currentMusic.getDuration() / 100;//currentMusic 都没有获取实例怎么就能用了
 					intent.putExtra(GlobalUtils.EXTRA_CURRENT_PROGRESS,
 							progress);
 					sendBroadcast(intent);
@@ -102,28 +101,6 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 			break;
 		}
 		sendBroadcast(intent);
-	}
-
-	/** Called when the activity is first created. */
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		app = (MusicApplication) getApplication();
-		setupView();
-		addListener();
-		// 启动音乐播放服务
-		Intent intent = new Intent(this, MusicService.class);
-		startService(intent);
-
-		// 注册广播接收器
-		receiver = new InnerReceiver();
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(GlobalUtils.ACTION_CURRENT_MUSIC_CHANGED);
-		filter.addAction(GlobalUtils.ACTION_UPDATE_PROGRESS);
-		filter.addAction(GlobalUtils.ACTION_RESPONSE);
-
-		registerReceiver(receiver, filter);
 	}
 
 	@Override
@@ -200,7 +177,6 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	private InnerReceiver receiver;
 
 	private class InnerReceiver extends BroadcastReceiver {
 		@Override
@@ -253,5 +229,27 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 				}
 			}
 		}
+	}
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		app = (MusicApplication) getApplication();
+		setupView();
+		addListener();
+		// 启动音乐播放服务
+		Intent intent = new Intent(this, MusicService.class);
+		startService(intent);
+
+		// 注册广播接收器
+		receiver = new InnerReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(GlobalUtils.ACTION_CURRENT_MUSIC_CHANGED);
+		filter.addAction(GlobalUtils.ACTION_UPDATE_PROGRESS);
+		filter.addAction(GlobalUtils.ACTION_RESPONSE);
+
+		registerReceiver(receiver, filter);
 	}
 }

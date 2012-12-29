@@ -1,0 +1,255 @@
+package com.tarena.day2001;
+
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+
+import com.tarena.entity.Music;
+import com.tarena.utils.GlobalUtils;
+
+public class Day20_01_MusicPlayerActivity extends Activity {
+	private ListView lvMusics;
+	private Button btnPlayOrPasue;
+	private TextView tvName, tvProgress, tvDuration;
+	private SeekBar sbProgress;
+	private MusicAdapter adapter;
+	private MusicApplication app;
+	private Music currentMusic;
+
+	/**
+	 * 界面初始化方法
+	 */
+	private void setupView() {
+		btnPlayOrPasue = (Button) findViewById(R.id.btnPlayOrPause);
+		tvName = (TextView) findViewById(R.id.tvMusicName_Player);
+		tvProgress = (TextView) findViewById(R.id.tvProgress_Player);
+		tvDuration = (TextView) findViewById(R.id.tvDuration_Player);
+		sbProgress = (SeekBar) findViewById(R.id.sbProgress_Player);
+
+		lvMusics = (ListView) findViewById(R.id.lvMusics);
+		adapter = new MusicAdapter(this, app.getPlayList());
+		lvMusics.setAdapter(adapter);
+	}
+
+	private void addListener() {
+		sbProgress.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				if (fromUser) {
+					// 发送广播，跳转
+					Intent intent = new Intent(GlobalUtils.ACTION_SEEK_TO);
+					progress = progress * (int) currentMusic.getDuration()
+							/ 100;
+					intent.putExtra(GlobalUtils.EXTRA_CURRENT_PROGRESS,
+							progress);
+					sendBroadcast(intent);
+				}
+			}
+		});
+	}
+
+	/**
+	 * 按钮的单击事件处理方法
+	 * 
+	 * @param v
+	 */
+	public void doClick(View v) {
+		Intent intent = new Intent();
+		switch (v.getId()) {
+		case R.id.btnPrevious:// 上一首
+			intent.setAction(GlobalUtils.ACTION_PREVIOUS);
+			btnPlayOrPasue.setText("暂停");
+			break;
+		case R.id.btnPlayOrPause:// 播放或暂停
+			if ("播放".equals(btnPlayOrPasue.getText().toString())) {
+				intent.setAction(GlobalUtils.ACTION_PLAY);
+				btnPlayOrPasue.setText("暂停");
+			} else {
+				intent.setAction(GlobalUtils.ACTION_PAUSE);
+				btnPlayOrPasue.setText("播放");
+			}
+			break;
+		case R.id.btnNext:// 下一首
+			intent.setAction(GlobalUtils.ACTION_NEXT);
+			btnPlayOrPasue.setText("暂停");
+			break;
+		}
+		sendBroadcast(intent);
+	}
+
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		app = (MusicApplication) getApplication();
+		setupView();
+		addListener();
+		// 启动音乐播放服务
+		Intent intent = new Intent(this, MusicService.class);
+		startService(intent);
+
+		// 注册广播接收器
+		receiver = new InnerReceiver();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(GlobalUtils.ACTION_CURRENT_MUSIC_CHANGED);
+		filter.addAction(GlobalUtils.ACTION_UPDATE_PROGRESS);
+		filter.addAction(GlobalUtils.ACTION_RESPONSE);
+
+		registerReceiver(receiver, filter);
+	}
+
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+
+		// 发送广播请求播放状态
+		Intent intent = new Intent(GlobalUtils.ACTION_REQUEST);
+		sendBroadcast(intent);
+
+		// 发送广播，改变更新状态
+		intent = new Intent(GlobalUtils.ACTION_UPDATE_STATE_CHANGED);
+		intent.putExtra(GlobalUtils.EXTRA_NEED_UPDATE, true);
+		sendBroadcast(intent);
+
+	}
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+		Intent intent = new Intent(GlobalUtils.ACTION_UPDATE_STATE_CHANGED);
+		intent.putExtra(GlobalUtils.EXTRA_NEED_UPDATE, false);
+		sendBroadcast(intent);
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+
+		// 取消动态注册的广播接收器
+		unregisterReceiver(receiver);
+	}
+
+	/**
+	 * 创建系统菜单的方法
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = new MenuInflater(this);
+		inflater.inflate(R.menu.opts, menu);
+		// TODO Auto-generated method stub
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	/**
+	 * 系统菜单项的单击事件处理方法
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent intent = new Intent(GlobalUtils.ACTION_PLAY_MODE_CHANGED);
+		switch (item.getItemId()) {
+		case R.id.sub_menu_loop:
+			intent.putExtra(GlobalUtils.EXTRA_PLAY_MODE,
+					GlobalUtils.PLAY_MODE_LOOP);
+			break;
+		case R.id.sub_menu_random:
+			intent.putExtra(GlobalUtils.EXTRA_PLAY_MODE,
+					GlobalUtils.PLAY_MODE_RANDOM);
+			break;
+		case R.id.menu_opts_exit:
+			finish();
+			intent.setAction(GlobalUtils.ACTION_SERVICE_STOP);
+			break;
+		}
+		sendBroadcast(intent);
+		// TODO Auto-generated method stub
+		return super.onOptionsItemSelected(item);
+	}
+
+	private InnerReceiver receiver;
+
+	private class InnerReceiver extends BroadcastReceiver {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			String action = intent.getAction();
+			if (GlobalUtils.ACTION_CURRENT_MUSIC_CHANGED.equals(action)) {
+				currentMusic = (Music) intent
+						.getSerializableExtra(GlobalUtils.EXTRA_CURRENT_MUSIC);
+
+				// 更新界面，显示当前音乐信息
+				tvName.setText(currentMusic.getName());
+				long duration = currentMusic.getDuration();
+				// Log.i("info", "duration:" + duration);
+				// Log.i("info", "时长：" + GlobalUtils.format(duration));
+				tvDuration.setText(GlobalUtils.format(duration));
+			} else if (GlobalUtils.ACTION_UPDATE_PROGRESS.equals(action)) {
+				// 获取最新的播放进度
+				int progress = intent.getIntExtra(
+						GlobalUtils.EXTRA_CURRENT_PROGRESS, 0);
+				// 更新界面
+				tvProgress.setText(GlobalUtils.format(progress));
+				progress = progress * 100 / (int) currentMusic.getDuration();
+				sbProgress.setProgress(progress);
+			} else if (GlobalUtils.ACTION_RESPONSE.equals(action)) {
+				int playState = intent.getIntExtra(
+						GlobalUtils.EXTRA_PLAY_STATE, GlobalUtils.OTHERS);
+				switch (playState) {
+				case GlobalUtils.ISPAUSE:
+					currentMusic = (Music) intent
+							.getSerializableExtra(GlobalUtils.EXTRA_CURRENT_MUSIC);
+					tvName.setText(currentMusic.getName());
+					tvDuration.setText(GlobalUtils.format(currentMusic
+							.getDuration()));
+					int progress = intent.getIntExtra(
+							GlobalUtils.EXTRA_CURRENT_PROGRESS, 0);
+					tvProgress.setText(GlobalUtils.format(progress));
+					progress = progress * 100
+							/ (int) currentMusic.getDuration();
+					sbProgress.setProgress(progress);
+					break;
+
+				case GlobalUtils.ISPLAYING:
+					currentMusic = (Music) intent
+							.getSerializableExtra(GlobalUtils.EXTRA_CURRENT_MUSIC);
+					tvName.setText(currentMusic.getName());
+					tvDuration.setText(GlobalUtils.format(currentMusic
+							.getDuration()));
+					btnPlayOrPasue.setText("暂停");
+					break;
+				default:
+				}
+			}
+		}
+	}
+}
