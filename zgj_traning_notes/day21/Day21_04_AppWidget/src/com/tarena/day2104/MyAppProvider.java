@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.util.Log;
 
 public class MyAppProvider extends AppWidgetProvider {
+	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
@@ -22,8 +23,7 @@ public class MyAppProvider extends AppWidgetProvider {
 	}
 
 	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-			int[] appWidgetIds) {
+	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		// TODO Auto-generated method stub
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 		Log.i("info", "onUpdate");

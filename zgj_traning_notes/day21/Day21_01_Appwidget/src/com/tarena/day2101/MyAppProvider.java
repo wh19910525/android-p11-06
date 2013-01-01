@@ -10,7 +10,7 @@ public class MyAppProvider extends AppWidgetProvider {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
-		Log.i("info", "action:" + intent.getAction());
+		Log.i("zgj", "wh-action:" + intent.getAction());
 		super.onReceive(context, intent);
 	}
 
@@ -18,27 +18,28 @@ public class MyAppProvider extends AppWidgetProvider {
 	public void onEnabled(Context context) {
 		// TODO Auto-generated method stub
 		super.onEnabled(context);
-		Log.i("info", "onEnabled");
+		Log.i("1zgj", "onEnabled");
 	}
 
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		// TODO Auto-generated method stub
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
-		Log.i("info", "onUpdate");
-	}
-
-	@Override
-	public void onDisabled(Context context) {
-		// TODO Auto-generated method stub
-		super.onDisabled(context);
-		Log.i("info", "onDisabled");
+		Log.i("2zgj", "onUpdate");
 	}
 
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
 		// TODO Auto-generated method stub
 		super.onDeleted(context, appWidgetIds);
-		Log.i("info", "onDeleted");
+		Log.i("3zgj", "onDeleted");
 	}
+
+	@Override
+	public void onDisabled(Context context) {
+		// TODO Auto-generated method stub
+		super.onDisabled(context);
+		Log.i("4zgj", "onDisabled");
+	}
+
 }

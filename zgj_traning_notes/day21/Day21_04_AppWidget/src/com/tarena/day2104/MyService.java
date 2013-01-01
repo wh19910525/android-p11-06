@@ -8,6 +8,7 @@ import android.os.IBinder;
 import android.widget.RemoteViews;
 
 public class MyService extends Service {
+	
 	private Thread thread;
 	private int numb;
 
@@ -15,8 +16,7 @@ public class MyService extends Service {
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
-		final ComponentName provider = new ComponentName(this,
-				MyAppProvider.class);
+		final ComponentName provider = new ComponentName(this, MyAppProvider.class);
 		final AppWidgetManager manager = AppWidgetManager.getInstance(this);
 
 		thread = new Thread() {
@@ -26,8 +26,7 @@ public class MyService extends Service {
 					String min = format(i / 60);
 					String sec = format(i % 60);
 
-					RemoteViews views = new RemoteViews(getPackageName(),
-							R.layout.layout_appwidget);
+					RemoteViews views = new RemoteViews(getPackageName(), R.layout.layout_appwidget);
 					views.setTextViewText(R.id.tv1, min);
 					views.setTextViewText(R.id.tv2, sec);
 
@@ -67,5 +66,4 @@ public class MyService extends Service {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
