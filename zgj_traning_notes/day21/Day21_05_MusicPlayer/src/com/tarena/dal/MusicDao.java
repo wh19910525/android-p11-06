@@ -33,9 +33,8 @@ public class MusicDao {
 	public ArrayList<Music> getMusics() {
 		ArrayList<Music> musics = null;
 		String[] projection = { "_id", "title", "album", "composer", "artist",
-				"duration", "album_key", "_data" };
-		Cursor c = cr.query(Media.EXTERNAL_CONTENT_URI, projection, null, null,
-				null);
+				"duration", "_data", "album_key" };
+		Cursor c = cr.query(Media.EXTERNAL_CONTENT_URI, projection, null, null, null);
 		if (c != null) {
 			musics = new ArrayList<Music>();
 			while (c.moveToNext()) {

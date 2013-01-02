@@ -206,8 +206,9 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 				//Activity之前的状态,这样可以使得新开启的Activity显示之前的数据
 				
 			} else if (GlobalUtils.ACTION_RESPONSE.equals(action)) {
-				int playStata = intent.getIntExtra(GlobalUtils.EXTRA_PLAY_STATE, GlobalUtils.OTHERS);
-				switch (playStata) {
+				int playState = intent.getIntExtra(
+						GlobalUtils.EXTRA_PLAY_STATE, GlobalUtils.OTHERS);
+				switch (playState) {
 				case GlobalUtils.ISPAUSE:
 					currentMusic = (Music)intent.getSerializableExtra(GlobalUtils.EXTRA_CURRENT_MUSIC);
 					tvName.setText(currentMusic.getName());
@@ -222,6 +223,7 @@ public class Day20_01_MusicPlayerActivity extends Activity {
 					currentMusic = (Music)intent.getSerializableExtra(GlobalUtils.EXTRA_CURRENT_MUSIC);
 					tvName.setText(currentMusic.getName());
 					tvDuration.setText(GlobalUtils.format(currentMusic.getDuration()));
+					btnPlayOrPasue.setText("暂停");
 					break;
 
 				default:

@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 
 public class MusicAppWidgetProvider extends AppWidgetProvider {
+	
 	@Override
 	/**
 	 处理来自Activity和Service的广播并更新桌面布局的数据*/
@@ -65,30 +66,30 @@ public class MusicAppWidgetProvider extends AppWidgetProvider {
 	}
 
 	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-			int[] appWidgetIds) {
+	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
 		/**给远程布局的按钮添加侦听器,并发送意图*/
-		RemoteViews views = new RemoteViews(context.getPackageName(),
-				R.layout.layout_provider);
-		views.setOnClickPendingIntent(R.id.btnPlay_Provider, PendingIntent
-				.getBroadcast(context, 0, new Intent(GlobalUtils.ACTION_PLAY),
+		RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.layout_provider);
+		
+		views.setOnClickPendingIntent(R.id.btnPlay_Provider, 
+				PendingIntent.getBroadcast(context, 0, 
+						new Intent(GlobalUtils.ACTION_PLAY),
 						PendingIntent.FLAG_UPDATE_CURRENT));//播放
 
-		views.setOnClickPendingIntent(R.id.btnPrevious_Provider, PendingIntent
-				.getBroadcast(context, 1, new Intent(
+		views.setOnClickPendingIntent(R.id.btnPrevious_Provider, 
+				PendingIntent.getBroadcast(context, 1, new Intent(
 						GlobalUtils.ACTION_PREVIOUS),
 						PendingIntent.FLAG_UPDATE_CURRENT));//上一首
 
-		views.setOnClickPendingIntent(R.id.btnPause_Provider, PendingIntent
-				.getBroadcast(context, 2, new Intent(GlobalUtils.ACTION_PAUSE),
+		views.setOnClickPendingIntent(R.id.btnPause_Provider, 
+				PendingIntent.getBroadcast(context, 2, new Intent(GlobalUtils.ACTION_PAUSE),
 						PendingIntent.FLAG_UPDATE_CURRENT));//暂停
 
-		views.setOnClickPendingIntent(R.id.btnNext_Provider, PendingIntent
-				.getBroadcast(context, 3, new Intent(GlobalUtils.ACTION_NEXT),
+		views.setOnClickPendingIntent(R.id.btnNext_Provider, 
+				PendingIntent.getBroadcast(context, 3, new Intent(GlobalUtils.ACTION_NEXT),
 						PendingIntent.FLAG_UPDATE_CURRENT));//下一首
 
-		views.setOnClickPendingIntent(R.id.btnList_Provider, PendingIntent
-				.getActivity(context, 4, new Intent(context,
+		views.setOnClickPendingIntent(R.id.btnList_Provider, 
+				PendingIntent.getActivity(context, 4, new Intent(context,
 						Day20_01_MusicPlayerActivity.class),
 						PendingIntent.FLAG_UPDATE_CURRENT));//播放列表
 

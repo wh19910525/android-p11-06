@@ -42,6 +42,18 @@ public class MusicApplication extends Application {
 	}
 
 	/**
+	 * 根据位置获取播放列表中的一条音乐信息
+	 * 
+	 * @param position
+	 * @return
+	 */
+	public Music getMusic(int position) {//根据索引查询歌曲
+		if (position >= 0 && position < playList.size())
+			return playList.get(position);
+		return null;
+	}
+
+	/**
 	 * 向播放列表中追加音乐信息
 	 * 
 	 * @param music
@@ -58,18 +70,6 @@ public class MusicApplication extends Application {
 	public void removeMusic(int position) {
 		if (position >= 0 && position < playList.size())
 			playList.remove(position);
-	}
-
-	/**
-	 * 根据位置获取播放列表中的一条音乐信息
-	 * 
-	 * @param position
-	 * @return
-	 */
-	public Music getMusic(int position) {
-		if (position >= 0 && position < playList.size())
-			return playList.get(position);
-		return null;
 	}
 
 	/**

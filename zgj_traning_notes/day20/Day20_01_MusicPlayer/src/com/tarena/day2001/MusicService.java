@@ -260,7 +260,7 @@ public class MusicService extends Service {
 			}else if(GlobalUtils.ACTION_UPDATE_STATE_CHANGED.equals(action)){
 				Log.i("info", "=======");
 				needUpdate = intent.getBooleanExtra(GlobalUtils.EXTRA_NEED_UPDATE,true);
-				Log.i("info", "needUpdata=="+needUpdate);
+				Log.i("info", "needUpdate:" + needUpdate);
 				synchronized (workThread) {
 					workThread.notify();
 				}

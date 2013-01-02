@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class Day_21_06_BroadcastActivity extends Activity {
+	
 	private ThirdReceiver receiver;
 
 	/** Called when the activity is first created. */
@@ -17,14 +18,14 @@ public class Day_21_06_BroadcastActivity extends Activity {
 		receiver = new ThirdReceiver();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction("com.tarena.action.Test_Broadcast");
-		filter.setPriority(800);
+		filter.setPriority(800);//
 		registerReceiver(receiver, filter);
 	}
 
 	public void doClick(View v) {
 		Intent intent = new Intent("com.tarena.action.Test_Broadcast");
 		// sendBroadcast(intent);
-		sendOrderedBroadcast(intent, null);
+		sendOrderedBroadcast(intent, null);//
 	}
 
 	@Override

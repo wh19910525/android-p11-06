@@ -17,6 +17,7 @@ import com.tarena.entity.Music;
 import com.tarena.utils.GlobalUtils;
 
 public class MusicService extends Service {
+	
 	private MediaPlayer player;
 	private int playMode;
 	private boolean isPause;
@@ -258,8 +259,8 @@ public class MusicService extends Service {
 			} else if (GlobalUtils.ACTION_SERVICE_STOP.equals(action)) {
 				stopSelf();
 			} else if (GlobalUtils.ACTION_UPDATE_STATE_CHANGED.equals(action)) {
-				needUpdate = intent.getBooleanExtra(
-						GlobalUtils.EXTRA_NEED_UPDATE, true);
+				Log.i("info", "=======");
+				needUpdate = intent.getBooleanExtra(GlobalUtils.EXTRA_NEED_UPDATE,true);
 
 				Log.i("info", "needUpdate:" + needUpdate);
 				synchronized (workThread) {
