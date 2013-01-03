@@ -8,8 +8,8 @@ day18_04 用 静态 注册 为什么 退出是 报错，并且 如何 注销
 day21_03 如何启动窗口小部件 里的 Service，何时启动，因为 没有 启动 Intent在AndroidManifest.xml 里；
 
 启动模式下的service的 生命周期
+详细阅读 day21_05 播放器
+在day22_01里 的 contentprovider的 列如何确定，如果之前你不知道
 
-
-
-
+在day22_01里，如何 演示 模拟器间通信
 

@@ -17,7 +17,7 @@ import android.util.Log;
   注意:
    ContentProvider不是默认就支持观察者，如果需要支持观察者
    应当在增删改方法中调用(可参考项目Day18_01_MusicProvider下的类MusicProvider.java)
-   contentResolver对象的notifyChange(Uri,ContentObserver)
+   contentResolver对象的notifyChange(Uri, boolean, ContentObserver)
  *
  */
 public class MusicObserver extends ContentObserver {
