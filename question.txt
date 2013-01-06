@@ -1,15 +1,9 @@
 
 重新 查看 day18_03 
 day18_02 的 Media.EXTERNAL_CONTENT_URI 和 19_02 指的  不是  同一个图片，重新 看19_02
-day18_04 用 静态 注册 为什么 退出是 报错，并且 如何 注销
-为什么 day19_02 里的 Media.EXTERNAL_CONTENT_URI 和 day18_02里的 它  指的 位置 不一样，一个图片，一个是 音乐
-为什么 这里 既用了 启动 service 又 用了 绑定 service;
-播放器的进度条 除了 手动 出发 监听器，自动能出发吗？
-day21_03 如何启动窗口小部件 里的 Service，何时启动，因为 没有 启动 Intent在AndroidManifest.xml 里；
 
-启动模式下的service的 生命周期
+启动模式下的service的 生命周期, 和绑定下的生命周期，同时 启动下的生命周期
 详细阅读 day21_05 播放器
-在day22_01里 的 contentprovider的 列如何确定，如果之前你不知道
 
-在day22_01里，如何 演示 模拟器间通信
+java 反射机制
 

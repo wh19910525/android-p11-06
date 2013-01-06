@@ -11,6 +11,7 @@ public class SmsReceiver extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context arg0, Intent intent) {
+		Log.i("info", "Ω” ’∂Ã–≈");
 		// TODO Auto-generated method stub
 		Bundle bundle = intent.getExtras();
 		Object[] pdus = (Object[]) bundle.get("pdus");

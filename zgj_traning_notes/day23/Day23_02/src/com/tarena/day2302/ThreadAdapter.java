@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 public class ThreadAdapter extends BaseAdapter {
+	
 	private ArrayList<ThreadInfo> threads;
 	private LayoutInflater inflater;
 

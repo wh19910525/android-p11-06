@@ -41,10 +41,11 @@ public class Day19_02_MSActivity extends Activity {
 		// Albums.ALBUM_ART
 
 		String[] projection = { "_id", "title", "composer", "artist", "album",
-				"duration", "album_key", "_data" };//这是指 同时 拥有 这些列，还是包含之一 就 ok,感觉没有什么用。
+				"duration", "album_key", "_data" };
 		ContentResolver cr = getContentResolver();
 		//为什么 这里 同过 Media.EXTERNAL_CONTENT_URI 就能够访问到 音乐，而 18_03 能够访问到 图片
 		Cursor c = cr.query(Media.EXTERNAL_CONTENT_URI, projection, null, null, null);
+		Log.i("info", "wanghai" + Media.EXTERNAL_CONTENT_URI);
  		if (c != null) {
 			while (c.moveToNext()) {
 				Log.i("info", "编号：" + c.getInt(c.getColumnIndex("_id")));

@@ -13,6 +13,16 @@ import android.view.View;
 import android.widget.EditText;
 
 public class Day23_01_SmsActivity extends Activity {
+	
+	private EditText etNumber, etContent;
+	private SmsManager manager;
+	private InnerReceiver receiver;
+
+	private void setupView() {
+		etNumber = (EditText) findViewById(R.id.etNumber);
+		etContent = (EditText) findViewById(R.id.etContent);
+	}
+
 	private class InnerReceiver extends BroadcastReceiver {
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -26,15 +36,6 @@ public class Day23_01_SmsActivity extends Activity {
 				Log.i("info", "content:" + content);
 			}
 		}
-	}
-
-	private EditText etNumber, etContent;
-	private SmsManager manager;
-	private InnerReceiver receiver;
-
-	private void setupView() {
-		etNumber = (EditText) findViewById(R.id.etNumber);
-		etContent = (EditText) findViewById(R.id.etContent);
 	}
 
 	public void send(View v) {

@@ -54,7 +54,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
 
 		// 启动Service，定时更新组件
 		Intent intent = new Intent(context, MyService.class);
-		context.startService(intent);
+		context.startService(intent);//
 	}
 	
 }

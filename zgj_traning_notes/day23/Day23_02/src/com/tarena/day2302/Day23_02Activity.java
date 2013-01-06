@@ -15,16 +15,6 @@ import com.tarena.biz.MessageBiz;
 import com.tarena.entity.ThreadInfo;
 
 public class Day23_02Activity extends Activity {
-	private class SmsObserver extends ContentObserver {
-		public SmsObserver() {
-			super(handler);
-		}
-
-		@Override
-		public void onChange(boolean selfChange) {
-			handler.sendEmptyMessage(0);
-		}
-	}
 
 	private ListView lvData;
 	private MessageBiz biz;
@@ -47,18 +37,28 @@ public class Day23_02Activity extends Activity {
 		lvData.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				// TODO Auto-generated method stub
 				ThreadInfo info = (ThreadInfo) adapter.getItem(position);
 
-				Intent intent = new Intent(Day23_02Activity.this,
-						MessageActivity.class);
+				Intent intent = new Intent(Day23_02Activity.this, MessageActivity.class);
 				intent.putExtra("thread_id", info.getThreadId());
 				startActivity(intent);
 			}
 
 		});
+	}
+	
+	private class SmsObserver extends ContentObserver {
+		
+		public SmsObserver() {
+			super(handler);
+		}
+
+		@Override
+		public void onChange(boolean selfChange) {
+			handler.sendEmptyMessage(0);
+		}
 	}
 
 	/** Called when the activity is first created. */

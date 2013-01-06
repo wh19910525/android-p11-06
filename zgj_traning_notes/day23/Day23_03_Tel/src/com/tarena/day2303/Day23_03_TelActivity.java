@@ -15,6 +15,11 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 public class Day23_03_TelActivity extends Activity {
+
+	private AudioManager am;
+	private TelephonyManager tm;
+	private MyPhoneStateListener listener;
+	
 	/**
 	 * 从外部打进此模拟器*/
 	
@@ -40,7 +45,7 @@ public class Day23_03_TelActivity extends Activity {
 					/**
 					 * ServiceManager是一个隐藏的API,只能通过反射获得它的方法
 					 * 并且它的getService(String name)返回的对象是Binder 和  ITelephony的子类
-					 * 所以可以进行一下几步操作1、and 2、*/
+					 * 所以可以进行以下几步操作1、and 2、*/
 					
 					try {
 						Method method = Class.forName(
@@ -48,8 +53,7 @@ public class Day23_03_TelActivity extends Activity {
 								"getService", String.class);//表示getService()方法的参数类型为String
 						
 						//1、invoke()的参数分别表示,哪个对象调用此方法和调用方法的参数
-						IBinder binder = (IBinder) method.invoke(null,
-								new String[] { TELEPHONY_SERVICE });
+						IBinder binder = (IBinder) method.invoke(null, new String[] { TELEPHONY_SERVICE });
 						
 						//2、将IBinder对象转化为ITelephony对象
 						ITelephony tel = ITelephony.Stub.asInterface(binder);
@@ -89,12 +93,7 @@ public class Day23_03_TelActivity extends Activity {
 				break;
 			}
 		}
-
 	}
-
-	private AudioManager am;
-	private TelephonyManager tm;
-	private MyPhoneStateListener listener;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -104,14 +103,13 @@ public class Day23_03_TelActivity extends Activity {
 		
 		/**用于设置来电(或者是指定来电)的音乐,是静音还是震动或是普通模式*/
 		
-		am = (AudioManager) getSystemService(AUDIO_SERVICE);
+		am = (AudioManager) getSystemService(AUDIO_SERVICE);//
 
 		tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		Log.i("info", "getDeviceId : " + tm.getDeviceId());
 		Log.i("info", "getDataState : " + tm.getDataState());
 		Log.i("info", "getCallState : " + tm.getCallState());
-		Log.i("info",
-				"getDeviceSoftwareVersion : " + tm.getDeviceSoftwareVersion());
+		Log.i("info", "getDeviceSoftwareVersion : " + tm.getDeviceSoftwareVersion());
 		Log.i("info", "getLine1Number : " + tm.getLine1Number());
 		Log.i("info", "getNetworkCountryIso : " + tm.getNetworkCountryIso());
 		Log.i("info", "getNetworkOperator : " + tm.getNetworkOperator());

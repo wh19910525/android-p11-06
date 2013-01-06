@@ -63,7 +63,7 @@ public class Day19_06_MusicPlayerActivity extends Activity {
 			}
 
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {//
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {//fromUser 指 用户 手动触发 进度条
 				// TODO Auto-generated method stub
 				if (fromUser) {
 					Music m = app.getMusic(app.getCurrentIndex());

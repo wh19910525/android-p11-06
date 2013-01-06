@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 public class MessageActivity extends Activity {
+	
 	private ListView lvData;
 	private MessageBiz biz;
 	private MessageAdapter adapter;

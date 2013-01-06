@@ -1,8 +1,9 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\部分老师笔记\\android\\day23\\Day23_03_Tel\\src\\com\\android\\internal\\telephony\\ITelephony.aidl
+ * Original file: G:\\android_project\\zgj_traning_notes\\day23\\Day23_03_Tel\\src\\com\\android\\internal\\telephony\\ITelephony.aidl
  */
 package com.android.internal.telephony;
+//import android.telephony.NeighboringCellInfo;
 /**
 * Interface used to interact with the phone.  Mostly this is used by the 
 * TelephonyManager class.  A few places are still using this directly.
@@ -268,14 +269,6 @@ _result.writeToParcel(reply, android.os.Parcelable.PARCELABLE_WRITE_RETURN_VALUE
 else {
 reply.writeInt(0);
 }
-return true;
-}
-case TRANSACTION_getNeighboringCellInfo:
-{
-data.enforceInterface(DESCRIPTOR);
-java.util.List<android.telephony.NeighboringCellInfo> _result = this.getNeighboringCellInfo();
-reply.writeNoException();
-reply.writeTypedList(_result);
 return true;
 }
 case TRANSACTION_getCallState:
@@ -874,24 +867,8 @@ return _result;
 }
 /**
      * Returns the neighboring cell information of the device.
-     */
-public java.util.List<android.telephony.NeighboringCellInfo> getNeighboringCellInfo() throws android.os.RemoteException
-{
-android.os.Parcel _data = android.os.Parcel.obtain();
-android.os.Parcel _reply = android.os.Parcel.obtain();
-java.util.List<android.telephony.NeighboringCellInfo> _result;
-try {
-_data.writeInterfaceToken(DESCRIPTOR);
-mRemote.transact(Stub.TRANSACTION_getNeighboringCellInfo, _data, _reply, 0);
-_reply.readException();
-_result = _reply.createTypedArrayList(android.telephony.NeighboringCellInfo.CREATOR);
-}
-finally {
-_reply.recycle();
-_data.recycle();
-}
-return _result;
-}
+     *///   List<NeighboringCellInfo> getNeighboringCellInfo();
+
 public int getCallState() throws android.os.RemoteException
 {
 android.os.Parcel _data = android.os.Parcel.obtain();
@@ -970,10 +947,9 @@ static final int TRANSACTION_enableDataConnectivity = (android.os.IBinder.FIRST_
 static final int TRANSACTION_disableDataConnectivity = (android.os.IBinder.FIRST_CALL_TRANSACTION + 23);
 static final int TRANSACTION_isDataConnectivityPossible = (android.os.IBinder.FIRST_CALL_TRANSACTION + 24);
 static final int TRANSACTION_getCellLocation = (android.os.IBinder.FIRST_CALL_TRANSACTION + 25);
-static final int TRANSACTION_getNeighboringCellInfo = (android.os.IBinder.FIRST_CALL_TRANSACTION + 26);
-static final int TRANSACTION_getCallState = (android.os.IBinder.FIRST_CALL_TRANSACTION + 27);
-static final int TRANSACTION_getDataActivity = (android.os.IBinder.FIRST_CALL_TRANSACTION + 28);
-static final int TRANSACTION_getDataState = (android.os.IBinder.FIRST_CALL_TRANSACTION + 29);
+static final int TRANSACTION_getCallState = (android.os.IBinder.FIRST_CALL_TRANSACTION + 26);
+static final int TRANSACTION_getDataActivity = (android.os.IBinder.FIRST_CALL_TRANSACTION + 27);
+static final int TRANSACTION_getDataState = (android.os.IBinder.FIRST_CALL_TRANSACTION + 28);
 }
 /**
      * Dial a number. This doesn't place the call. It displays
@@ -1127,8 +1103,8 @@ public boolean isDataConnectivityPossible() throws android.os.RemoteException;
 public android.os.Bundle getCellLocation() throws android.os.RemoteException;
 /**
      * Returns the neighboring cell information of the device.
-     */
-public java.util.List<android.telephony.NeighboringCellInfo> getNeighboringCellInfo() throws android.os.RemoteException;
+     *///   List<NeighboringCellInfo> getNeighboringCellInfo();
+
 public int getCallState() throws android.os.RemoteException;
 public int getDataActivity() throws android.os.RemoteException;
 public int getDataState() throws android.os.RemoteException;

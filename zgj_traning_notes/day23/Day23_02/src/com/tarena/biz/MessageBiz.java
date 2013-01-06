@@ -9,6 +9,7 @@ import com.tarena.entity.MessageInfo;
 import com.tarena.entity.ThreadInfo;
 
 public class MessageBiz {
+	
 	private MessageDao dao;
 
 	public MessageBiz(Context context) {

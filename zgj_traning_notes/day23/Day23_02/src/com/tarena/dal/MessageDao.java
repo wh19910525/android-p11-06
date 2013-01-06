@@ -19,16 +19,16 @@ public class MessageDao {
 	}
 
 	/**
-	 * 查询所有的会话信息
+	 * 查询 所有的会话信息
 	 * 
 	 * @return
 	 */
 	public ArrayList<ThreadInfo> getThreads() {
 		ArrayList<ThreadInfo> threads = null;
-		String[] projection = { "thread_id", "address", "body", "date",
-				"count(*)as cnt" };
-		Cursor c = cr.query(Uri.parse("content://sms"), projection,
+		String[] projection = { "thread_id", "address", "body", "date", "count(*)as cnt" };
+		Cursor c = cr.query(Uri.parse("content://sms"), projection, 
 				"type=1 or type=2) group by(thread_id", null, null);
+		//以上  这一句 查询语句 翻译为 sqlite是: select thread_id,address,body,date,type from sms where (type=1 or type=2) group by(thread_id)
 		if (c != null) {
 			threads = new ArrayList<ThreadInfo>();
 			while (c.moveToNext()) {
@@ -42,7 +42,6 @@ public class MessageDao {
 			}
 			c.close();
 		}
-
 		return threads;
 	}
 

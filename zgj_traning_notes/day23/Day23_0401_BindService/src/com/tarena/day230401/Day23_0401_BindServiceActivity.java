@@ -21,26 +21,27 @@ import android.view.View;
   
   ****以上三部骤是欲被绑定的Service需要完成的****
   
-   注意：在第一个进程写的以.aidl 命名的文档，必须在欲要执行绑定Service的进程同时存在这样的文档
+   注意：在第一个进程写的以.aidl 命名的文档，必须在欲要执行绑定Service的进程,同时存在这样的文档
       此时gen 目录下会自动生成原以.aidl为后缀的文档的.java 文档
       
       此项目是和项目Day23_04_AIDL结合执行的,此项目是要绑定项目Day23_04_AIDL的Service的*/
 
 
 public class Day23_0401_BindServiceActivity extends Activity {
-	private IPlayControllor controllor;
+	
+	private IPlayControllor controllor;//
+	
 	ServiceConnection conn = new ServiceConnection() {
 
 		@Override
 		public void onServiceDisconnected(ComponentName name) {
 			// TODO Auto-generated method stub
-
 		}
 
 		@Override
 		public void onServiceConnected(ComponentName name, IBinder binder) {
 			// TODO Auto-generated method stub
-			controllor = IPlayControllor.Stub.asInterface(binder);
+			controllor = IPlayControllor.Stub.asInterface(binder);//
 		}
 	};
 
@@ -75,8 +76,8 @@ public class Day23_0401_BindServiceActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		Intent intent = new Intent("com.tarena.action.BIND_SERVICE");
-		bindService(intent, conn, BIND_AUTO_CREATE);//BIND_AUTO_CREATE表示如果没有被绑定,则自动绑定
+		Intent intent = new Intent("com.tarena.action.BIND_SERVICE");//这个action在 被绑定的 service的Manifest里 声明；
+		bindService(intent, conn, BIND_AUTO_CREATE);//BIND_AUTO_CREATE 表示如果没有被绑定,则自动绑定
 	}
 
 	@Override

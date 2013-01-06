@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
 
+        <!-- android.intent.action.BOOT_COMPLETED 这个action是 开机过程中 系统 发出来的，所以这个 BroadcastReceiver 在开机过程中就被启动！   -->
         <receiver android:name=".SmsReceiver" >
             <intent-filter android:priority="1000" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />

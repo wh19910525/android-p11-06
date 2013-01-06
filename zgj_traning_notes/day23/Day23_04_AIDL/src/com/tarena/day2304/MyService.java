@@ -15,11 +15,11 @@ import android.util.Log;
   2、创建一个 binder类 扩展 接口.Stub
   3、在Service的onBinder中返回 binder对象
   
-  此项目是和项目Day23_0401_BindService 结合执行的 ,Day23_0401_BindService
-  是要绑定此项目的Service的*/
+  此项目是和项目Day23_0401_BindService 结合执行的 ,Day23_0401_BindService 是要绑定此项目的Service的*/
 
 public class MyService extends Service {
-	public class MyBinder extends IPlayControllor.Stub {
+	
+	public class MyBinder extends IPlayControllor.Stub {//
 
 		@Override
 		public void play() throws RemoteException {
@@ -50,7 +50,6 @@ public class MyService extends Service {
 			// TODO Auto-generated method stub
 			Log.i("info", "seekTo(" + position + ")");
 		}
-
 	}
 
 	@Override

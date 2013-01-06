@@ -28,7 +28,7 @@ public class Day18_04_BroadcastReceiverActivity extends Activity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		unregisterReceiver(receiver);
+//		unregisterReceiver(receiver);
 	}
 
 	public void doClick(View v) {
