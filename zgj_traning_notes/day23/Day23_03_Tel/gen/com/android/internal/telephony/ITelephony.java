@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: G:\\android_project\\zgj_traning_notes\\day23\\Day23_03_Tel\\src\\com\\android\\internal\\telephony\\ITelephony.aidl
+ * Original file: I:\\android-p11-06\\zgj_traning_notes\\day23\\Day23_03_Tel\\src\\com\\android\\internal\\telephony\\ITelephony.aidl
  */
 package com.android.internal.telephony;
 //import android.telephony.NeighboringCellInfo;

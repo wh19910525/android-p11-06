@@ -18,10 +18,17 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 public class TelService extends Service {
-	private class MyPhoneStateListener extends PhoneStateListener {
+
+	private BlackListBiz biz;
+	private SharedPreferences pref;
+	private MyPhoneStateListener listener;
+	private TelephonyManager tm;
+	private SmsReceiver receiver;
+
+	private class MyPhoneStateListener extends PhoneStateListener {//参考 day23_03 使用 反射
 		@Override
 		public void onCallStateChanged(int state, String incomingNumber) {
-			if (state == TelephonyManager.CALL_STATE_RINGING) {
+			if (state == TelephonyManager.CALL_STATE_RINGING) {// 响铃
 				if (pref.getBoolean("useBlackList", false)
 						&& biz.isEists(incomingNumber)) {
 					try {
@@ -32,7 +39,7 @@ public class TelService extends Service {
 						IBinder binder = (IBinder) method.invoke(null,
 								new String[] { TELEPHONY_SERVICE });
 						ITelephony tel = ITelephony.Stub.asInterface(binder);
-						tel.endCall();
+						tel.endCall();//结束指定号码的来电 模拟器接不到指定号码的来电
 						 
 						
 					} catch (SecurityException e) {
@@ -62,28 +69,22 @@ public class TelService extends Service {
 		}
 	}
 
-	private BlackListBiz biz;
-	private SharedPreferences pref;
-	private MyPhoneStateListener listener;
-	private TelephonyManager tm;
-	private SmsReceiver receiver;
-
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		biz = new BlackListBiz(this);
 		pref = PreferenceManager.getDefaultSharedPreferences(this);
-		tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+		tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);//
 		listener = new MyPhoneStateListener();
-		tm.listen(listener, PhoneStateListener.LISTEN_CALL_STATE);
+		tm.listen(listener, PhoneStateListener.LISTEN_CALL_STATE);//
 
 		// 动态注册广播接收器
-		receiver = new SmsReceiver();
-		IntentFilter filter = new IntentFilter();
-		filter.setPriority(1000);
-		filter.addAction("android.provider.Telephony.SMS_RECEIVED");
-		registerReceiver(receiver, filter);
+//		receiver = new SmsReceiver();
+//		IntentFilter filter = new IntentFilter();
+//		filter.setPriority(1000);
+//		filter.addAction("android.provider.Telephony.SMS_RECEIVED");
+//		registerReceiver(receiver, filter);
 
 		Log.i("info", "TelService.onCreate()");
 	}
@@ -92,8 +93,8 @@ public class TelService extends Service {
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		tm.listen(listener, PhoneStateListener.LISTEN_NONE);
-		unregisterReceiver(receiver);
+		tm.listen(listener, PhoneStateListener.LISTEN_NONE);//
+	//	unregisterReceiver(receiver);
 		Log.i("info", "TelService.onDestroy()");
 	}
 

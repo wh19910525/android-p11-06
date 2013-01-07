@@ -52,7 +52,7 @@ public class Day23_03_TelActivity extends Activity {
 								"android.os.ServiceManager").getDeclaredMethod(
 								"getService", String.class);//表示getService()方法的参数类型为String
 						
-						//1、invoke()的参数分别表示,哪个对象调用此方法和调用方法的参数
+						//1、invoke()的参数分别表示,哪个对象调用此方法 和 调用方法的参数
 						IBinder binder = (IBinder) method.invoke(null, new String[] { TELEPHONY_SERVICE });
 						
 						//2、将IBinder对象转化为ITelephony对象

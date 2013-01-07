@@ -14,7 +14,8 @@ public class TelReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
 		
-		/**拨号之后,系统会自动发出广播,此广播接收器用于接收打进来的号码,不管是禁止的还是普通号码
+		/**当有电话打进来的时候, 系统会自动发出android.intent.action.NEW_OUTGOING_CALL广播, 
+		 * 此广播接收器用于接收 打进来的号码,不管是禁止的还是普通号码
 		 * 只是如果是本项目的指定号码,虚拟器不会接收到而已,但是系统还是会发出广播*/
 		
 		String action = intent.getAction();

@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.tarena.dal.BlackListDao;
 
 public class BlackListBiz {
+	
 	private BlackListDao dao;
 
 	public BlackListBiz(Context context) {

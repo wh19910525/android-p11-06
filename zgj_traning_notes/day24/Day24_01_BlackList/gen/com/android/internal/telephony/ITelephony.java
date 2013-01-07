@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: G:\\android_project\\zgj_traning_notes\\day24\\Day24_01_BlackList\\src\\com\\android\\internal\\telephony\\ITelephony.aidl
+ * Original file: I:\\android-p11-06\\zgj_traning_notes\\day24\\Day24_01_BlackList\\src\\com\\android\\internal\\telephony\\ITelephony.aidl
  */
 package com.android.internal.telephony;
 /**

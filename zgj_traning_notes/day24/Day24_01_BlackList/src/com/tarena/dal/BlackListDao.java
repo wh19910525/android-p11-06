@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class BlackListDao {
+	
 	private DBOpenHelper helper;
 
 	public BlackListDao(Context context) {
@@ -43,8 +44,7 @@ public class BlackListDao {
 	public boolean isEists(String number) {
 		boolean exists = false;
 		SQLiteDatabase db = helper.getReadableDatabase();
-		Cursor c = db.rawQuery("select * from blacklist where number=?",
-				new String[] { number });
+		Cursor c = db.rawQuery("select * from blacklist where number=?", new String[] { number });
 		if (c != null && c.moveToFirst()) {
 			exists = true;
 			c.close();

@@ -15,8 +15,7 @@ public class SmsReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
 		String action = intent.getAction();
-		SharedPreferences pref = PreferenceManager
-				.getDefaultSharedPreferences(context);
+		SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
 		if ("android.provider.Telephony.SMS_RECEIVED".equals(action)) {
 			//如果启用了黑名单
 			if (pref.getBoolean("useBlackList", false)) {
@@ -26,7 +25,7 @@ public class SmsReceiver extends BroadcastReceiver {
 				for (Object pdu : pdus) {
 					SmsMessage msg = SmsMessage.createFromPdu((byte[]) pdu);
 					if (biz.isEists(msg.getDisplayOriginatingAddress())) {
-						abortBroadcast();
+						abortBroadcast();//系统已经 接收 短信， 并且 被拦截，也就是 用户看不到这条短信
 					}
 				}
 			}

@@ -21,6 +21,7 @@ import android.widget.ListView;
 import com.tarena.biz.BlackListBiz;
 
 public class Day24_01_BlackListActivity extends Activity {
+	
 	private static final int MENU_CTX_REMOVE = 1;
 	private ListView lvNumbers;
 	private EditText etPhoneNumber;
@@ -42,22 +43,18 @@ public class Day24_01_BlackListActivity extends Activity {
 		}
 
 		lvNumbers = (ListView) findViewById(R.id.lvNumbers);
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, biz.getNumbers());
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, biz.getNumbers());
 		lvNumbers.setAdapter(adapter);
 	}
 
 	private void addListener() {
-		chkUseBlackList
-				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+		chkUseBlackList.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
 					@Override
-					public void onCheckedChanged(CompoundButton buttonView,
-							boolean isChecked) {
+					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 						// TODO Auto-generated method stub
 						Intent service = new Intent(
-								Day24_01_BlackListActivity.this,
-								TelService.class);
+								Day24_01_BlackListActivity.this, TelService.class);
 						if (isChecked) {
 							chkUseBlackList.setText("启用黑名单");
 							startService(service);
@@ -66,16 +63,14 @@ public class Day24_01_BlackListActivity extends Activity {
 							stopService(service);
 						}
 						// 向偏好设置中保存黑名单是否启用的状态
-						pref.edit().putBoolean("useBlackList", isChecked)
-								.commit();
+						pref.edit().putBoolean("useBlackList", isChecked).commit();
 					}
 				});
 
 		/**
 		 * listview的创建上下文菜单监听器
 		 */
-		lvNumbers
-				.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+		lvNumbers.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 
 					@Override
 					public void onCreateContextMenu(ContextMenu menu, View v,
@@ -89,8 +84,7 @@ public class Day24_01_BlackListActivity extends Activity {
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
-		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item
-				.getMenuInfo();
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo) item.getMenuInfo();
 		String number = adapter.getItem(menuInfo.position).toString();
 
 		int count = biz.removeNumber(number);
@@ -121,4 +115,5 @@ public class Day24_01_BlackListActivity extends Activity {
 		setupView();
 		addListener();
 	}
+
 }
