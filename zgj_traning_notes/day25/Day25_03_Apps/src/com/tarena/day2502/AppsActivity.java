@@ -100,7 +100,7 @@ public class AppsActivity extends Activity {
 
 		case 1:
 			try {
-				Method method = pm.getClass().getDeclaredMethod("getPackageSizeInfo", String.class, //这里是 什么机制？
+				Method method = pm.getClass().getDeclaredMethod("getPackageSizeInfo", String.class, //这是 反射的 第二种使用方法；
 						IPackageStatsObserver.class);
 				method.invoke(pm, app.getPkgName(), observer);//invoke()的参数分别表示,哪个对象调用此方法 和 调用方法的参数
 

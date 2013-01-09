@@ -1,0 +1,19 @@
+一、android源码中在framework层如何修改代码屏蔽掉home按键？
+ＨＯＭＥ键具体是在frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java中实现其功能，
+
+PhoneWindowManager.java interceptKeyBeforeDispatching   中有   if (keyCode == KeyEvent.KEYCODE_HOME) { ... }
+也可以从framework/base/services/input/EventHub.cpp 中屏蔽掉；
+
+
+
+
+
+===================================
+应用我是用加了着个方法就屏蔽了
+public void onAttachedToWindow() {
+        this.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD);
+        super.onAttachedToWindow();
+    }
+
+
+

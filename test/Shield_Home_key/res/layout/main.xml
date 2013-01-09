@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/mTv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello" />
+    <Button
+        android:id="@+id/Bt_Sheild"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="点我屏蔽home按键"
+        android:onClick="doClick" />
+    <Button 
+        android:id="@+id/Bt_recovery"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="点我恢复home按键"
+        android:onClick="doClick" />
+
+</LinearLayout>

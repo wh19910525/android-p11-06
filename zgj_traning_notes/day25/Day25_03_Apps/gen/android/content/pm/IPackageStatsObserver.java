@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: I:\\android-p11-06\\zgj_traning_notes\\day25\\Day25_03_Apps\\src\\android\\content\\pm\\IPackageStatsObserver.aidl
+ * Original file: G:\\android_project\\zgj_traning_notes\\day25\\Day25_03_Apps\\src\\android\\content\\pm\\IPackageStatsObserver.aidl
  */
 package android.content.pm;
 /**
