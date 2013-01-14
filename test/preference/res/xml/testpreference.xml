@@ -15,7 +15,7 @@
 			android:summaryOn="ok"
 	        android:selectable="true"
 			android:persistent="true"
-	        android:defaultValue="false"
+	        android:defaultValue="true"
  />
 	    
 	    <RingtonePreference android:key="ringtone"
@@ -72,6 +72,7 @@
     		android:summary="first List"
 			android:entries="@array/cities"
 			android:entryValues="@array/airport_codes"
+			android:defaultValue=""
 			 />
     	
     	<Preference

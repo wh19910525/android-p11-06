@@ -13,11 +13,11 @@ public class PreferenceActivity extends android.preference.PreferenceActivity {
         //setContentView(R.layout.main);
         addPreferencesFromResource(R.xml.testpreference);
         
-        Preference test = findPreference("ttts");
+     //   Preference test = findPreference("ttts");
    //     ((PreferenceGroup)findPreference("thirdC")).removePreference(findPreference("ttts"));
-        getPreferenceScreen().removePreference(findPreference("thirdC"));
+      //  getPreferenceScreen().removePreference(findPreference("thirdC"));
 
-       ((PreferenceGroup)findPreference("thirdC")).removeAll();
+      // ((PreferenceGroup)findPreference("thirdC")).removeAll();
 
     }
 }
