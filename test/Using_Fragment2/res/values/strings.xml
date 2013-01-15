@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Using_Fragment2Activity!</string>
+    <string name="app_name">Using_Fragment2</string>
+    
+     <string-array name="cities">
+        <item>Pittsburgh</item>
+        <item>Allentown/Bethlehem</item>
+        <item>Erie</item>
+    </string-array>
+    
+    <string-array name="airport_codes">
+        <item>PHL</item>
+        <item>PIT</item>
+        <item>ss</item>
+    </string-array>
+ 	
+    
+</resources>

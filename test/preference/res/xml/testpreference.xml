@@ -71,9 +71,13 @@
     	    android:title="test Listpreference"
     		android:summary="first List"
 			android:entries="@array/cities"
-			android:entryValues="@array/airport_codes"
-			android:defaultValue=""
-			 />
+			android:entryValues="@array/airport_codes" >
+            
+    	    <intent 
+    	        android:action="android.intent.action.VIEW"
+            	android:data="http://www.baidu.com" />
+    	    
+    	</ListPreference>
     	
     	<Preference
     	    android:title="ttt"
@@ -82,7 +86,14 @@
     		>
     	        
     	</Preference>	
-  	
+    	
+  		<Preference 
+  		    android:title="zghwhttt" >      
+  		    <intent 
+  		        android:action="android.intent.action.VIEW"              
+  		        android:data="http://www.baidu.com" />  
+  		</Preference>
+  		
     </PreferenceCategory>
     
     

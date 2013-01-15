@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Using_Preference_headerActivity!</string>
+    <string name="app_name">Using_Preference_header</string>
+
+</resources>

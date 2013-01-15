@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="first123" >
+    
+    <CheckBoxPreference
+        android:key="checkbox1"
+        android:title="CheckBox Preference"
+        android:summary="Check it on , check it off"/>   
+
+    <CheckBoxPreference
+        android:key="checkbox2"
+        android:title="CheckBox Preference"
+        android:summary="Check it on , check it off"/>  
+        
+    <PreferenceCategory
+       android:title="Categoty"  >
+       
+		<RingtonePreference android:key="ringtone"
+	        android:title="Ringtone Preference"
+	        android:showDefault="true"
+	        android:showSilent="true"
+	        android:summary="Pick a tone, any tone" />
+	        
+	        <PreferenceScreen
+	             android:title="preferenceScreen" >
+	             <Preference  
+	             	android:title="Preference">
+	                <intent 
+	                    android:action="android.intent.action.VIEW"
+	                    android:data="http://www.taobao.com" />
+				</Preference>
+	             
+		        <EditTextPreference
+			        android:key="edit"
+			        android:title="EditTextPreference"
+			        android:defaultValue="default value"
+			        android:summary="summary" />
+	              
+        	</PreferenceScreen>
+        
+    </PreferenceCategory>
+  
+</PreferenceScreen>
