@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: G:\\android_project\\zgj_traning_notes\\day23\\Day23_04_AIDL\\src\\com\\tarena\\aidl\\IPlayControllor.aidl
+ * Original file: I:\\android-p11-06\\zgj_traning_notes\\day23\\Day23_04_AIDL\\src\\com\\tarena\\aidl\\IPlayControllor.aidl
  */
 package com.tarena.aidl;
 public interface IPlayControllor extends android.os.IInterface
