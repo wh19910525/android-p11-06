@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- preference的组织方式有PreferenceScreen和PreferenceCategory，PreferenceCategory是带层次组织关系，在后面的例子体验 -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="first123" >
+    
+        <PreferenceCategory android:key="config" android:title="whConfig">  
+        <CheckBoxPreference android:key="config_anonymous"   
+            android:title="config_anonymous"  
+            android:disableDependentsState="true" />  
+        <EditTextPreference android:key="config_username"   
+            android:title="config_username"  
+            android:dependency="config_anonymous" />  
+        <EditTextPreference android:key="config_password"   
+            android:title="config_password"  
+            android:dependency="config_anonymous" />  
+    </PreferenceCategory> 
+    
+    <!--RingtonePreference是选择铃音，这里给出两个选择，系统默认的铃音和无声 -->
+    <PreferenceCategory
+        android:key="FistMe"
+	        android:title="firstwds Category" >
+	        
+	    <CheckBoxPreference android:key="checkbox"
+	        android:title="CheckBox Preference"
+	        android:summary="Check it on , check it off"
+			android:summaryOn="ok"
+	        android:selectable="true"
+			android:persistent="true"
+	        android:defaultValue="true"
+ />
+	    
+	    <RingtonePreference android:key="ringtone"
+	        android:title="Ringtone Preference"
+	        android:showDefault="true"
+	        android:showSilent="true"
+	        android:summary="Pick a tone, any tone"/>
+    </PreferenceCategory>
+    
+            <PreferenceScreen
+            
+            android:key="pfss1"
+            android:title="PreferenceScreettt"
+            android:summary="test summary"
+             >
+            
+            <EditTextPreference
+                android:key="gotosd"
+                android:title="EditTextPreferenc 1"
+                android:dialogTitle="dialog test"
+                android:summary="test another preference"></EditTextPreference> 
+            
+            </PreferenceScreen>
+            
+    <PreferenceCategory
+        android:key="secondC"
+        android:title="second Category">
+        
+        <PreferenceScreen
+            
+            android:key="pfs1"
+            android:title="PreferenceScree1"
+            android:summary="test summary"
+             >
+            
+            <EditTextPreference
+                android:key="goto"
+                android:title="EditTextPreferenc 1"
+                android:dialogTitle="dialog test"
+                android:summary="test another preference"></EditTextPreference> 
+            
+            </PreferenceScreen>
+        
+    </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="thirdC"
+        android:title="third Category" 
+          >
+    
+
+    	
+    	<Preference
+    	    android:title="ttt"
+    	    android:summary="go to new"
+    	    android:key="ttts"
+    		>
+    	        
+    	</Preference>	
+    	
+  		<Preference 
+  		    android:title="zghwhttt" >      
+  		    <intent 
+  		        android:action="android.intent.action.VIEW"              
+  		        android:data="http://www.baidu.com" />  
+  		</Preference>
+  		
+    </PreferenceCategory>
+    
+    
+    
+    
+    
+    
+</PreferenceScreen>
