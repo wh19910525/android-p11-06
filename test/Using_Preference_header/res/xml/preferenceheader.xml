@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+
 	<header
         android:fragment="zh.zgj.SettingsFragment"   
         android:title="The first header"
-        android:summary="The first header summary" />                        
+        android:summary="The first header summary" >
+        
+		<extra 
+			android:name="someKey" 
+			android:value="wh" />
+	</header>
+                       
 	<header
         android:fragment="zh.zgj.SettingsFragment"
         android:title="The second header"
-        android:summary="The second header summary" />
+        android:summary="The second header summary" >
+        
+    	<extra 
+			android:name="someKey" 
+			android:value="zgj" />    
+        
+    </header>
         
 </preference-headers>
