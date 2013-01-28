@@ -8,10 +8,6 @@
 package wh.zgj;
 
 public final class R {
-    public static final class array {
-        public static final int airport_codes=0x7f060001;
-        public static final int cities=0x7f060000;
-    }
     public static final class attr {
     }
     public static final class drawable {
@@ -25,7 +21,6 @@ public final class R {
         public static final int hello=0x7f050000;
     }
     public static final class xml {
-        public static final int testpreference=0x7f040000;
-        public static final int wwtestpreference=0x7f040001;
+        public static final int preference=0x7f040000;
     }
 }

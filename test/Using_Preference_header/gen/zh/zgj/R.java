@@ -23,5 +23,6 @@ public final class R {
     public static final class xml {
         public static final int preferenceheader=0x7f040000;
         public static final int preferences=0x7f040001;
+        public static final int test_preferences=0x7f040002;
     }
 }

@@ -5,7 +5,7 @@
     
     <CheckBoxPreference
         android:key="checkbox1"
-        android:title="CheckBox zgj"
+        android:title="CheckBox wh"
         android:summary="Check it on , check it off"/>   
 
     <CheckBoxPreference
