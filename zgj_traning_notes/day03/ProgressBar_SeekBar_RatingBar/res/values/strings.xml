@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, ProgressBar_SeekBar_RatingBarActivity!</string>
+    <string name="app_name">ProgressBar_SeekBar_RatingBar</string>
+	<string name="progress">当前进度：%s</string>
+	 
+	<string name="progress_o">当前进度：20%</string>
+</resources>
