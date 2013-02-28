@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name"> Onda Home </string>
+    <string name="app_name_1">Onda Home</string>
+    <string name="app_name_2">Onda Setting</string>
+    <string name="app_name_3">Onda Media</string>
+    <string name="power_off">Power off</string>
+    <string name="power_select">Would you like to shut down?</string>
+    <string name="power_yes">OK</string>
+    <string name="power_no">Cancle</string>
+
+</resources>

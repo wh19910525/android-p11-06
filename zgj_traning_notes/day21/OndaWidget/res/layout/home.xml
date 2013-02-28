@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="580dp"
+    android:layout_height="370dp"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="260dp"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_camera"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_camera" />
+
+                <Button
+                    android:id="@+id/btn_help"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                     android:layout_weight="1"
+                    android:background="@drawable/selector_help" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_movie"
+                android:layout_width="180dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/selector_movie" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_music"
+            android:layout_width="fill_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/selector_music" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="180dp"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_browser"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_browser" />
+
+        <Button
+            android:id="@+id/btn_download"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_download" />
+    </LinearLayout>
+
+</LinearLayout>

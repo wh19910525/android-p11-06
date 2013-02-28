@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="580dp"
+    android:layout_height="370dp"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="420dp"
+        android:layout_height="fill_parent" 
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/but_setting"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="4"
+                android:background="@drawable/selector_settings" />
+
+            <Button
+                android:id="@+id/but_wifi"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="5"
+                android:background="@drawable/selector_wifi" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/but_app"
+                android:layout_width="0dp"
+                 android:layout_weight="5"
+                android:layout_height="fill_parent"
+                android:background="@drawable/selector_app" />
+
+            <Button
+                android:id="@+id/but_bright"
+                android:layout_width="0dp"
+                 android:layout_weight="4"
+                android:layout_height="fill_parent"
+                android:background="@drawable/selector_bright" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="160dp"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/but_shutdow"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/selector_poweroff" />
+    </LinearLayout>
+
+</LinearLayout>
