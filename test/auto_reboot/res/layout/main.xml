@@ -74,7 +74,8 @@
 	        android:layout_width="0dip"
 	        android:layout_height="40dip"
 	        android:layout_weight="1"
-	        android:onClick="doClick" />
+	        android:onClick="doClick"
+	        android:enabled="false" />
 	    
 	    <Button 
 	        android:id="@+id/B_auto"

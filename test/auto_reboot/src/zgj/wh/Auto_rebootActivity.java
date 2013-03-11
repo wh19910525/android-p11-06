@@ -5,10 +5,13 @@ import zgj.wh.MyReceiver;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -31,7 +34,8 @@ public class Auto_rebootActivity extends Activity {
 	private MyReceiver receiver;
 	
 	private int E_chishu = 0;
-	private static int E_shijian = 0;
+	private int E_shijian = 0;
+	private int reboot_count = 0;
 	private int hava_reboot_chishu = 1;
 	private int remain_reboot_chishu = 0;
 	private int remain_reboot_shijian = 0;
@@ -40,16 +44,14 @@ public class Auto_rebootActivity extends Activity {
 	private MyThread myThread;
 	private StringBuilder display;
 	private boolean flag_auto = true;
-	
+	private SharedPreferences pref;
 	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        
-        
-        
+
         mButton_reset = (Button)findViewById(R.id.B_reset);
         mButton_auto = (Button)findViewById(R.id.B_auto);
         
@@ -72,15 +74,32 @@ public class Auto_rebootActivity extends Activity {
         	}
         };
         
-        myThread = new MyThread("wait_Thread");
+        // 获取Preferences对象
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
         
+        // 获取Editor
+        Editor editor = pref.edit();
+        
+        // 获取 偏好存储的数据
+        hava_reboot_chishu = pref.getInt("reboot_count", 1);
+        E_shijian = pref.getInt("set_shijian", 60);
+        E_chishu = pref.getInt("set_chishu", 5000);
+        
+		// 编辑偏好设置
+		editor.putInt("reboot_count", hava_reboot_chishu + 1).commit();
+		
+//		editor.remove("reboot_count").putInt("reboot_count", hava_reboot_chishu + 1).commit();
+
         remain_reboot_chishu = Integer.parseInt(mEditText_cishu.getText().toString()) - hava_reboot_chishu;
         if (remain_reboot_chishu < 0){
         	remain_reboot_chishu = hava_reboot_chishu + 1;
         }
         
-        E_shijian = Integer.parseInt(mEditText_shijian.getText().toString());
+
         	
+    	mEditText_shijian.setText(E_shijian + "");
+    	mEditText_cishu.setText(E_chishu + "");
+    	
         if (flag_auto == true)
         {
         	mButton_auto.setText("取消自动重启");
@@ -88,12 +107,9 @@ public class Auto_rebootActivity extends Activity {
         	mEditText_shijian.setEnabled(false);
         	
         }
-               
+  
+        myThread = new MyThread("wait_Thread");               
         myThread.start();
-      
-//	    PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);  
-//	    pm.reboot("null");  
-//	    Log.v("wanghai", "reboot");
    
     }
     
@@ -108,7 +124,9 @@ public class Auto_rebootActivity extends Activity {
         public void setStop() { 
             this.stop = true; 
         } 
+        
     	  public void run(){
+    		  	  
     		  for (int i = 0;i < E_shijian; i ++){
     			  
     			  if(stop){
@@ -153,6 +171,13 @@ public class Auto_rebootActivity extends Activity {
     		mEditText_cishu.setText("5000");
     		mEditText_shijian.setText("60");
     		
+            // 获取Editor
+            Editor editor = pref.edit();
+    		// 编辑偏好设置
+    		editor.putInt("set_shijian", 60).commit();
+    		editor.putInt("set_chishu", 5000).commit();
+    		editor.putInt("reboot_count", 1).commit();
+    		
     	}else if (v.getId() == R.id.B_auto){
     		Log.i("wanghai", "auto_key");
     		E_chishu = Integer.parseInt(mEditText_cishu.getText().toString());
@@ -160,18 +185,28 @@ public class Auto_rebootActivity extends Activity {
     		if(flag_auto == true){
     			flag_auto = false;
             	mButton_auto.setText("设置自动重启");
+            	mButton_reset.setEnabled(true);
             	mEditText_cishu.setEnabled(true);
             	mEditText_shijian.setEnabled(true);
-            	
+
             	//中断 线程
             	myThread.setStop();
     		}else{
     			flag_auto = true;
             	mButton_auto.setText("取消自动重启");
+            	mButton_reset.setEnabled(false);
             	mEditText_cishu.setEnabled(false);
             	mEditText_shijian.setEnabled(false);
-            	
+
             	E_shijian = Integer.parseInt(mEditText_shijian.getText().toString());
+            	E_chishu = Integer.parseInt(mEditText_cishu.getText().toString());
+            	
+                // 获取Editor
+                Editor editor = pref.edit();
+        		// 编辑偏好设置
+        		editor.putInt("set_shijian", E_shijian).commit();
+        		editor.putInt("set_chishu", E_chishu).commit();
+        		
             	//执行  新线程，被 终止的 线程 在 重新 运行是 必须 重新 创建
             	myThread = new MyThread("wait_Thread");
                 myThread.start();
@@ -180,6 +215,4 @@ public class Auto_rebootActivity extends Activity {
     	
     }
 }
-
-
 
