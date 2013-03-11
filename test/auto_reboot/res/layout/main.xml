@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+        
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+	    android:orientation="horizontal" >
+	    
+	    <TextView 
+	        android:text="设置重启次数"
+	        android:id="@+id/T_Reset_cishu"
+	        android:layout_width="0dip"
+	        android:layout_height="40dip"
+	        android:layout_weight="1"
+	        android:gravity="right" />
+	    
+	    <EditText 
+	        android:id="@+id/E_Reset_cishu"
+	        android:text="5000"
+	        android:layout_width="0dip"
+	        android:layout_height="40dip"
+	        android:layout_weight="1"
+	        android:inputType="number"
+	        android:enabled="false" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+
+	    android:orientation="horizontal" >
+	    
+	    <TextView 
+	        android:text="设置重启时间"
+	        android:id="@+id/T_after_time"
+	        android:layout_width="0dip"
+	        android:layout_height="40dip"
+	        android:layout_weight="1"
+	        android:gravity="right" />
+	    
+	    <EditText 
+	        android:id="@+id/E_after_time"
+	        android:text="60"
+	        android:layout_width="0dip"
+	        android:layout_height="40dip"
+	        android:layout_weight="1"
+	        android:inputType="number"
+	        android:enabled="false" />
+
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/diplay_context"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/hello" />
+    
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+
+	    android:orientation="horizontal" >
+	    
+	    <Button 
+	        android:text="恢复默认值"
+	        android:id="@+id/B_reset"
+	        android:layout_width="0dip"
+	        android:layout_height="40dip"
+	        android:layout_weight="1"
+	        android:onClick="doClick" />
+	    
+	    <Button 
+	        android:id="@+id/B_auto"
+	        android:text="取消自动重启"
+	        android:layout_width="0dip"
+	        android:layout_height="40dip"
+	        android:layout_weight="1"
+	        android:onClick="doClick" />
+    </LinearLayout>
+    
+</LinearLayout>

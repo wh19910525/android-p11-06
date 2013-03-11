@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Auto_rebootActivity!</string>
+    <string name="app_name">Auto_reboot</string>
+	<string name="text1">这是第</string>
+	<string name="text2">次重启,还剩下</string>
+	<string name="text3">次重启</string>
+	<string name="text4">下一次重启在</string>
+	<string name="text5">秒后。</string>
+</resources>
