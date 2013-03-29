@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, Preference_listenerActivity!</string>
+    <string name="app_name">Preference_listener</string>
+    <string name="app_nameo">other</string>
+    <string name="app_name2">other2</string>
+        
+        
+    <string-array name="department">  
+        <item>IT</item>  
+        <item>Commerce</item>  
+        <item>HR</item>  
+    </string-array>  
+    
+    <string-array name="department_value">  
+        <item>001</item>  
+        <item>002</item>  
+        <item>003</item>  
+    </string-array>  
+    
+    
+</resources>
